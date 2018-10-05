@@ -1,0 +1,195 @@
+#+TITLE: PhD Diary Entry for week beginning October 1st 2018
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr} %For headers and footers
+#+LaTeX_HEADER: \pagestyle{fancy} %For headers and footers
+#+LaTeX_HEADER: \fancyfoot[CE,CO]{}
+#+LaTeX_HEADER: \fancyhead[LE,LO]{}
+#+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y
+#+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicely
+#+LaTeX_HEADER: \restylefloat{figure} %and this command
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+
+
+* Review Papers
+
+** Biosynthesis of salicylic acid in plants
+- Link:  https://doi.org/10.4161/psb.4.6.8392
+- SA is found in range of projaryotic and eukaryotic organisms
+- /"The most established role of SA is as a signal molecule in plant defense responses."/
+- has info on biosynthesis pathways
+  - 2 have been proposed in plants
+- Studies show it's joint to regulatory functions in plant
+- With some plants, it's used to activate "putrid-smelling" compounds that attract pollinating insects
+- /"plants synthesize SA from cinnamate produced by the activity of phenylalanine ammonia lyase (PAL)"/ - this is found in biochemical studies
+  - /Ethyl cinnamate is the ester of cinnamic acid and ethanol. It is present in the essential oil of cinnamon. Pure ethyl cinnamate has a "fruity and balsamic odor/
+- /"Genetic studies, on the other hand, indicate that the bulk of SA is produced from isochorismate."/
+
+** Plasmadesmata: A signalling hub at the cellular boundary
+- Effective intercellular communication is crucial for the survival of plants.
+- Because plant cells are encased in rigid cell walls, direct exchange of cytoplasmic content is only possible via PD
+- PD are membrane-lined nanotubes that connect the cytoplasm of adjacent cells.
+- PD are highly dynamic communication channels, that can undergo various structural changes and functional modifications
+- Recent findings suggest that defence signalling pathways are tightly linked to regulation of PD.
+- The restriction of PD-mediated cell-to-cell communication is an essential innate immune response to microbial pathogens
+- There is a hint in findings that PD have a novel role as a signalling hub for both symplasmic and cross-membrane pathways.
+- In the apoplasmic pathway, signal-generating cells secrete specific ligands into the extracellular matrix, recipient cells perceive the ligands by producing membrane-anchored cognate receptors on the cell surface
+- In the symplasmic pathway, signalling molecules are commonly thought to move cytoplasmically through the PD that connect signal-generating cells to their adjacent recipient cells.
+- Molecular composition and architecture of PD are unknown (*as of 2015, maybe this has been discovered by now?*)
+  - Though a number of proteins have been identified
+- The recruitment of specific PD-associated proteins to defence signalling as well as the dispatch of defence proteins to PD illustrate how the regulation of PD is integrated into specific signalling pathways during biotic stress
+- Basal immune responses require activation via signalling pathways
+  - Including thoes mediated by defence hormones such as SA
+  - Elevated levels of SA concentrations during pathogen infection induce restriction to cell-to-cell movement
+  - This is done by transcriptomically upregulating the expression of the PD  regulators
+  - Accumulation of =PDLP5= (/PD-located protein 5/) affects the activity of PD
+  - PD permeability is changed by callose deposition
+- Effective innate immune responses also involve the recognition of pathogens via membrane-bound receptors at the cell surface levels (Pretty sure this is the same ligands)
+- Receptors are partitioned to PD (/clarify what this means/).
+- Plant cells can sometimes lose the control of PD gating, this means that the basal defence and systemic resistance are compromised
+
+
+#+CAPTION: Figure from review on PD - captioned by reviewer: Structure of PD and movement of soluble molecules through PD. Subdomains of PD include: PDom, PD outer membrane; PDim, PD inner membrane; APR, appressed ER; neck region; central cavity; and cytoplasmic sleeve. Green and red balls represent soluble molecules that can move through the cytoplasmic sleeve of PD when PD are open. Increased callose accumulation from basal levels leads to a PD closure. CW, cell wall; ML, middle lamella; PM, plasma membrane.
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:pd
+[[./images/pd.png]]
+
+- Structurally each PD contains a cytoplasmic sleeve
+  - Formed between outer and inner membrane linings
+  - They are continuous with the PM and endoplasmic reticulum (ER)(figures [[fig:pdjunc]] and [[fig:pd]])
+
+
+#+CAPTION: Figure stolen from https://micro.magnet.fsu.edu/cells/plants/plasmodesmata.html
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:pdjunc
+[[./images/plasmodesmatafigure1.jpg]]
+
+** Signalling Mechanisms underlying systemic acquired resistance to microbial pathogens
+- Link: https://doi.org/10.1016/j.plantsci.2018.01.001
+- In plants active defence against microbial pathogens involves he induction of elaborate defence signalling pathways
+- Some of these can provide protection locally to the infection
+- Others provide systemic resistance throughout the plant (including non-infected parts)
+- Local resistance includes species level resistance to non-host pathogens
+  - Basel resistance to virulent pathogens
+  - Or race-specific resistance to avirulent (Avr) pathogen isolates.
+- Discusses how pathogen infection has two mechanisms, besides local defence
+  - Systemic acquired resistance (SAR)
+  - Induced systemic resistance (ISR)
+- SAR is great, it might be possible to use to create transgenerational immunity
+- SAR is very rapidly moving, the mobile signals for which are able to activate within 4-6 hrs of primary infection
+- Symplast
+  - Network of cytoplasm interconnected by specialised openings called Plasmadesmata (PD)
+- SAR mobile signals are highly conserved because petiole exudate from pathogen-infected plants of one species can induce SAR in unrelated plant species
+  - /I don't quite understand this?!/
+
+
+* Meeting with Richard
+
+** Important names to look up
+- Katherine Denby, York
+- David Wild, Warwick
+
+* Key buzz words/phrases to expand knowledge of
+
+*** PAMP
+
+- https://www.sciencedirect.com/topics/immunology-and-microbiology/pathogen-associated-molecular-pattern
+- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2949051/
+  - It was clear that purified molecules or curde extracts from microbes or plants could induce activation of general defence responses
+  - "gene-for-gene hypothesis" - /was/ often associated with hyper sensitive response and highly used in breeding programmes
+- Pathogen-associated molecular pattern
+- pathogen and damage associated molecular patterns (PAMPs and DAMPs) are produced by pathogen and host cells, respectively
+- They interact with multiple families of pattern recognition receptors (PRRs)
+
+
+*** Avirulent
+Not virulent - nonpathogenic
+
+***  Avirulence genes
+- https://www.sciencedirect.com/science/article/pii/S1369526600000820?via%3Dihub
+- Originally defined by their negative impact on the ability of a pathogen to infect their host plant
+- Though many are now known to represent a subset of virulence factors involved in the mediation of the host-pathogen interaction.
+- Characterisation of avirulence genes has revealed that they encode an assortment of proteins and belong to several gene families
+- Although the biochemical functions of the avirulence gene products are unknown.
+- Studies are beginning to show the relationship between avirulence and virulence activities of the proteins
+- Understanding of these genes is said to vital to generating insight into plant defence mechanisms
+
+*** Gene-for-gene relationship
+- https://www.sciencedirect.com/science/article/pii/S0065352709075010
+- Thought as a "race-specific" resistance
+- wherein the outcome of an attempted infection is determined by the genotypes of both host and pathogen
+
+*** Pattern recognition receptors (PRR)
+- https://www.sciencedirect.com/science/article/pii/S1471490614000945
+
+*** Ligands
+- https://www.khanacademy.org/science/biology/cell-signaling/mechanisms-of-cell-signaling/a/signal-perception
+- In coordination chemistry, a ligand is an ion or molecule that binds to a central metal atom to form a coordination complex.
+- It's a binding site / receptor
+- They all come in matched pairs
+- With a receptor recognising just one (or a few) specific ligands, and a ligand binding to just one (or a few) target receptors.
+- Binding of ligands to a receptor changes its shape or activity.
+- Binding allows it to transmit a signal or direclty produce a change inside of the cell
+
+*** Gene regulatory network
+- A GRN is a collection of molecular regulators
+- They interact with each other and with other substances in the cell
+- They govern the gene expression levels of mRNA and proteins.
+- They play a central role in morphogensis
+  - is the biological process that causes an organism to develop its shape.
+  - Along with control of cell growth and cellular differentiation it is a fundamental aspects of developmental biology
+
+
+*** TODO Transcription factors
+*** TODO Kinase
+
+*** Apoplast /Symplast
+- An apoplast is the space outside the plasma membrane within which material can diffuse freely.
+- Symplast is the inner side of the plasma membrane in which water and low-molecular-weight solutes can freely diffuse. Symplast cells have more than one nucleus
+
+#+CAPTION: Pathways diagram (stolen from Wikipedia)
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:phylo
+[[./images/pathways.png]]
+
+*** TODO Signalling pathways
+
+
+*** TODO Transcriptome
+*** TODO Induced systemic resistance (ISR)
+*** TODO Systemic acquired resistance (SAR)
+*** TODO DNA Methylation
+*** TODO Phloem
+
+#+CAPTION:  Phloem diagram (stolen from Wikipedia)
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:phloem
+[[./images/phloem.png]]
+
+* Random bits of Nomenclature
+
+- =HR= Hypersensitive reaction
+- =Hrp= HR and pathogenicity
+- =NLS= nuclear localisation signals
+- =R= Resistance
+
+* General TODO
+** TODO Read up on pathways
+
+* Thoughts/Questions
+
+- The understood pathogen-defence systems, they occur in /all/ plants or are there known exceptions and why?
+- Salicylic acid, plants which respond to it positively how does their immune response get triggered?
+- What's the difference in how PD work and other forms of transport, are they just larger?
+  - ATP-binding cassette (ABC) transporters for example?
+- Do some cells work as repeater towers for signals? Or is it a linear signalling amount throughout a chain. i.e. does a signal ever need to be made stronger when travelling
+- When do PD appear in the Phylo, do algae have them? What did things do before they evolved?
+  - Single celled algae obviously don't, though is there perhaps other methods used in older species?
