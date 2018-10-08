@@ -64,13 +64,31 @@
 
 - Structurally each PD contains a cytoplasmic sleeve
   - Formed between outer and inner membrane linings
-  - They are continuous with the PM and endoplasmic reticulum (ER)(figures [[fig:pdjunc]] and [[fig:pd]])
+  - They are continuous with the PM (Plasma membrane) and endoplasmic reticulum (ER)(figures [[fig:pdjunc]] and [[fig:pd]])
+  - The sleeve is thought to provide a passageway for soluble molecules to move through
+  - On the other hand, the two membrane linings may provide specialised lipophilic surface within which hypothetic proteinaceous materials are embedded, or to which cytoskeletal elements are attached.
+- Current understanding about the outer and inner PD membranes based on lipid composition and trafficking studies hold that they probably differ in their physical and chemical properties from PM and cortical ER.
+
+*** PD Pore types
+- PD pores can be further divided into distinct spatial subdomains:
+  - Orifices (two ends of the cytoplasmic sleeves open to the cytoplasm)
+  - Neck regions (PD outer membrane at the orifices)
+  - Central cavity/region (plasmodesmal bulge occurring at the middle lamella)
+
+
+*** Defence signalling pathways regulate PD by recruiting specific PD-associated proteins
+- Many environmental signals and challenges alter PD dynamics
+- Recent studies have begun to unravel how carious cell signalling pathways might be integrated with the regulation of PD permeability
+  - Especially during biotic stress
+- These suggest that PD closure is linked to basal defence via proteins that associate or partition to PD from the PM
 
 
 #+CAPTION: Figure stolen from https://micro.magnet.fsu.edu/cells/plants/plasmodesmata.html
 #+ATTR_LATEX: :width 10cm
 #+NAME: fig:pdjunc
 [[./images/plasmodesmatafigure1.jpg]]
+
+
 
 ** Signalling Mechanisms underlying systemic acquired resistance to microbial pathogens
 - Link: https://doi.org/10.1016/j.plantsci.2018.01.001
@@ -148,31 +166,90 @@ Not virulent - nonpathogenic
   - Along with control of cell growth and cellular differentiation it is a fundamental aspects of developmental biology
 
 
-*** TODO Transcription factors
-*** TODO Kinase
+*** Transcription
+- Transcription is the first step of gene expression
+- In which a particular segment of DNA is copied into RNA (particularlly mRNA)
+- By the enzyme RNA polymerase
+  - RNAP locally opens the double-stranded DNA (usually about four turns of the double helix)
+  - This exposes the nucleotides so they can be used as a template in transcription
+#+CAPTION: Transcription stages
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Transcription
+[[./images/transcription.png]]
+
+
+*** Transcription factors
+
+- A transcription factor (TF) (or sequence-specific DNA-binding factor) is a protein that controls the rate of transcription of genetic information from DNA to mRNA by binding to a specific DNA sequence
+
+#+CAPTION: Transcription Factors (wikipedia sourced)
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:transfact
+[[./images/transfactors.png]]
+*** Phloem
+
+- https://www.diffen.com/difference/Phloem_vs_Xylem
+
+#+CAPTION:  Phloem diagram (stolen from Wikipedia)
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:phloem
+[[./images/phloem.png]]
 
 *** Apoplast /Symplast
 - An apoplast is the space outside the plasma membrane within which material can diffuse freely.
 - Symplast is the inner side of the plasma membrane in which water and low-molecular-weight solutes can freely diffuse. Symplast cells have more than one nucleus
 
 #+CAPTION: Pathways diagram (stolen from Wikipedia)
-#+ATTR_LATEX: :width 10cm
+#+ATTR_LATEX: :width 8cm
 #+NAME: fig:phylo
 [[./images/pathways.png]]
 
-*** TODO Signalling pathways
+*** Signalling pathways
+- https://www.khanacademy.org/science/biology/cell-signaling/mechanisms-of-cell-signaling/a/introduction-to-cell-signaling
+
+#+CAPTION: Cell Signalling
+#+ATTR_LATEX: :width 8cm
+#+NAME: fig:cellsig
+[[./images/cellsignalling.png]]
+
+- Signalling revolves around a signalling molecule (ligand) binding to a receptor as per fig:[[fig:cellsig]].
+- Intracellular receptors are receptor proteins found on the inside of the cell
+  - Typically in the cytoplasm or nucleus
+  - Usually small and hydrophobic since they must be able to cross the plasma membrane to reach their receptors
+  - When a hormone enters a cell and binds to its receptor it causes the receptor to change shape allowing the receptor-hormone complex to enter the nucleus (if it wasn't already there)
+  - It the ncan regulate gene activity.
+  - Hormone binding exposes regions of the receptor that have DNA-binding activity
+  - Meaning that they can attach to specific sequences of DNA
 
 
-*** TODO Transcriptome
-*** TODO Induced systemic resistance (ISR)
-*** TODO Systemic acquired resistance (SAR)
-*** TODO DNA Methylation
-*** TODO Phloem
+#+CAPTION: Receptors/Ligands
+#+ATTR_LATEX: :width 8cm
+#+NAME: fig:receptors
+[[./images/receptors.png]]
 
-#+CAPTION:  Phloem diagram (stolen from Wikipedia)
-#+ATTR_LATEX: :width 10cm
-#+NAME: fig:phloem
-[[./images/phloem.png]]
+- Cell surface receptors are membrane-anchored proteins that bind to ligands on the outside surface of the cell
+  - In this type of signalling, the ligand does not need to cross the plasma-membrane
+  - So, many kinds of molecules (including hydrophilic) may act as ligands
+  - A typical cell-surface receptor has three different domains, or protein regions:
+    - Extracellular
+    - Hydrophobic
+    - Intracellular
+  - The size and structure of these domains can vary a lot depending on the type of receptor
+  - the hydrophobic region may consist of multiple stretches of amino acids that criss-cross the membrane
+
+#+CAPTION: This diagram shows a G protein-coupled receptor (GPCR) (stolen from Khanacademy)
+#+ATTR_LATEX: :width 8cm
+#+NAME: fig:Crisscross-region
+[[./images/crisscross.png]]
+
+*** Callose
+- https://www.wikiwand.com/en/Callose
+- Callose is a plant polysaccharide
+- Is composed of glucose
+- It's very important for the permeability of plasmodesmata in plants
+- Plants' permeability is regulated by PDC
+- The amount of callose that is built up at the plasmodesmatal neck determines the conductivity of the PD
+
 
 * Random bits of Nomenclature
 
@@ -181,8 +258,15 @@ Not virulent - nonpathogenic
 - =NLS= nuclear localisation signals
 - =R= Resistance
 
-* General TODO
-** TODO Read up on pathways
+
+* Moved to next week!
+*** TODO Transcriptome
+*** TODO Kinase
+*** TODO DNA Methalation
+*** TODO DNA Aceltylation
+*** TODO Pathways
+*** TODO Induced systemic resistance (ISR)
+*** TODO Systemic acquired resistance (SAR)
 
 * Thoughts/Questions
 

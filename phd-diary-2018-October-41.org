@@ -1,0 +1,146 @@
+#+TITLE: PhD Diary Entry for week beginning October 8th 2018
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr} %For headers and footers
+#+LaTeX_HEADER: \pagestyle{fancy} %For headers and footers
+#+LaTeX_HEADER: \fancyfoot[CE,CO]{}
+#+LaTeX_HEADER: \fancyhead[LE,LO]{}
+#+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y
+#+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicely
+#+LaTeX_HEADER: \restylefloat{figure} %and this command
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+
+
+* Things that need doing
+** TODO Need to find specific and relevant modelling papers
+- Preferably with some concrete data to illustrate how to handle and what it may end up looking like
+*** TODO  Would also be good to poss discuss analytical methods prior to data production?
+
+* Paper Synopsis'
+
+** Architecture and Dynamics of the JA Gene Regulatory Network cite:hickmanArchitectureDynamicsJasmonic2017
+- In nature plants are subject to a broad range of attack from pests and pathogens
+- Sophisticated immune signalling networks enable them to mount effective defences
+- The phyotohormone, jasmonic acid and its derivatives are key regulators in this network
+  - Usually in response to insect, infection and necrotrophic pathogen attacks
+- Enhanced JA production mediates large-scale reprogramming of the plant's transcriptome
+- This is largely influenced by the antagonistic or synergistic action of other hormones produced during parasitic interactions such as SA, ethylene (ET) or abscisic acid (ABA)
+- The JA network coordinates the production of a braod range of defence related proteins and secondary metabolites
+  - The composition of which is adapated to the environmental context and the nature of the initial JA inducing situation
+-
+
+
+** How SA takes transcriptional control over JA signalling cite:caarlsHowSalicylicAcid2015
+
+
+** Necrotrophic Pathogens Use the SA Signaling Pathway to Promote Disease Development in Tomato cite:rahmanNecrotrophicPathogensUse2012
+
+
+** A review on Jasmonic acid and its derivatives cite:pirbaloutiReviewResearchPatents2014
+
+
+* Key words/phrases
+
+
+** Jasmonic Acid
+- Is an organic compound found in plants
+- Is biosynthesized from linolenic acid by the octadecanoid pathway
+- The major function of JA is regulation responses to abiotic and biotic stresses
+  - In addition to growth and development
+- Regulating growth includes:
+  - Senescence
+  - Tendril coiling
+  - Flower development
+  - Leaf abscission (natural detachment, e.g. dead leaves and ripe fruit)
+- JA has been considered as a seed treatment in order to stimulate natural anti-pest defences
+
+*** Relationship with SA
+- Due to the antagonistic relationship between SA and JA, in some plant species it may result in increased susceptibility to viral agents and other pathogens
+- Some pests, *through unknown mechanisms*, are able to abuse the relationship with the SA pathway. This allows for increased levels of SA resulting in the depression of JA synthesis
+- Though thanks to the NPR1 gene, the levels aren't significantly reduced
+
+
+** Phytohormone
+- Fancy way of saying: Plant hormone
+- Is a signalling molecule
+- Occur in low concentrations
+- Exert strong control over plant development
+- Can either act locally or in a more distant part of the plant
+- Unlike animals, each plant cell is capable of producing hormones
+- *some* phytohormones also occur in microorganisms, such as unicellular fungi and bacteria
+  - However, these cases do not play a hormonal role and can be better regarded as secondary metabolites
+*** Phyto -
+ - word-forming element meaning "plant," from Greek phyton "plant," literally "that which has grown," from phyein "to grow"
+** Necrotrophic
+- A parasitic organism that kills the cells of its host an then feeds
+** Metabolites
+- A metabolite is the intermediate end product of metabolism
+- It is usually restricted to small molecules
+- They have various functions
+  - Including: fuel; structure; signalling; stimulatory and inhibitory effects on enzymes; defence; interactions with other organisms
+- Examples include: ethanol; isoascorbic acid; glycerol
+*** The metabolome
+- Refers to a the complete set of small-molecule chemicsals found within a biological sample
+- The sample can be a cell, a cellular organelle, a tissue extract or an entire organism
+-
+** C-Terminal
+- The c-terminus (also known as the carboxyl-terminus, C-Terminal) is the end of an amino acid chain
+  - Protein or polypeptide
+- When a protein is translated from messenger RNA it is created fron N-terminus to C-terminus
+- The convention for writing peptide sequences is to put the c-terminal end on the right and write the sequence from N-C-terminus
+
+
+* Interesting
+
+** IDEA Investigate the link between jasmonic and salicylic acid
+
+* Last week leftover
+** Transcriptome
+- Is the set of all RNA molecules in one cell or a population of cells
+- Sometimes it is used to refer to all RNAs or just mRNA, depending on the experiment
+
+** Kinase
+- A kinase is an enzyme that catalyses the transfer of phosphate groups from high-energy, phosphate-donating molecules to specific substrates.
+- This process is known as phosphorylation
+  - Where the substrate gains a phosphate group
+  - And the high-energy ATP molecule donates a phosphate group
+  - Conversely, it is referred to as dephosphorylation when the phosphorylated substrate donates a phosphate group and ADP gains a phosphate group
+
+** Phosphorylation
+- In chemistry, phosphorylation of a molecule is the attachment of a phosphoryl group. Together with its counterpart, dephosphorylation, it is critical for many cellular processes in biology.
+
+** ATP
+- Adenosine triphosphate, energy providing molecule used in active transport!
+
+** ADP
+- Adenosine diphosphate also known as adenosine pyrophosphate (APP), is an important organic compound in metabolism and is essential to the flow of energy in living cells. ADP consists of three important structural components: a sugar backbone attached to adenine and two phosphate groups bonded to the 5 carbon atom of ribose. (verbatim from wikipedia)
+
+** TODO DNA methylation
+- Is the process by which methyl groups are added to the DNA molecule
+- Methylation can change the activity of a DNA segment without changing the sequence
+- When located in a gene promoter, DNA methylation typically acts to repress gene transcription
+- It is essential for normal development and is associated with a number of key processes including:
+  - Genomic imprinting; X-chromosome inactivation; Ageing
+
+
+
+** TODO DNA Aceltylation
+** TODO Pathways
+** TODO Induced systemic resistance (ISR)
+** TODO Systemic acquired resistance (SAR)
+
+
+
+* Misc Questions
+- When is a cell "dead". Or rather what makes one such
+
+bibliography:~/Documents/PHD/library.bib
+bibliographystyle:apalike
