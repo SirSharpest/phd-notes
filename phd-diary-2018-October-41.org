@@ -22,7 +22,7 @@
 * Things that need doing
 ** TODO Need to find specific and relevant modelling papers
 - Preferably with some concrete data to illustrate how to handle and what it may end up looking like
-*** TODO  Would also be good to poss discuss analytical methods prior to data production?
+** TODO  Would also be good to poss discuss analytical methods prior to data production?
 
 * Paper Synopsis'
 
@@ -48,7 +48,6 @@
 
 
 * Key words/phrases
-
 
 ** Jasmonic Acid
 - Is an organic compound found in plants
@@ -125,11 +124,23 @@
 
 ** TODO DNA methylation
 - Is the process by which methyl groups are added to the DNA molecule
+- is an epigenetic mechanism ([[https://www.news-medical.net/life-sciences/What-is-DNA-Methylation.aspx][Says so here]])
 - Methylation can change the activity of a DNA segment without changing the sequence
+  - Can act like a switch?
 - When located in a gene promoter, DNA methylation typically acts to repress gene transcription
 - It is essential for normal development and is associated with a number of key processes including:
   - Genomic imprinting; X-chromosome inactivation; Ageing
+- Two of DNA's four bases C(ytosine) and A(denine)  an be methylated
+- Cytosine methylation is widespread in both eukaryotes and prokaryotes
+  - Even though the rate of cytosine DNA methylation can differ greatly between species
 
+| /Arabidopsis thaliana/ |    8% |
+| /Drosophila/           | 0.03% |
+
+*** A Methyl group
+- Is an alkyl dervied from emthane, containing one carbon atom bonded to three hydrogen atoms
+- It is a very stable compound
+- Usually part of a larger molecule, though can exist independently
 
 
 ** TODO DNA Aceltylation
