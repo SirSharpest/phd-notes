@@ -35,7 +35,7 @@
 - This is largely influenced by the antagonistic or synergistic action of other hormones produced during parasitic interactions such as SA, ethylene (ET) or abscisic acid (ABA)
 - The JA network coordinates the production of a braod range of defence related proteins and secondary metabolites
   - The composition of which is adapated to the environmental context and the nature of the initial JA inducing situation
--
+
 
 
 ** How SA takes transcriptional control over JA signalling cite:caarlsHowSalicylicAcid2015
@@ -96,6 +96,54 @@
 - When a protein is translated from messenger RNA it is created fron N-terminus to C-terminus
 - The convention for writing peptide sequences is to put the c-terminal end on the right and write the sequence from N-C-terminus
 
+** CPG Site
+A region of DNA where cytosine and guanine appear consecutively
+
+
+** TODO Gene Promoters
+- For transcription to take place, the enzyme that synthesises RNA, known as polymerase, must attach to the DNA near a gene
+- Promoters contain specific DNA sequences such as /response elements/ that provide a secure initial binding site for RNA-P, as well as proteins called transcription factors that recruit RNA-P
+- These TFs have specific activator or repressor sequences of corresponding nucleotides that attach to specific promoters and regulate gene expression
+
+#+CAPTION: *1*: RNA Polymerase, *2*: Repressor, *3*: Promoter, *4*: Operator, *5*: Lactose, *6*: lacZ, *7*: lacY, *8*: lacA. *Top*: The gene is essenetially turned off. There is no lactose to inhibit the repressor, so the repressor binds to the operator, which obstructs the RNA polymerase from binding to the promoter and making lactase. *Bottom*
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:prom
+[[./images/promoter.png]]
+
+*** In bacteria
+- The promoter is recognised by RNA-P and an associated sigma factor
+- Which in turn are often brought to the promoter DNA by an activator protein's binding to its own DNA binding site
+
+*** In eukaryotes
+
+
+*** TODO Sigma Factor
+
+*** Response elements
+- Are short sequences of DNA within a gene promoter region
+- They are able to bind specific transcription factors
+- Can regulate transcription of genes
+- Under conditions of stress, a transcription activator binds to the response element and stimulates transcription
+- If the same response element sequence is located in the control regions of different genes, then these genes will be activated by the same stimuli
+- Thus producing a coordinated response
+
+** TODO DNA Binding site
+
+** TODO Repressor
+
+** TODO Operator
+
+** TODO Polymerase
+
+** TODO lac operon
+
+** TODO Lactase
+
+
+#+CAPTION: lac operon in more detail than previous fig
+#+ATTR_LATEX: :width 14cm
+#+NAME: fig:lac
+[[./images/lac.png]]
 
 * Interesting
 
@@ -142,6 +190,10 @@
 #+NAME: fig:cyto
 [[./images/meth.jpg]]
 
+*** /What is epigenetics/ website
+- https://www.whatisepigenetics.com/dna-methylation/
+- Addition of a methyl group is often (always?) covalent
+- The methylcytosine is sometimes, informally, referred to as the "fifth" base of DNA
 
 *** A Methyl group
 - Is an alkyl dervied from emthane, containing one carbon atom bonded to three hydrogen atoms
@@ -158,6 +210,8 @@
 
 * Misc Questions
 - When is a cell "dead". Or rather what makes one such
+- Where is the instruction-set for methylation held?
+
 
 bibliography:~/Documents/PHD/library.bib
 bibliographystyle:apalike
