@@ -137,6 +137,12 @@
 | /Arabidopsis thaliana/ |    8% |
 | /Drosophila/           | 0.03% |
 
+#+CAPTION: Cytosine's methylation and demethylation process
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:cyto
+[[./images/meth.jpg]]
+
+
 *** A Methyl group
 - Is an alkyl dervied from emthane, containing one carbon atom bonded to three hydrogen atoms
 - It is a very stable compound
