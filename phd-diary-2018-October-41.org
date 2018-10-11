@@ -99,8 +99,8 @@
 ** CPG Site
 A region of DNA where cytosine and guanine appear consecutively
 
-
-** TODO Gene Promoters
+** Gene Promoters
+- https://www.addgene.org/mol-bio-reference/promoter-background/
 - For transcription to take place, the enzyme that synthesises RNA, known as polymerase, must attach to the DNA near a gene
 - Promoters contain specific DNA sequences such as /response elements/ that provide a secure initial binding site for RNA-P, as well as proteins called transcription factors that recruit RNA-P
 - These TFs have specific activator or repressor sequences of corresponding nucleotides that attach to specific promoters and regulate gene expression
@@ -112,12 +112,30 @@ A region of DNA where cytosine and guanine appear consecutively
 
 *** In bacteria
 - The promoter is recognised by RNA-P and an associated sigma factor
-- Which in turn are often brought to the promoter DNA by an activator protein's binding to its own DNA binding site
+- Which in turn are often brought to the promoter DNA by an activator protein's binding to its own DNA binding site, nearby
 
 *** In eukaryotes
+- The process is more complicated
+- At least seven different factors are necessary for the binding of an RNA-P II to the promoter
+
+**** RNA polymerase II
+- https://www.wikiwand.com/en/RNA_polymerase_II
+- Is a multiprotein complex.
+- Is one of the three RNAP enzymes found in the nucleus of eukaryotic cells
+- Catalyses the transcription of DNA to begin mRNA, snRNA and microRNA processes.
 
 
-*** TODO Sigma Factor
+*** Sigma Factor
+- Is a protein needed only for initiation of transcription
+- It is a bacterial transcription initiation factor that enables specific binding of RNA polymerase to gene promoters
+- It is homologous to archaeal transcription factor B and to eukaryotic TFIIB
+- The specific sigma factor used to initiate transcription of a given gene will vary, depending on the gene
+  - and the environmental signals needed to initiate transcription of that gene
+
+**** TFIIB
+- Transcription factor II B is a general transcription factor that is involved in the formation of the RNA polymerase
+- It aids in stimulation transcription initiation
+- Recruits RNA polymerase II and other TFs
 
 *** Response elements
 - Are short sequences of DNA within a gene promoter region
@@ -126,6 +144,14 @@ A region of DNA where cytosine and guanine appear consecutively
 - Under conditions of stress, a transcription activator binds to the response element and stimulates transcription
 - If the same response element sequence is located in the control regions of different genes, then these genes will be activated by the same stimuli
 - Thus producing a coordinated response
+
+
+** The RNA team
+*** TODO mRNA
+
+*** TODO snRNA
+
+*** TODO microRNA
 
 ** TODO DNA Binding site
 
@@ -144,6 +170,38 @@ A region of DNA where cytosine and guanine appear consecutively
 #+ATTR_LATEX: :width 14cm
 #+NAME: fig:lac
 [[./images/lac.png]]
+
+** Zigzag model
+
+The zigzag model discriminates four phases of the plant immune system that determine the plant-microbe interactions manifested today. (Following text is almost verbatim from cite:cookUnderstandingPlantImmunity2015)
+
+1. In the first phase, plants recognise MAMPs by cell surface-localised PRRs (pattern recognition receptor), leading to broad spectrum resistance
+   - This is termed MTI (Microbe-asscociated molecular-patterns-triggered immunity)
+2. Next, microbial-produced molecules, termed effectors, enable successful pathogens to overcome MTI
+   - This results in effector-triggered susceptibility (ETS)
+3. Subsequently, these effectors may be recognised by intra-cellular receptors (/R/ proteins)
+   - This activates ETI (effector-triggered immunity)
+4. In turn, the microbe may evade ETI and restore ETS
+
+#+BEGIN_SRC plantuml :file ./images/zigzag.png :exports results
+  skinparam monochrome true
+  skinparam ActivityFontSize 30
+  skinparam ArrowFontSize 30
+  skinparam PartitionFontSize 30
+  skinparam ActivityDiamondFontSize 30
+
+  (*) -> "Recognise MAMPs by cell\nsurface-localised PRRs"
+
+  --> "Effectors enable successful\npathogens to overcome MTI"
+  --> "Effectors recognised by\nintracellular receptors (R proteins)"
+  -> "Microbe attempts to restore\nETS and to avoid ETI"
+  -> "Effectors enable successful\npathogens to overcome MTI"
+#+END_SRC
+#+CAPTION: The zigzag model in plant immune system
+#+ATTR_LATEX: :width 14cm
+#+RESULTS:
+[[file:./images/zigzag.png]]
+
 
 * Interesting
 
@@ -213,5 +271,5 @@ A region of DNA where cytosine and guanine appear consecutively
 - Where is the instruction-set for methylation held?
 
 
-bibliography:~/Documents/PHD/library.bib
+bibliography:~/PHD/Notes/library.bib
 bibliographystyle:apalike
