@@ -1,4 +1,5 @@
 #+TITLE: PhD Diary Entry for week beginning October 8th 2018
+#+OPTIONS: toc:nil
 #+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
 #+LaTeX_HEADER: \usepackage{amssymb,amsmath}
 #+LaTeX_HEADER: \usepackage{fancyhdr} %For headers and footers
@@ -18,6 +19,12 @@
 #+LaTeX_HEADER: \usepackage[parfill]{parskip}
 #+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
 
+\tableofcontents
+\clearpage
+
+* Preface
+
+This week has been mostly ASM talks - a lot of work still labelled =TODO= will have been moved to week 42
 
 * Things that need doing
 ** TODO Need to find specific and relevant modelling papers
@@ -27,6 +34,8 @@
 * Paper Synopsis'
 
 ** Architecture and Dynamics of the JA Gene Regulatory Network cite:hickmanArchitectureDynamicsJasmonic2017
+/Half finished - need to investigate if JA worth reading more on?/
+
 - In nature plants are subject to a broad range of attack from pests and pathogens
 - Sophisticated immune signalling networks enable them to mount effective defences
 - The phyotohormone, jasmonic acid and its derivatives are key regulators in this network
@@ -37,15 +46,48 @@
   - The composition of which is adapated to the environmental context and the nature of the initial JA inducing situation
 
 
+* Moved to Next week!
+** TODO Understanding Plant Immunity as a surveillance system to detect invasion cite:cookUnderstandingPlantImmunity2015
 
-** How SA takes transcriptional control over JA signalling cite:caarlsHowSalicylicAcid2015
+*** Intro
+- Crop production needs doubled by 2050 by some current estimates
+- A lot of work has been done on conceptual models for plant pathogen systems
+  - Details in the models vary
+  - Though they all agree in the observation that plants mainly rely on innate immune systems that are largely controlled by encoded receptors that identify invasion
+- It's important to note that models:
+  1. Are generalisations and therefore incomplete
+  2. Increasing the details of a model decreases its general applicability
+  3. Multiple models can be used to explain the same phenomenon
+  4. All models should be continually challenged via experimentation to advance scientific knowledge
+- Models are full of limitations and narrowly define molecular plant-invader interactions
+  - Additionally do not integrate experimental data from diverse systems
+- Introduces the /Invasion Model/
+
+*** Advances in explaining the plant immune system
+
+- Talks about gene-for-gene hypothesis
+- And how other research suggests "general elicitors" from microbes which could *not* be used to determine race specificity or were detected by multiple plant species
+  - In contrast to pathogen Avrs that induced responses only on particular varieties of a host species
+  - These seeminly different observations were regarded as disparae phenomena
+  - The identification and characterisation of general elicitors and their receptors in vertebrate immunity helped to further refine the concept in plant immunity
+- Charles Janeway postulated the concept of conserved microbial ligands for innate immunity to account for lapses in the conceptual model of vertebrate immunity
+  - He reasoned that microbes possess pathogen-associated molecular patterns (PAMPs)
+  - That are recognised by host patter recognition receptors (PRRs) as nonself
+  - He anticipated that PRRs perceive microbe-derived conserved general structural patters that are critical for the organism and require significant changes to avoid recognition
+- PAMP is noted to be a misnomer, as it often concerns molecules present in both pathogenic and nonpathogenic organisms
+  - Hence why we now use the term MAMPs (microbe-associated molecular pattern)
+- Talks about zigzag model (see figure in key words/phrases)
+
+*** Limitations and incongruities in the MAMP-effector dichotomy
+
+- Continued research into plant microbe-interactions have identified a ...
 
 
-** Necrotrophic Pathogens Use the SA Signaling Pathway to Promote Disease Development in Tomato cite:rahmanNecrotrophicPathogensUse2012
+** TODO A review on Jasmonic acid and its derivatives cite:pirbaloutiReviewResearchPatents2014
 
+** TODO Necrotrophic Pathogens Use the SA Signaling Pathway to Promote Disease Development in Tomato cite:rahmanNecrotrophicPathogensUse2012
 
-** A review on Jasmonic acid and its derivatives cite:pirbaloutiReviewResearchPatents2014
-
+** TODO A single fungal MAP kinase controls plant cell-to-cell invasion by the rice blast fungus cite:sakulkooSingleFungalMAP2018
 
 * Key words/phrases
 
@@ -89,7 +131,7 @@
 *** The metabolome
 - Refers to a the complete set of small-molecule chemicsals found within a biological sample
 - The sample can be a cell, a cellular organelle, a tissue extract or an entire organism
--
+
 ** C-Terminal
 - The c-terminus (also known as the carboxyl-terminus, C-Terminal) is the end of an amino acid chain
   - Protein or polypeptide
@@ -106,7 +148,7 @@ A region of DNA where cytosine and guanine appear consecutively
 - These TFs have specific activator or repressor sequences of corresponding nucleotides that attach to specific promoters and regulate gene expression
 
 #+CAPTION: *1*: RNA Polymerase, *2*: Repressor, *3*: Promoter, *4*: Operator, *5*: Lactose, *6*: lacZ, *7*: lacY, *8*: lacA. *Top*: The gene is essenetially turned off. There is no lactose to inhibit the repressor, so the repressor binds to the operator, which obstructs the RNA polymerase from binding to the promoter and making lactase. *Bottom*
-#+ATTR_LATEX: :width 10cm
+#+ATTR_LATEX: :width 8cm
 #+NAME: fig:prom
 [[./images/promoter.png]]
 
@@ -147,29 +189,66 @@ A region of DNA where cytosine and guanine appear consecutively
 
 
 ** The RNA team
-*** TODO mRNA
+*** mRNA
+- Messenger RNA
+- Convey genetic information to  the ribosome from DNA
+- They specify the amino acid sequence of the protein products
+- RNA polymerase transcribes primary transcript mRNA (known as Pre-mRNA) into mature mRNA
+- This matured mRNA is translated into a polymer of amino acids
+#+CAPTION: mRNA
+#+ATTR_LATEX: :width 8cm
+#+NAME: fig:mRNA
+[[./images/mrna.png]]
 
-*** TODO snRNA
+*** snRNA
+- http://bioscience.jbpub.com/cells/MBIO5245.aspx
+- Small nuclear RNA is one of the many small RNA species confined to the nucleus
+- several of the snRNAs are involved in splicing or other RNA processing reactions
 
-*** TODO microRNA
-
-** TODO DNA Binding site
-
-** TODO Repressor
-
-** TODO Operator
-
-** TODO Polymerase
-
-** TODO lac operon
-
-** TODO Lactase
+*** microRNA
+- Is a small non-coding RNA molecule (about 22 nucleotides) found in plants, animals and some viruses
+- Functions in RNA silencing and post-transcriptional regulation of gene expression
+- microRNAs function via base-pairing with complementary sequences iwhtin mRNA molecules
+- As a result these mRNA molecules are silenced by one of the following processes:
+  1. Cleavage of the mRNA strand into two pieces
+  2. Destabilisation of the mRNA through shortening of its poly(A) tail
+  3. Less efficient translation of the mRNA into proteins by ribosomes
+- Often abbreviated to miRNA
 
 
-#+CAPTION: lac operon in more detail than previous fig
-#+ATTR_LATEX: :width 14cm
-#+NAME: fig:lac
-[[./images/lac.png]]
+** Binding site
+- Is a region on a protein or piece of DNA or RNA to which ligands may form a chemical bond
+
+** Gene Repressor
+- Is a DNA or RNA-binding protein that inhibits the expression of one or more genes by binding to the operator or associated silencers
+- A DNA-binding repressor blocks the attachment of RNA polymerase to the promoter
+  - Thus preventing transcription of genes to mRNA
+- The blocking of expression is called repression
+
+** Gene Operator
+- An operon is a functioning unit of DNA containing a cluster of genes under the control of a single promoter
+- The genes are transcribed together into an mRNA strand and either translated together in the cytoplasm or undergo splicing to create monosistronic mRNAs that are translated separately
+
+** Polymerase
+- Is an enzyme that synthesises long chains of polymers or nucleic acid s
+- DNA and RNA polymerase are used to assemble DNA and RNA molecules, respectively
+
+
+** lac operon
+- Is an operon required for the transport and metabolism of lactose
+- Many entric bacteria use is
+- Although glucose is the preferred carbon source for most bacteria, the lac operon allows for the effective digestion of lactose when glucose is not available
+- Gene regulation of the lac operon was the first genetic regulatory mechanism to be understood clearly
+- So it's an example for prokaryotic gene regulation
+  - /which explains why it's in my notes!/
+
+*** Lactase
+- Is an enzyme that breaks-down milk, only needed here to help explain lac operon figure!
+
+ #+CAPTION: lac operon in more detail than previous fig
+ #+ATTR_LATEX: :width 14cm
+ #+NAME: fig:lac
+ [[./images/lac.png]]
 
 ** Zigzag model
 
@@ -205,7 +284,7 @@ The zigzag model discriminates four phases of the plant immune system that deter
 
 * Interesting
 
-** IDEA Investigate the link between jasmonic and salicylic acid
+** IDEA Read up on the links between jasmonic and salicylic acid
 
 * Last week leftover
 ** Transcriptome
@@ -228,7 +307,7 @@ The zigzag model discriminates four phases of the plant immune system that deter
 ** ADP
 - Adenosine diphosphate also known as adenosine pyrophosphate (APP), is an important organic compound in metabolism and is essential to the flow of energy in living cells. ADP consists of three important structural components: a sugar backbone attached to adenine and two phosphate groups bonded to the 5 carbon atom of ribose. (verbatim from wikipedia)
 
-** TODO DNA methylation
+** DNA methylation
 - Is the process by which methyl groups are added to the DNA molecule
 - is an epigenetic mechanism ([[https://www.news-medical.net/life-sciences/What-is-DNA-Methylation.aspx][Says so here]])
 - Methylation can change the activity of a DNA segment without changing the sequence
@@ -259,17 +338,54 @@ The zigzag model discriminates four phases of the plant immune system that deter
 - Usually part of a larger molecule, though can exist independently
 
 
-** TODO DNA Aceltylation
-** TODO Pathways
-** TODO Induced systemic resistance (ISR)
-** TODO Systemic acquired resistance (SAR)
+*** DNA Aceltylation
+  - Is an essential part of gene regulation
+  - Aceltylation is the process where an acetyl functional group is transferred from one molecule to another
+    - Deacetylation is the reverse, where an acetyl group is removed from a molecule
 
+*** Pathways
+ - A pathway just refers to a sequence of interactions amongst molecules in a cell that leads to a product or change in a cell
+ - Such a pathway can trigger the assembly of new molecules such as fat or protein
+ - Pathways may also turn genes on and off, or make a cell move
+ - Common pathways are invovled in metabolism and regulation of gene expression as well as transmission of signals
+ - Gene regulatory network is an example of the genetics pathway
+*** Induced systemic resistance (ISR)
+- Is an activated resistance process that is activated by biological or abiotic factors
+- Is dependant on the physical or chemical barrier of the host plant
+- And its action is characterised by no direct killing or inhibition of the pathogen, but through the induction of plant disease resistance to disease prevention and control purposes
+
+#+CAPTION: ISR
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:ISR
+[[./images/ISR.png]]
+
+
+*** Systemic acquired resistance (SAR)
+- Is a whole plant resistance response that occurs following an earlier localised exposure to a pathogen
+- SAR is analogous to the innate immune system found in animals
+- There is evidence that SAAR in plants and innate immunity in animals may be evolutionary conserved
+#+CAPTION: SAR
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:SAR
+[[./images/SAR.jpg]]
 
 
 * Misc Questions
 - When is a cell "dead". Or rather what makes one such
 - Where is the instruction-set for methylation held?
-
-
+- PD, what happens to them when cells divide
+  - Follow up, what happens when certain paths become deprecated because of connection to previous "major" paths?
+- PD, is signalling directed, is there a feedback mechanism? i.e. radio towers
+- Pathogens which feed on their hosts:
+  1. Why don't they let the cells continue to function and just "consume a litte" in a pesudo-perpetual relationship
+  2. What specifically are they "feeding" on inside a cell
+  3. Do they consider the cell's function before attack, and sometimes "disappointed" with the molecules inside?
+- Do PD of different cells have different behaviour?
+  - if you take root PD and leaf and do same attack, same action?
+    - If not why
+    - Can you trick them to if not?
+    - Do they change over time if isolated
+  - Something something delta resilience, are older PD more conserved i.e. do they lack basic economic principals?
+\clearpage
 bibliography:~/PHD/Notes/library.bib
-bibliographystyle:apalike
+bibliographystyle:unsrt
