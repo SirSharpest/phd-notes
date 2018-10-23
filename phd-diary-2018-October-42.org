@@ -1,0 +1,173 @@
+#+TITLE: PhD Diary Entry for week beginning October 15th 2018
+#+OPTIONS: toc:nil
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr} %For headers and footers
+#+LaTeX_HEADER: \pagestyle{fancy} %For headers and footers
+#+LaTeX_HEADER: \fancyfoot[CE,CO]{}
+#+LaTeX_HEADER: \fancyhead[LE,LO]{}
+#+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y
+#+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicely
+#+LaTeX_HEADER: \restylefloat{figure} %and this command
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+
+\tableofcontents
+\clearpage
+
+* General TODOs
+** DONE Talk to R and J about trying to diagramatically explain data flow.
+   CLOSED: [2018-10-22 Mon 08:48]
+** TODO Study up on Fick's laws of diffusion
+#+CAPTION: Diffusion
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Diffusion
+[[./images/diffusion.jpg]]
+** TODO Read Introduction to Diffusion Modelling
+- http://www.mathematica-journal.com/2012/03/diffusion-modeling/
+  - This could be v.good to try and translate into python as an exercise / practice
+*** TODO Revise Partial Diff Equations
+ - https://www.math.uni-leipzig.de/~miersemann/pdebook.pdf
+ - http://tutorial.math.lamar.edu/Classes/DE/TheHeatEquation.aspx
+** TODO Random Walk / Diffusion tutorials
+- http://courses.washington.edu/matlab1/Lesson_18.html
+- http://www.math.cmu.edu/~shlomo/courses/BioSystems/Lectures/RandomWalk.pdf
+* Paper Reviews
+** TODO Understanding Plant Immunity as a surveillance system to detect invasion cite:cookUnderstandingPlantImmunity2015
+
+*** Intro
+- Crop production needs doubled by 2050 by some current estimates
+- A lot of work has been done on conceptual models for plant pathogen systems
+  - Details in the models vary
+  - Though they all agree in the observation that plants mainly rely on innate immune systems that are largely controlled by encoded receptors that identify invasion
+- It's important to note that models:
+  1. Are generalisations and therefore incomplete
+  2. Increasing the details of a model decreases its general applicability
+  3. Multiple models can be used to explain the same phenomenon
+  4. All models should be continually challenged via experimentation to advance scientific knowledge
+- Models are full of limitations and narrowly define molecular plant-invader interactions
+  - Additionally do not integrate experimental data from diverse systems
+- Introduces the /Invasion Model/
+
+*** Advances in explaining the plant immune system
+
+- Talks about gene-for-gene hypothesis
+- And how other research suggests "general elicitors" from microbes which could *not* be used to determine race specificity or were detected by multiple plant species
+  - In contrast to pathogen Avrs that induced responses only on particular varieties of a host species
+  - These seeminly different observations were regarded as disparae phenomena
+  - The identification and characterisation of general elicitors and their receptors in vertebrate immunity helped to further refine the concept in plant immunity
+- Charles Janeway postulated the concept of conserved microbial ligands for innate immunity to account for lapses in the conceptual model of vertebrate immunity
+  - He reasoned that microbes possess pathogen-associated molecular patterns (PAMPs)
+  - That are recognised by host patter recognition receptors (PRRs) as nonself
+  - He anticipated that PRRs perceive microbe-derived conserved general structural patters that are critical for the organism and require significant changes to avoid recognition
+- PAMP is noted to be a misnomer, as it often concerns molecules present in both pathogenic and nonpathogenic organisms
+  - Hence why we now use the term MAMPs (microbe-associated molecular pattern)
+- Talks about zigzag model (see figure in key words/phrases)
+
+*** Limitations and incongruities in the MAMP-effector dichotomy
+
+- Continued research into plant microbe-interactions have identified a number of concerns over the MTI-ETI dichotomy
+- Issues are raised with the conceptual layout of the model in distinct phases governed by discrete responses
+- A primary concern is the relationships between:
+  - MAMPs and Effectors
+  - PRRs and R proteins
+  - MTI and ETI
+- These relations also ignore DAMPs
+- The zigzag model does not acknowledge the number, kinetics and combined action of multiple receptor ligands that govern these interactions
+- Additionally, pathogen perception and response are illustrated over an ambiguous spatial and temporal frame, obscuring the model's intention to represent evolution or a particular cellular encounter
+- The zigzag model also doesn't account for previous life history events of the hsot or invader prior to the interaction, which may influence the outcome of said interaction
+
+** TODO Simple models for complex questions on plant development (Thesis) cite:deinumSimpleModelsComplex2013
+
+*** Chapter 2
+- To form different tissues, cells need to differentiate
+- Plant cells mostly can't move
+- Requirements for coordination of developmental and functional needs
+- To do this cells use a number of signalling molecules
+- Animals use different systems for communication of inter-cellular information
+  - A Delta-notch system is one example
+- Protein-Protein interactions are obviously impossible between plants, unlike in animals
+- Plants can achieve results using a "non-cell-autonomous proteins" method
+  - i.e. Protein signals that are transcribed in one cell and affect transcription in another
+  - Like a factory which outsources some of its labour?
+- These proteins move symplastically through PD channels
+- Symplastic transport comes in two forms:
+  1. Generic: the passive movement of all sufficiently small molecules; this is non-targeted and is diffusion driven
+  2. Targeted: targeted symplastic transport is a container term for a variety of different mechanisms that allow symplastic movement of molecules that depend on it
+- Virus' create their own "movement proteins" to facilitate the crossing via targeted symplastic movement
+  - This process maybe involve structural alterations of the plasmodesmata, which affect the non-targeted transport properties
+- Molecules moving by non-targeted symplastic transport may include plant hormones, small RNAs and small proteins
+  - Providing they are small enough
+  - This means that they fit the "size exclusion limit" (SEL)
+  - The SEL is developmentally regulated and varies among different tissues
+- The aperture of plasmodesmata is controlled through the deposition and degradation of callose
+  - by callose synthase (Ca1S aka GSL gene family) and \beta-1,3-glucanase respectively
+  - Further regulation takes place by other factors too cite:zavalievBiologyCalloseV12011
+
+
+** DONE Modelling advection nad diffusion of water isotopologues in leaves cite:cuntzModellingAdvectionDiffusion2007
+   CLOSED: [2018-10-19 Fri 10:13]
+- =Not relevant=
+
+
+* Papers to read
+** TODO Necrotrophic Pathogens Use the SA Signaling Pathway to Promote Disease Development in Tomato cite:rahmanNecrotrophicPathogensUse2012
+
+** TODO A single fungal MAP kinase controls plant cell-to-cell invasion by the rice blast fungus cite:sakulkooSingleFungalMAP2018
+
+** TODO Callose biosynthesis in arabidopsis with a focus on pathogen response: what we have learned within the last decade cite:ellingerCalloseBiosynthesisArabidopsis2014
+
+
+* Key words/phrases
+
+** PRR
+- [Host] Pattern recognition receptors
+- Used to recognise PAMPs as "nonself" materials
+** MTI
+- MAMP-triggered immunity
+- Because of the redundancy of PAMPs as an idea, this is preferred
+** Effectors
+- Are proteins expressed by plant pathogens
+- They aid infection of specific plant species
+- Are central to understanding complicated interplay between plants and their pathogens
+** ETS
+- Effector-Triggered Susceptibility
+** ETI
+- Effector-Triggered Immunity
+** MTI-ETI
+- A juxtaposed relationship between MTI-ETI is often misunderstood
+- For example, some would believe that the processes are independent and therefore not at a similar level
+** DAMPs
+- Damage associated molecular patterns
+** Kinase
+- Is an enzyme that catalyses the transfer of phosphate groups from high-energy, phosphate donating molecules to specific substrates
+** Dichotomy
+- A divison or contrast between two things that are or are represented as being opposed or entirely different
+- e.g. 'a rigid dichotomy between science and the DUP'
+** Advection
+- The transfer of heat or matter by the flow of a fluid
+
+* Questions
+- Regarding DAMPs and general damage control there must be some overlap or at least connection in the pathways that ultimately lead to repair or maintenance
+- Are plants/cells aware of other cells around them. i.e. if there was a "perfect" invasion and a pathogen prevented the cell sending any signals and it just "stopped" communicating, would the border cells know something was up and try to correct?
+  - Similarly, if you perfectly removed a group of cells, a plant repairs itself what's this communication method?
+- Bacteria have been attacking plants for millions of years, why haven't they won, yet we fight them with anti-biotics for a century and they're looking like they'll overcome pretty quickly
+- Two identical plants, control conditions, infected with same pathogen, is it likely for them to develop a similar response or is there a level of ambiguity in the choices made to protection, prevention and developing immunity?
+- If a crab eats a plant, does the plant think its a fungal attack?
+- Do many attackers perform prolonged, dormancy based attacks or is it an all out attack most of the time?
+- During an attack, is it possible to something like bacteria to adapt during the attack and to adapt, or is that too small a timescale?
+  - If so is this a potential concern for any kind of analysis, that is to say should we expect "experimental tactics" from the invaders?
+- Things that the plant makes, are they somehow signed by the cell to prove authenticity or how do receptors / w/e know that it isn't foreign
+- Is the MAMPs response like a magnet i.e. how mechanical is the process, like molecules naturally drawn together v.s. a more fluid process of decision making and evaluation of the attack
+- Mutants with bad callose deposition reportedly don't make it much further than embryo stage, what other functions than PD does it affect?
+
+\clearpage
+bibliography:~/PHD/Notes/library.bib
+bibliographystyle:unsrt

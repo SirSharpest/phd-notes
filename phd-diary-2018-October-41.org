@@ -90,8 +90,8 @@ This week has been mostly ASM talks - a lot of work still labelled =TODO= will h
 ** TODO A single fungal MAP kinase controls plant cell-to-cell invasion by the rice blast fungus cite:sakulkooSingleFungalMAP2018
 
 * Key words/phrases
-
 ** Jasmonic Acid
+
 - Is an organic compound found in plants
 - Is biosynthesized from linolenic acid by the octadecanoid pathway
 - The major function of JA is regulation responses to abiotic and biotic stresses
@@ -106,7 +106,7 @@ This week has been mostly ASM talks - a lot of work still labelled =TODO= will h
 *** Relationship with SA
 - Due to the antagonistic relationship between SA and JA, in some plant species it may result in increased susceptibility to viral agents and other pathogens
 - Some pests, *through unknown mechanisms*, are able to abuse the relationship with the SA pathway. This allows for increased levels of SA resulting in the depression of JA synthesis
-- Though thanks to the NPR1 gene, the levels aren't significantly reduced
+  - Though thanks to the NPR1 gene, the levels aren't significantly reduced
 
 
 ** Phytohormone
@@ -387,5 +387,6 @@ The zigzag model discriminates four phases of the plant immune system that deter
     - Do they change over time if isolated
   - Something something delta resilience, are older PD more conserved i.e. do they lack basic economic principals?
 \clearpage
+
 bibliography:~/PHD/Notes/library.bib
 bibliographystyle:unsrt
