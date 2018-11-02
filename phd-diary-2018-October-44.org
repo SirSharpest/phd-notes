@@ -1,0 +1,281 @@
+#+TITLE: PhD Diary Entry for week beginning October 29th 2018
+#+OPTIONS: toc:nil
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr} %For headers and footers
+#+LaTeX_HEADER: \pagestyle{fancy} %For headers and footers
+#+LaTeX_HEADER: \fancyfoot[CE,CO]{}
+#+LaTeX_HEADER: \fancyhead[LE,LO]{}
+#+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y
+#+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicely
+#+LaTeX_HEADER: \restylefloat{figure} %and this command
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+#+LaTex_HEADER: \usepackage[round]{natbib}
+
+\tableofcontents
+\clearpage
+
+
+* Calculus Book [4%]
+
+- [X] Chapter 1
+- [ ] Chapter 2
+- [ ] Chapter 3
+- [ ] Chapter 4
+- [ ] Chapter 5
+- [ ] Chapter 6
+- [ ] Chapter 7
+- [ ] Chapter 8
+- [ ] Chapter 9
+- [ ] Chapter 10
+- [ ] Chapter 11
+- [ ] Chapter 12
+- [ ] Chapter 13
+- [ ] Chapter 14
+- [ ] Chapter 15
+- [ ] Chapter 16
+- [ ] Chapter 17
+- [ ] Chapter 18
+- [ ] Chapter 19
+- [ ] Chapter 20
+- [ ] Chapter 21
+
+
+
+* Diffusion Modelling
+- An alright guide in matlab:
+  - https://carolina.tropini.org/assets/files/Diffusion_Equation_Tutorial.pdf
+- Good link:
+  - http://hplgit.github.io/fdm-book/doc/pub/diffu/html/._diffu-solaErized001.html
+  - A lot of the following section is taking verbatim from the above link. All Credit to the good sir who wrote it originally!
+- Horribly, fun problems:
+  - http://hplgit.github.io/fdm-book/doc/pub/diffu/html/._diffu-solarized001.html
+
+** Fick's second law
+- Fick's second law predicts how diffusion causes the concentration to change with time. It is a partial differential equation.
+- In 1D it looks like:
+
+#+NAME: eqn:fick2
+\begin{equation}
+\frac{\partial u}{\partial t} = a\frac{\partial^2u}{\partial x^2}
+\end{equation}
+
+
+- Where $y(x,t)$ is the unknown function to be solved for
+- $x$ is a coordinate in space
+- $t$ is time
+- The coefficient $a$ is the diffusion coefficient and determines how fast $u$ changes in time.
+
+Typical diffusion problems may experience rapid change in the very beginning, but then the evolution of $u$ becomes slower and slower. The solution is usually very smooth, and after some time, one cannot recognise the initial shape of $u$.
+
+The diffusion equation converges to a stationary solution: $\bar{u}(x)$ as $t\rightarrow infty$. In this limit $u_t = 0$ and is governed by $\bar{u}^{-n}(x)=0$. This stationary limit of the diffusion equation is called the /Laplace/ equation and arises in a very wide range of applications throughout science.
+
+It is possible to solve for $u(x,t)$ using an explicit scheme. Importantly, the solution $u$ of the diffusion equation is very smooth and changes slowly, small time steps are not convenient and not required by accuracy as the diffusion process converges to a stationary state. Therefore implicit schemes (described later) are popular, but these require solutions of systems of algebraic equations.
+
+** An explicit method for the 1D diffusion equation
+Explicit finite difference methods for the wave equation $u_{tt} = c^2u_{xx}$ can be used, with small modifications for solving $u_au_{xx}$ as well.
+
+*** The initial-boundary value problem for 1D diffusion
+To obtain a unique solution to the diffusion equation, or equivalently, to apply numerical methods, we need initial boundary conditions. The diffusion equation goes with one initial condition $u(x,0) = I(x)$, where $I$ is a prescribed function.
+
+One boundary condition is required at each point of the boundary, which in 1D means that $u$ must be known, $u_x$ must be known, or some combination of them.
+
+Starting with the simplest boundary condition of $u=0$. The complete initial-boundary value diffusion problem in one space dimension can be specified as:
+
+#+NAME: eqn:diff
+\begin{equation}
+\frac{\partial u}{\partial t} = a\frac{\partial^2 u}{\partial x^2} + f, \quad x\in [0,L],\ t\in [0,T]
+\end{equation}
+
+\begin{equation}
+u(x,0) = I(x), \quad  x\in [0,L]
+\end{equation}
+
+\begin{equation}
+u(0,t)  = 0, \quad  t>0,
+\end{equation}
+
+\begin{equation}
+u(L,t) = 0, \quad  t>0
+\end{equation}
+
+Diffusion equations like: eqn:[[eqn:diff]] have a wide range of applications; One of the most common uses of diffusion equations is propagation of heat, where $u(x,t)$ represents the temperature of some substance at point $x$ and time $t$.
+
+*** Forward Euler scheme
+The first step in the discretization procedure is to replace the domain $[0,L] \times [0,T]$ by a set of mesh points. Here we apply equally spaced mesh points:
+
+#+NAME: eqn:euler
+\begin{equation}
+x_i=i\Delta x, i=0,...,N_x
+\end{equation}
+
+and
+
+#+NAME: eqn:euler2
+\begin{equation}
+t_n = n\Delta t, n=0,...,N_t
+\end{equation}
+
+Moreover, $u^{n}_i$ denotes the mesh function that approximates $u(x_i, t_n)$ for $i=0,...,N_x$  and $n=0,...N_t$. Requiring the PDE eqn:[[eqn:diff]] to be fulfilled at a mesh point $(x_i,t_n)$ leads to the equation:
+
+#+NAME: eqn:mesheq
+\begin{equation}
+\frac{\partial}{\partial t}u(x_i,t_n) = a\frac{\partial^2}{\partial x^2}u(x_i,t_n)+ f(x_i, t_n)
+\end{equation}
+
+The next step is to replace the derivatives by finite difference approximations. The computationally simplest method arises from using a forward difference in time and a central difference in space:
+
+#+NAME: eqn:approx
+\begin{equation}
+[D^+_t u = aD_xD_xu+f]^n_i
+\end{equation}
+
+Written out:
+
+#+NAME: eqn:diffspace
+\begin{equation}
+\frac{u^{n+1}_i}{\Delta t} = a \frac{u^n_{i+1} - 2u^n_i + u^n_{i-1}}{\Delta x^2}+f^n_i
+\end{equation}
+
+This has turned the PDE into a series of algebraic equations, also often called discrete equations. The key property of the equations is that they are algebraic, which makes them easy to solve. As usual we anticipate that $u^n_i$ is already computed such that $u^{n+1}_{i}$ is only known in eqn:[[eqn:diffspace]]. Solving with respect to this unknown is done as:
+
+#+NAME: eqn:solvePDE
+\begin{equation}
+u^{n+1}_{i} = u^n_i + F (u^n_{i+1} - 2U^n_i + u^n_{i-1}) + \Delta tf^n_i
+\end{equation}
+
+Where we have introduced the /mesh Fourier/ number:
+
+#+NAME: eqn:fouriernum
+\begin{equation}
+F = a \frac{\Delta t}{\Delta x^2}
+\end{equation}
+
+**** $F$ is the key parameter in the discrete diffusion equation
+Note that $F$ is a dimensionless number that lumps the key physical parameter in the problem, $a$ and the discretization parameters $\Delta x$ and $\Delta t$ into a single parameter. Properties of the numerical method are critically dependent upon the value of $F$
+
+\clearpage
+*** Computational Algorithm
+The computational algorithm then becomes:
+
+1. Compute $u^0_i=I(x_i)$ for $i = 0, ..., N_x$
+2. For $n=0, 1, ..., N_t$:
+   - Apply eqn:[[eqn:solvePDE]] for all the internal spatial points $i =1, ... , N_x -1$
+   - Set the boundary values $u_i^{n+1} = 0$ for $i=0$ and $i=N_x$
+
+In code:
+
+#+CAPTION: Code for Diffusion
+#+LABEL: lst:diff
+#+BEGIN_SRC python -n
+  import numpy as np
+
+  x = np.linspace(0, L, Nx+1) # Mesh points in space
+  dx = x[1] - x[0]
+  t = np.linspace(0, T, Nt+1)
+  dt = t[1] - t[0]
+  F = a*dt/dx**2
+  u = np.zeros(Nx+1) #unknown u at new time level
+  u_n = np.zeros(Nx+1) # u at previous time level
+
+  # Set initial condition u(x, 0) = I(x)
+  for i in range(0, Nx+1):
+      u_n[i] = I(x[i])
+
+  for n in range(0, Nt):
+      # Compute u at inner mesh points
+      for i in range(1, Nt):
+          u[i] = u_n[i] + F*(u_n[i-1] - 2*u_n[i] + u_n[i+1]) + \
+              dt*f(x[i], t[n])
+
+      # Insert boundary conditions
+      u[0] = 0; u[Nx] = 0
+
+      # Update u_n before next step
+      u_n[:] = u
+#+END_SRC
+
+We need to state already now that the shown algorithm does not produce meaningful results unless $F \leq 1/2$.
+
+* Project Musings
+
+** Why can't/shouldn't we do proteomics over RNA-seq?
+- Because we'd need a lot of plant tissue to get a reliable quantification of how abundant the proteins are
+- The extraction procedure is not the same for all proteins
+  - e.g. some proteins can only be extracted through very specific methods
+
+*** Jeroen's link:
+- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2174896/
+
+* Papers to read
+
+** TODO Glutamate triggers long-distance, calcium-based plant defense signaling
+- cite:toyotaGlutamateTriggersLongdistance2018
+
+** TODO Necrotrophic Pathogens Use the SA Signaling Pathway to Promote Disease Development in Tomato
+- cite:rahmanNecrotrophicPathogensUse2012
+
+** TODO Callose biosynthesis in arabidopsis with a focus on pathogen response: what we have learned within the last decade
+- cite:ellingerCalloseBiosynthesisArabidopsis2014
+
+** DONE Regulation of solute flux through plasmodesmata in the root meristem
+   CLOSED: [2018-11-02 Fri 10:44]
+cite:rutschowRegulationSoluteFlux2011
+
+
+** DONE Callose Biosynthesis Regulates Symplastic Trafficking during Root Development
+- cite:vatenCalloseBiosynthesisRegulates2011
+   CLOSED: [2018-10-31 Wed 11:58]
+- Plasmodesmata (PD), membrane-lined channels that allow symplastic movement between cells, are understudied and little is known about how PD mediate signalling intercellularly
+- This paper describes how gain of function mutations in callose genes result in increased accumulation of callose
+  - Effects of PD aperture sizes
+  - Defects in root development
+
+** TODO Peeking at a plant through the wholes in the wall (review)
+- cite:luPeekingPlantHoles2018
+
+
+* Faulkner Group Paper
+- cite:braultMultipleC2Domains2018
+- Very nice introduction with lots of good references
+- "According to current models, transfer of molecules occurs in the cytoplasmic sleeve between the ER and the PM. Constriction of this gap, by the  deposition of callose, is assumed to be the main regulator of the pore size exclusion limit"
+- See notebook for detail notes from meeting!
+* Misc
+
+
+- These guys degrade callose! cite:vatenCalloseBiosynthesisRegulates2011,zavalievBiologyCalloseV12011
+
+** DONE Give talk to Morris group
+   CLOSED: [2018-10-31 Wed 10:24]
+#+CAPTION: Example of cells dying from talk
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:example
+[[./images/celldeath.png]]
+
+** Article on PCD from 2005
+- https://www.sciencedaily.com/releases/2005/05/050527104859.htm
+
+* Key words/phrases
+
+** Conserved sequence
+- In evolutionary biology conserved sequences are similar or identical in their nucleic acids (both RNA and DNA)
+- Or can be proteins across species (orthologous sequences)
+
+** Membrane Contact Sites
+- https://www.wikiwand.com/en/Membrane_contact_site
+- Are close appositions between two organelles
+- Distance in the order of the size of a single protein
+- Appear highly conserved in evolution
+
+
+\clearpage
+bibliography:~/PHD/Notes/library.bib
+bibliographystyle:plainnat

@@ -1,0 +1,179 @@
+#+TITLE: PhD Diary Entry for week beginning October 15th 2018
+#+OPTIONS: toc:nil
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr} %For headers and footers
+#+LaTeX_HEADER: \pagestyle{fancy} %For headers and footers
+#+LaTeX_HEADER: \fancyfoot[CE,CO]{}
+#+LaTeX_HEADER: \fancyhead[LE,LO]{}
+#+LaTeX_HEADER: \usepackage{lastpage} %For getting page x of y
+#+LaTeX_HEADER: \usepackage{float} %Allows the figures to be positioned and formatted nicely
+#+LaTeX_HEADER: \restylefloat{figure} %and this command
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTex_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+
+\tableofcontents
+\clearpage
+
+* Tasks
+** TODO Read Introduction to Diffusion Modelling
+- http://www.mathematica-journal.com/2012/03/diffusion-modeling/
+  - This could be v.good to try and translate into python as an exercise / practice
+*** TODO Revise Partial Diff Equations
+ - https://www.math.uni-leipzig.de/~miersemann/pdebook.pdf
+ - http://tutorial.math.lamar.edu/Classes/DE/TheHeatEquation.aspx
+** TODO Random Walk / Diffusion tutorials
+- http://courses.washington.edu/matlab1/Lesson_18.html
+- http://www.math.cmu.edu/~shlomo/courses/BioSystems/Lectures/RandomWalk.pdf
+
+** Euler's method
+
+*** Differential equations revision
+
+- $y^{\prime\prime} + 2y^\prime = 3y$
+- $f^{\prime \prime}(x) + 2f^\prime(x) = 3f(x)$
+- $\frac{d^2y}{dx^2} + 2\frac{dy}{dx}=3y$
+
+Solution to diff equation: function(s). Whereas algebraic equations have a number or set of numbers as their solution
+
+
+*** Derivatives
+- refers to instantaneous rate of change
+- $\frac{dy}{dx}$
+- $f^\prime(x)$ A.K.A. slope of tangent line at x
+
+\clearpage
+*** My implementation of Euler's method:
+
+#+BEGIN_SRC ipython :session :exports both :results raw drawer
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.close('all')
+def solve(h, f, t0, t1):
+    y0 = 0
+    x = np.arange(t0, t1+(t1 % h), h)
+    y = np.zeros(len(x))
+    y[0] = y0
+    for i in range(1, len(y)):
+        y[i] = y[i-1] + (h * f(x[i-1], y[i-1]))
+    plt.plot(x, y, '--', label='h={0}'.format(h), alpha=0.3)
+    return (x, y)
+x, y = solve(0.1, lambda x, y: x-(y+1), 0, 2)
+plt.suptitle('Eulers for x-(y+1)')
+plt.legend()
+
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+# Out[49]:
+: <matplotlib.legend.Legend at 0x1200cebe0>
+[[file:./obipy-resources/c6aeDS.png]]
+:END:
+
+\clearpage
+* Interesting
+The figure:[[fig:Eva]] is sourced from cite:deinumSimpleModelsComplex2013
+
+#+CAPTION: Basic properties of symplastic transport. A: model outline. All fluxes through the walls are modelled as effective permeabilities (with units μm/s). Concen- trations are given as Ci,x in cell i at location x and Wi,i+1 in the wall between cell i and i + 1. Model parameters: decay constant \sigma , cell length l, effective wall permeability q and diffusion constant D. B: time series for a 1D tissue with a single producing cell (with rate \beta/volume = 2\sigma a.u.) in the middle (q = 1μm/s, δ = 0.001s−1, l = 100μm, D = 300μm2/s). C: Dependence of profile steepness and time scales on \sigma (other parameters as in B). Simulation profiles are indicated with “S”, analytical predictions with “T”. D: Example steady state profile (solid red) with source left and reflecting wall right. This is the sum of two exponential functions (dashed): a decreasing one (cyan) and approxi- mately the continuation of its reflection on the wall (blue). E: The steepness of the con- centration profiles can be expressed using the characteristic length, the length over which the concentration drops with a factor 1/e (≈ 0.37). This can be expressed in number of cells (\lambda) or physical length (μm; \lambda′)
+#+ATTR_LATEX: :width 8cm
+#+NAME: fig:Eva
+[[./images/eva.png]]
+
+* Papers to read
+
+** TODO Glutamate triggers long-distance, calcium-based plant defense signaling cite:toyotaGlutamateTriggersLongdistance2018
+
+** TODO Necrotrophic Pathogens Use the SA Signaling Pathway to Promote Disease Development in Tomato cite:rahmanNecrotrophicPathogensUse2012
+
+** TODO Callose biosynthesis in arabidopsis with a focus on pathogen response: what we have learned within the last decade cite:ellingerCalloseBiosynthesisArabidopsis2014
+
+** TODO Regulation of solute flux through plasmodesmata in the root meristem cite:rutschowRegulationSoluteFlux2011
+
+* Paper review for Morris group meeting
+** A single fungal MAP kinase controls plant cell-to-cell invasion by the rice blast fungus cite:sakulkooSingleFungalMAP2018
+- The fungus they have used is /Magnaporthe oryzae/ and it effects rice
+- When this fungus gets into cells, it expands and seeks to colonise as many cells as possible. It does this by way of tendril like appendages called hyphae
+- Whilst this process is happening the attacker secretes effectors that try and suppress host defence responses
+- The fungus seeks out "pit fields" which are plasmodesmata rich sites and the process repeats
+
+** What is the hypotheses
+In English:
+- Inhibiting a single enzyme (kinase) prevents fungal infections from spreading through plant cells
+
+
+
+** What gap do they aim to fill
+
+- The aim of this research is to find methods of reducing the 30% of rice crop which is lost annually to blast disease (aforementioned fungus)
+
+** How did they design the experiments to address their questions
+
+*** Infection in relation to PD restrictions
+- The experiment started with ultrastructural analysis of cells infected by pathogens
+- The analysis confirmed that fungal hyphae were present between cells
+- They noticed that the infection sites' plasmodesmata were still open at 27hrs post inoculation
+- Callose deposition was noticed at 30hrs as it formed around invasive hyphae
+- The hypothesis proposed is that the infection was suppressing / clearing PD before penetrating into neighbouring cells
+
+- To test whether fungus could manipulate PD's SEL (size exclusion limit) two different mCherry (flourophone) molecules were bombarded at infected tissue and again at uninfected tissue results below:
+
+#+CAPTION: mCherry at infected cells
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:mcherry
+[[./images/mcherry.png]]
+
+
+- This showed that infection was clearly having an effect on PD being able to regulate the SEL
+- And that PD were not reacting until around 25~ hrs post invasion
+
+*** Regulatory mechanism of fungus
+- Pmk1 - A MAPK (mitogen activated protein kinase) was identified which is essential for infection development
+- PMK1 null mutants cannot infect plant leaves
+- The experiment used a conditionally activated Pmk1
+  - Using a chemical genetic approach
+  - They generated an analog sensitive allele of PKm1 (by using magic)
+- They then used this mutant, allowing PMK1 to be active at the start of the infection phase and then suppressing it
+- This treatment blocked invasion of adjacent epi-dermal cells, resulting in the infected cells becoming filled with fungal hyphae
+  - The morphology of the hyphae appeared unaffected
+  - This was tested in both another rice cultivar and barley
+
+*** Finding M. oryzae genes affecting infection
+- RNA-seq was performed on the pmk1 mutants
+- The results showed that 1457 fungal genes differentiated
+  - 11.5% of the total protein-encoding genes
+- 715 genes were up-regulated and 742 were down-regulated
+
+
+** What were the results?
+- That pmk1 could contain the key to deactivating fungus' ability to infect new cells
+
+** What is the significance of the results
+
+** Strengths/Weaknesses
+
+#+ATTR_LATEX: :environment longtable :align l|l
+#+NAME: tab:strwk
+#+CAPTION: Strengths/Weaknesses of Paper
+| *Strengths*                         | *Weaknesses*                               |
+|-------------------------------------+--------------------------------------------|
+| Experimental design seemed en point | They still have 1400+ genes to narrow down |
+|                                     | Details on RNA-seq seem pretty sparse      |
+
+
+* Questions
+- How do plants handle multiple attacks at once, does it struggle more at a 1:1 ratio or is it slightly easier to fend off multiple attacks as it's already producing defence chemicals/signals?
+- In cite:deinumSimpleModelsComplex2013 chapter 2, figure 2.1 How does one even start to form the equations for movement
+
+bibliography:~/PHD/Notes/library.bib
+bibliographystyle:unsrt
