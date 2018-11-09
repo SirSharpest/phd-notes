@@ -1,0 +1,112 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+OPTIONS: toc:nil H:4 ^:nil
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr}
+#+LaTeX_HEADER: \pagestyle{fancy}
+#+LaTeX_HEADER: \usepackage{lastpage}
+#+LaTeX_HEADER: \usepackage{float}
+#+LaTeX_HEADER: \restylefloat{figure}
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \chead{}
+#+LaTeX_HEADER: \rhead{\today}
+#+LaTeX_HEADER: \cfoot{}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTeX_HEADER:\usepackage{subfig}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+#+LATEX_HEADER_EXTRA:  \usepackage{framed}
+#+LaTeX_HEADER: \usepackage[round]{natbib}
+
+#+LATEX: \maketitle
+#+LATEX: \clearpage
+#+LATEX: \tableofcontents
+#+LATEX: \clearpage
+
+
+
+* Calculus Book [19%]
+
+- [X] Chapter 1
+- [X] Chapter 2
+- [X] Chapter 3
+- [X] Chapter 4
+- [ ] Chapter 5
+- [ ] Chapter 6
+- [ ] Chapter 7
+- [ ] Chapter 8
+- [ ] Chapter 9
+- [ ] Chapter 10
+- [ ] Chapter 11
+- [ ] Chapter 12
+- [ ] Chapter 13
+- [ ] Chapter 14
+- [ ] Chapter 15
+- [ ] Chapter 16
+- [ ] Chapter 17
+- [ ] Chapter 18
+- [ ] Chapter 19
+- [ ] Chapter 20
+- [ ] Chapter 21
+
+* Things TODO
+** DONE High Performance Computing Course
+   CLOSED: [2018-11-05 Mon 13:00]
+
+** DONE Meet with Jeroen
+   CLOSED: [2018-11-06 Tue 12:38]
+- Discussed helping out with wet-lab work, poss helping with some harvesting next week
+- J is looking into any additional (side) projects I could possibly lend a hand with
+- J is meeting with Eva D. during the week to discuss her thesis and possibility of working with her? cite:deinumSimpleModelsComplex2013 (TBD)
+
+** FF Journal Club
+- citep:bruleGrapevineVitisVinifera
+
+* Diffusion Stuff
+** Convection Model
+#+BEGIN_SRC python -n
+  def OneD_Conv_Model(nx=40, nt=60, dt=0.01, c=1):
+      dx = 2/(nx)
+      u = np.ones(nx)
+      dtdx = dt/dx
+      fig, axes = plt.subplots(2, 2)
+
+      # Initial boundary Condition
+      u[int(.5 / dx):int(1 / dx + 1)] = 2
+
+      # For each time point
+      for it in range(0, nt):
+          un = u.copy()
+          for i in range(1, nx):
+              u[i] = un[i] - un[i]*(dtdx)*(un[i] - un[i-1])
+          if it == 0:
+              axes[0, 0].plot(np.linspace(0, 2, nx), u)
+              axes[0, 0].set_title('T: {0}'.format(it*dt))
+          elif it == int(nt/4):
+              axes[0, 1].plot(np.linspace(0, 2, nx), u)
+              axes[0, 1].set_title('T: {0}'.format(it*dt))
+          elif it == int(nt/4)*3:
+              axes[1, 0].plot(np.linspace(0, 2, nx), u)
+              axes[1, 0].set_title('T: {0}'.format(it*dt))
+          elif it == ((nt-1)/4)*4:
+              axes[1, 1].plot(np.linspace(0, 2, nx), u)
+              axes[1, 1].set_title('T: {0}'.format(it*dt))
+      fig.tight_layout()
+#+END_SRC
+
+#+CAPTION: Convection Model
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Convection Model
+[[./images/convection.png]]
+
+\clearpage
+bibliography:library.bib
+bibliographystyle:plainnat
