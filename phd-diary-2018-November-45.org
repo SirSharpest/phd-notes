@@ -33,13 +33,15 @@
 
 
 
-* Calculus Book [19%]
+* Calculus Book [23%]
 
 - [X] Chapter 1
 - [X] Chapter 2
+  - Could do with refreshing limits some more
 - [X] Chapter 3
 - [X] Chapter 4
-- [ ] Chapter 5
+- [X] Chapter 5
+  - Again, this chapter on differential equations is worth re-reading
 - [ ] Chapter 6
 - [ ] Chapter 7
 - [ ] Chapter 8
@@ -67,11 +69,35 @@
 - J is looking into any additional (side) projects I could possibly lend a hand with
 - J is meeting with Eva D. during the week to discuss her thesis and possibility of working with her? cite:deinumSimpleModelsComplex2013 (TBD)
 
-** FF Journal Club
-- citep:bruleGrapevineVitisVinifera
+** TODO FF Journal Club (citep:bruleGrapevineVitisVinifera) [33%]
+   DEADLINE: <2018-11-12 Mon>
+- [X] Print a copy
+- [ ] Annotate
+- [ ] Summarise
 
-* Diffusion Stuff
-** Convection Model
+*** Some definitions for paper:
+- Lytic Cycle:
+  - One of two cycles of viral reproduction (referring ot bacterial viruses or bacteriophages)
+  - The other being the lysogenic cycle
+  - Lytic cycle results in the destruction of an infected cell
+  - The viral DNA exists as a separate free floating molecule within the bacterial cell and replicates separately from the host bacterial DNA (in contrast to the Lysogenic cycle)
+- Lysogenic Cycle:
+  - Lysogeny is characterised by integration of the bacteriophage nucleic acid into the host bacterium's genome
+  - Or formations of a circular replicon (A replicon is a DNA molecule or RNA molecule, or a region of DNA or RNA, that replicates from a single origin of replication)
+  - The genetic material of the bacteriophage, called prophage, can be transmitted to daughter cells at each subsequent cell division
+- Lysin: Also known as endolysins or murein hydrolases, are hydrolytic enzymes produced by bacteriophages
+  - They cleave the host's cell wall during final stage of the lytic cycle
+
+#+CAPTION: Lytic Cycle
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:LyticCycle
+[[./images/cycle.jpeg]]
+
+\clearpage
+
+* Diffusion Stuff [33%]
+** DONE Convection Model
+   CLOSED: [2018-11-09 Fri 09:54]
 #+BEGIN_SRC python -n
   def OneD_Conv_Model(nx=40, nt=60, dt=0.01, c=1):
       dx = 2/(nx)
@@ -106,6 +132,93 @@
 #+ATTR_LATEX: :width 10cm
 #+NAME: fig:Convection Model
 [[./images/convection.png]]
+
+** TODO 1D Diffusion Model
+- More info found [[http://nbviewer.jupyter.org/github/barbagroup/CFDPython/blob/master/lessons/04_Step_3.ipynb][here]] and [[http://nbviewer.jupyter.org/github/barbagroup/CFDPython/blob/master/lessons/08_Step_6.ipynb][here]]
+- And best one [[http://www2.math.uu.se/~david/web/AppDyn/diffusion.pdf][here]]
+
+*** Steady State
+
+
+\begin{equation}
+\frac{\partial C}{\partial t} = D\frac{\partial^2 C}{\partial x^2}  \qquad 0 \leq x \leq l
+\end{equation}
+
+Setting $\partial C  partial t = 0 $ we obtain
+
+$$
+\frac{d^2C}{dx^2} = 0 \qquad \Rightarrow C_s = ax+b
+$$
+
+We determine that $a,b$ from the boundary conditions
+
+\begin{equation}
+C(0)=C_i, \qquad C(l)=C_2
+\end{equation}
+
+It follows that:
+
+\begin{equation}
+b=C_1, \qquad a=\frac{C_2-C_1}{l}
+\end{equation}
+
+\begin{equation}
+C_s(s) = \frac{C_2-C_1}{l}x+C_1
+\end{equation}
+
+\begin{equation}
+Flux = -D\frac{\partial C_s}{\partial x} = \frac{C_1 - C_2}{l}
+\end{equation}
+
+
+*** Time-dependent solutions
+
+We choose again the boundary conditions as before and:
+
+\begin{equation}
+C(x,0) = C_0(x)
+\end{equation}
+
+as initial condition. It is convenient to consider the excess quantity
+
+\begin{equation}
+u(x,t) = C(x,t) - C_s (x)
+\end{equation}
+
+We see that $u$ satisfies
+
+\begin{equation}
+\frac{\partial u}{\partial t} = D \frac{\partial^2u}{\partial x^2}
+\end{equation}
+
+with
+
+\begin{align*}
+u(0) &= u(l) = 0 \\
+u(x,0) &= C_0 - C_s (x) \\
+& \equiv  u_0(x)
+\end{align*}
+
+Let $\phi_m$ be the eigenfunctions of the diffusion operator $d^2/dx^2$. Since the operator is dissipative, the corresponding eigenvalues are non-positive. We donate them by $-k^2_m$( $k$ real)
+
+\begin{equation}
+\frac{d^2 \phi_m (x)}{dx^2} = - k^2_m\phi_m(x)
+\end{equation}
+
+Any function of the form $u = A_m (t) \phi_m$ satisfies the previous equation , provided that $A_m(t)$ satisfies the ODE.
+
+\begin{equation}
+\frac{dA_m}{dt} = Dk^2_mA_m
+\end{equation}
+
+or
+
+\begin{equation}
+A_m(t) A_m(0)e^-Dk^2_mt
+\end{equation}
+** TODO 2D Diffusion Model
+- Lecture on it [[http://nbviewer.jupyter.org/github/barbagroup/CFDPython/blob/master/lessons/09_Step_7.ipynb][found here]]
+
 
 \clearpage
 bibliography:library.bib

@@ -265,7 +265,7 @@ $dts[100] =$:
 
 ** TODO Fully Investigate all parameters and their function
 
-
+\clearpage
 * Diffusion 2D
 
 ** Initial Equation
@@ -273,6 +273,12 @@ Adapted from cite:rossant2013learning,hillTwodimensionalDiffusionEquation2018
 
 \begin{equation}
 \frac{\partial u}{\partial t} = D (\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2})
+\end{equation}
+
+Which becomes:
+
+\begin{equation}
+u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{\Delta x^2} + \frac{(u_{i,j+1}^{n}-2u_{i,j}^{n}+u_{i,j-1}^{n})}{\Delta y^2} )
 \end{equation}
 
 #+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diffusion2d.png :results none :eval never-export
@@ -291,8 +297,8 @@ Adapted from cite:rossant2013learning,hillTwodimensionalDiffusionEquation2018
 
       # Assuming a square shape!
       # Initial Condition for diffusion
-      u[int(mid-(mid/8)):int(mid+(mid/8)),
-        int(mid-(mid/8)):int(mid+(mid/8))] = 1
+      u[int(mid-(mid/4)):int(mid+(mid/4)),
+        int(mid-(mid/4)):int(mid+(mid/4))] = 1
 
       for n in range(nt):
           un = u.copy()  # Update previous values
@@ -307,10 +313,10 @@ Adapted from cite:rossant2013learning,hillTwodimensionalDiffusionEquation2018
   D = 0.3  # Diffusion constant
   dt = 0.001  # change in time
   fig, axes = plt.subplots(2, 3, sharex=True, sharey=True)
-  dts = {nt: diffuse_2D(nx, dx, dy, nt, D, dt)
-         for nt in np.logspace(0, 5, 6, base=10, dtype=int)}
+  nts = np.around([nt for nt in np.linspace(1, 10000, 6)])
+  dts = {nt: diffuse_2D(nx, dx, dy, int(nt), D, dt) for nt in nts}
 
-  for idx, d in enumerate(np.logspace(0,5,6,base=10, dtype=int)):
+  for idx, d in enumerate(nts):
       axes[idx//3, idx % 3].imshow(dts[d], cmap='gray', vmin=0, vmax=1)
       axes[idx//3, idx % 3].set_axis_off()
       axes[idx//3, idx % 3].set_title('TS: {0}'.format(d))
@@ -331,7 +337,7 @@ Adapted from cite:rossant2013learning,hillTwodimensionalDiffusionEquation2018
   import matplotlib
   norm = matplotlib.colors.Normalize(vmin=0, vmax=1)
 
-  for idx, d in enumerate(np.logspace(0,5,6,base=10, dtype=int)):
+  for idx, d in enumerate(nts):
       ax = fig.add_subplot(2,3,idx+1, projection='3d')
       ax.plot_surface(xx,yy,dts[d], linewidth=0, color='gray')
       ax.set_xlim(0,100)
@@ -345,6 +351,83 @@ Adapted from cite:rossant2013learning,hillTwodimensionalDiffusionEquation2018
 #+CAPTION: 3D projection of 2D diffusion
 #+ATTR_LATEX: :width 14cm
 [[./images/diffusion2d3d.png]]
+
+
+\clearpage
+** Odd results (repeated in 2D)
+
+#+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diffusion2d-odd.png :results none :eval never-export
+  import numpy as np
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+  %matplotlib inline
+  sns.set()
+  plt.close('all')
+
+  def diffuse_2D(nx, dx, dy, nt, D, dt):
+      dx2 = dx**2
+      dy2 = dy**2
+      u = np.zeros((nx, nx))
+      mid = int(nx/2)
+
+      # Assuming a square shape!
+      # Initial Condition for diffusion
+      u[int(mid-(mid/4)):int(mid+(mid/4)),
+        int(mid-(mid/4)):int(mid+(mid/4))] = 1
+
+      for n in range(nt):
+          un = u.copy()  # Update previous values
+          u[1:-1, 1:-1] = un[1:-1, 1:-1] + D * \
+              (((un[2:, 1:-1] - 2 * un[1:-1, 1:-1] + un[:-2, 1:-1])/dx2) +
+               ((un[1:-1, 2:] - 2 * un[1:-1, 1:-1] + un[1:-1, :-2])/dy2))
+      return un
+
+  nx = 100  # Number of x measurements
+  dx, dy = .05, .05   # Change in X & Y
+  nt = 0.1  # Number of timesteps to make in calculation
+  D = 0.7  # Diffusion constant
+  dt = 0.001  # change in time
+  fig, axes = plt.subplots(2, 3, sharex=True, sharey=True)
+  nts = np.around([nt for nt in np.linspace(1, 80, 6)])
+  dts = {nt: diffuse_2D(nx, dx, dy, int(nt), D, dt) for nt in nts}
+
+  for idx, d in enumerate(nts):
+      axes[idx//3, idx % 3].imshow(dts[d], cmap='gray', vmin=0, vmax=1)
+      axes[idx//3, idx % 3].set_axis_off()
+      axes[idx//3, idx % 3].set_title('TS: {0}'.format(d))
+
+  plt.tight_layout()
+#+END_SRC
+
+#+CAPTION: Diffusion in 2D
+#+ATTR_LATEX: :width 14cm
+[[./images/diffusion2d-odd.png]]
+
+
+#+BEGIN_SRC ipython :exports none :session diffusions :ipyfile ./images/diffusion2d3d-odd.png :results none :eval never-export
+
+  fig = plt.figure(figsize=(20,10))
+  ax = fig.add_subplot(2,3,1, projection='3d')
+  xx, yy = np.mgrid[0:dts[1].shape[0], 0:dts[1].shape[1]]
+  import matplotlib
+  norm = matplotlib.colors.Normalize(vmin=0, vmax=1)
+
+  for idx, d in enumerate(nts):
+      ax = fig.add_subplot(2,3,idx+1, projection='3d')
+      ax.plot_surface(xx,yy,dts[d], linewidth=0, color='gray')
+      ax.set_xlim(0,100)
+      ax.set_ylim(0,100)
+      ax.set_zlim(0,1)
+      ax.set_title('TS: {0}'.format(d))
+
+  #fig.tight_layout()
+#+END_SRC
+
+#+CAPTION: 3D projection of 2D diffusion
+#+ATTR_LATEX: :width 14cm
+[[./images/diffusion2d3d-odd.png]]
+
+
 
 
 \clearpage
