@@ -1,0 +1,352 @@
+#+TITLE: PhD Diary Week Beginning 12th November
+#+AUTHOR: Nathan Hughes
+#+OPTIONS: toc:nil H:4 ^:nil
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr}
+#+LaTeX_HEADER: \pagestyle{fancy}
+#+LaTeX_HEADER: \usepackage{lastpage}
+#+LaTeX_HEADER: \usepackage{float}
+#+LaTeX_HEADER: \restylefloat{figure}
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \chead{}
+#+LaTeX_HEADER: \rhead{\today}
+#+LaTeX_HEADER: \cfoot{}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTeX_HEADER:\usepackage{subfig}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+#+LaTeX_HEADER: \usepackage[round]{natbib}
+#+LATEX_HEADER_EXTRA:  \usepackage{framed}
+#+LATEX: \maketitle
+#+LATEX: \clearpage
+#+LATEX: \tableofcontents
+#+LATEX: \clearpage
+
+* TODO 1D Diffusion (Update to latest Equation)
+
+Initial Equation from Fick's first law citep:kaufmannFickLawFickLaw1998:
+
+\begin{equation}
+\frac{\partial u}{\partial t} = D \frac{\partial^2u}{\partial x^2}
+\end{equation}
+
+Where $u$ can be numerically solved with:
+
+\begin{equation}
+u = u(x_i, t_n)
+\end{equation}
+
+Implementing the solved equation for 1D diffusion:
+
+\begin{equation}
+u_{i}^{n+1}=u_{i}^{n}+ D \frac{(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n})}{\Delta x^2}
+\end{equation}
+
+#+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diffusion1.png :results none :eval never-export
+  %matplotlib inline
+  import seaborn as sns
+  import matplotlib.pyplot as plt
+  import numpy as np
+  sns.set()
+  plt.close('all')
+  def diffuse_1D(nx,dx,nt,D,dt, IC=None, slow=False):
+      u = np.zeros(nx)
+      mid = int(nx/2)
+      dx2 = dx**2
+      if IC is None:
+          u[mid-int(mid/4):mid+int(mid/4)] = 1
+      elif IC is 'start':
+          u[:mid-int(mid/4)] = 1
+      for n in range(nt):
+          un = u.copy() # Update previous values
+          if slow:
+              for i in range(1, nx-1):
+                  u[i] = un[i] + D * dt / dx**2 * (un[i+1] -2 * un[i] + un[i-1])
+          else:
+              #u[1:-1] = un[1:-1] + D * dt / dx**2 * (un[0:-2] -2 * un[1:-1] + un[2:])
+              u[1:-1] = un[1:-1] + D  * (un[0:-2] -2 * un[1:-1] + un[2:])/dx2
+      return un
+
+  nx = 100 # Number of x measurements
+  dx = 5 #2 / (nx-1) # Change in X
+  nt = 1 # Number of timesteps to make in calculation
+  D = 0.3 # Diffusion constant
+  dt = 0.001 # change in time
+
+  fig, axes = plt.subplots(2,2, sharex=True, sharey=True)
+  dts = {nt: diffuse_1D(nx,dx,nt,D,dt) for nt in np.logspace(0,3,4,base=10, dtype=int)}
+
+  for idx, d in enumerate(dts.keys()):
+      axes[idx//2, idx%2].plot(np.linspace(0,1,nx), dts[d])
+      axes[idx//2, idx%2].set_title('TS: {0}'.format(d))
+
+  plt.suptitle('Diffusion in 1d')
+#+END_SRC
+\clearpage
+** Diffusion from centre
+
+#+CAPTION: Diffusion initial condition from centre
+#+ATTR_LATEX: :width 9cm
+[[./images/diffusion1.png]]
+
+** Diffusion from one side
+
+#+BEGIN_SRC ipython :exports none :session diffusions :ipyfile ./images/diffusion1_side.png :results none :eval never-export
+  %matplotlib inline
+  import seaborn as sns
+  import matplotlib.pyplot as plt
+  import numpy as np
+  sns.set()
+  plt.close('all')
+
+  def diffuse_1D(nx,dx,nt,D,dt, IC=None):
+      u = np.zeros(nx)
+      mid = int(nx/2)
+      if IC is None:
+          u[mid-int(mid/4):mid+int(mid/4)] = 1
+      elif IC is 'start':
+          u[:mid-int(mid/4)] = 1
+      for n in range(nt):
+          un = u.copy() # Update previous values
+          for i in range(1, nx-1):
+              u[i] = un[i] + D  * (un[i+1] -2 * un[i] + un[i-1])
+      return un
+
+  nx = 100 # Number of x measurements
+  dx = 2 / (nx-1) # Change in X
+  nt = 1 # Number of timesteps to make in calculation
+  D = 0.1 # Diffusion constant
+  dt = 0.001 # change in time
+
+  fig, axes = plt.subplots(2,2, sharex=True, sharey=True)
+  dts = {nt: diffuse_1D(nx,dx,nt,D,dt,  IC='start') for nt in np.logspace(0,3,4,base=10, dtype=int)}
+
+  for idx, d in enumerate(dts.keys()):
+      axes[idx//2, idx%2].plot(np.linspace(0,1,nx), dts[d])
+      axes[idx//2, idx%2].set_title('TS: {0}'.format(d))
+
+  plt.suptitle('Diffusion in 1d')
+#+END_SRC
+
+#+CAPTION: Diffusion initial condition from left quarter
+#+ATTR_LATEX: :width 9cm
+[[./images/diffusion1_side.png]]
+
+\clearpage
+
+** Diffusion over time
+#+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diffusion2.png :results none :eval never-export
+  plt.close('all')
+  from mpl_toolkits.mplot3d import Axes3D
+  import pandas as pd
+  from matplotlib import cm
+  from scipy.interpolate import griddata
+
+  N = 200
+  data = {nt: diffuse_1D(nx,dx,int(nt),D*2,dt, IC='start') for nt in np.linspace(1,1000,N)}
+  y = np.arange(0,len(data[1]))
+
+  def make_3d_points_df(A, n):
+      x = np.full(len(A), n)
+      z = A
+      return pd.DataFrame({'x':x,'y':y,'z':z})
+
+  df = pd.concat([make_3d_points_df(v,k) for k,v in data.items()])
+
+  x1 = np.linspace(df['x'].min(), df['x'].max(), len(df['x'].unique()))
+  y1 = np.linspace(df['y'].min(), df['y'].max(), len(df['y'].unique()))
+  X, Y = np.meshgrid(x1,y1)
+  Z = griddata((df['x'], df['y']), df['z'], (X,Y), method='cubic')
+
+  fig = plt.figure()
+  for idx, deg in enumerate(np.linspace(0,350,4)):
+      ax = fig.add_subplot(2,2,idx+1, projection='3d')
+      ax.plot_surface(X,Y,Z, cmap='plasma', linewidth=0)
+      ax.view_init(30,int(deg))
+  fig.tight_layout()
+#+END_SRC
+
+
+#+CAPTION: Diffusion over time
+#+ATTR_LATEX: :width 12cm
+[[./images/diffusion2.png]]
+
+
+\clearpage
+** Odd Behaviour
+
+- Of particular note is the negative numbers
+  - Is there something wrong with the input variables and increasing the constant to $D=1.5$ ?
+
+#+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diff_parameters.png :results none :eval never-export
+  nx = 100 # Number of x measurements
+  dx = 0.05 #2 / (nx-1) # Change in X
+  nt = 0.1 # Number of timesteps to make in calculation
+  D = 0.7 # Diffusion constant
+  dt = 0.001 # change in time
+
+  fig, axes = plt.subplots(2,2)
+  dts = {nt: diffuse_1D(nx,dx,nt,D,dt) for nt in np.logspace(0,3,4,base=10, dtype=int)}
+
+  for idx, d in enumerate(dts.keys()):
+      axes[idx//2, idx%2].plot(np.linspace(0,1,nx), dts[d])
+      axes[idx//2, idx%2].set_title('TS: {0}'.format(d))
+  plt.tight_layout()
+#+END_SRC
+
+#+CAPTION: Diffusion with different parameters
+#+ATTR_LATEX: :width 8cm
+[[./images/diff_parameters.png]]
+
+
+*** Data
+$dts[100] =$:
+#+ATTR_LATEX: :environment longtable :width \textwidth :align |l|l|l|l|
+#+NAME: tab:dtoutput
+#+CAPTION: Values of $dts[100]$
+|-----------------------------+------------------------------+------------------------------+------------------------------|
+| $0.00000000 \times 10^{00}$ | $1.28601728 \times 10^{09}$  | $-2.79546811 \times 10^{09}$ | $4.77701928 \times 10^{09}$  |
+| $1.89080824 \times 10^{12}$ | $-2.60579910 \times 10^{12}$ | $3.28001602 \times 10^{12}$  | $-3.90268288 \times 10^{12}$ |
+| $4.46379536 \times 10^{12}$ | $-4.95439275 \times 10^{12}$ | $5.36685401 \times 10^{12}$  | $-5.69519737 \times 10^{12}$ |
+| $5.93535752 \times 10^{12}$ | $-6.08541216 \times 10^{12}$ | $6.14573169 \times 10^{12}$  | $-6.11903005 \times 10^{12}$ |
+| $6.01030308 \times 10^{12}$ | $-5.82665017 \times 10^{12}$ | $5.57698563 \times 10^{12}$  | $-5.27165600 \times 10^{12}$ |
+| $4.92198811 \times 10^{12}$ | $-4.53979827 \times 10^{12}$ | $4.13689571 \times 10^{12}$  | $-3.72461294 \times 10^{12}$ |
+| $3.31339182 \times 10^{12}$ | $-2.91244828 \times 10^{12}$ | $2.52953079 \times 10^{12}$  | $-2.17077915 \times 10^{12}$ |
+| $1.84068222 \times 10^{12}$ | $-1.54212556 \times 10^{12}$ | $1.27651462 \times 10^{12}$  | $-1.04395535 \times 10^{12}$ |
+| $8.43472362 \times 10^{11}$ | $-6.73245295 \times 10^{11}$ | $5.30845569 \times 10^{11}$  | $-4.13459088 \times 10^{11}$ |
+| $3.18083897 \times 10^{11}$ | $-2.41695821 \times 10^{11}$ | $1.81378769 \times 10^{11}$  | $-1.34419617 \times 10^{11}$ |
+| $9.83700764 \times 10^{10}$ | $-7.10797163 \times 10^{10}$ | $5.07053099 \times 10^{10}$  | $-3.57019986 \times 10^{10}$ |
+| $2.48015740 \times 10^{10}$ | $-1.69825919 \times 10^{10}$ | $1.14362164 \times 10^{10}$  | $-7.53076662 \times 10^{09}$ |
+| $4.77701928 \times 10^{09}$ | $-2.79546811 \times 10^{09}$ | $1.28601728 \times 10^{09}$  | $0.00000000 \times 10^{00}$  |
+|-----------------------------+------------------------------+------------------------------+------------------------------|
+
+
+*** 3D
+#+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diffusion_bad.png :results none :eval never-export
+  plt.close('all')
+  nx = 100 # Number of x measurements
+  dx = 0.05 #2 / (nx-1) # Change in X
+  nt = 0.1 # Number of timesteps to make in calculation
+  D = .7 # Diffusion constant
+  dt = 0.001 # change in time
+  N = 10
+  data = {nt: diffuse_1D(nx,dx,int(nt),D,dt) for nt in np.linspace(1,1000,N)}
+  y = np.arange(0,len(data[1]))
+  def make_3d_points_df(A, n):
+      x = np.full(len(A), n)
+      z = A
+      return pd.DataFrame({'x':x,'y':y,'z':z})
+  df = pd.concat([make_3d_points_df(v,k) for k,v in data.items()])
+  x1 = np.linspace(df['x'].min(), df['x'].max(), len(df['x'].unique()))
+  y1 = np.linspace(df['y'].min(), df['y'].max(), len(df['y'].unique()))
+  X, Y = np.meshgrid(x1,y1)
+  Z = griddata((df['x'], df['y']), df['z'], (X,Y), method='cubic')
+  fig = plt.figure()
+  for idx, deg in enumerate(np.linspace(0,350,4)):
+      ax = fig.add_subplot(2,2,idx+1, projection='3d')
+      ax.plot_surface(X,Y,Z, cmap='plasma', linewidth=0)
+      ax.view_init(30,int(deg))
+  fig.tight_layout()
+#+END_SRC
+
+#+CAPTION: Diffusion with different parameters
+#+ATTR_LATEX: :width 12cm
+[[./images/diffusion_bad.png]]
+
+
+
+** TODO Fully Investigate all parameters and their function
+
+
+* Diffusion 2D
+
+** Initial Equation
+Adapted from cite:rossant2013learning,hillTwodimensionalDiffusionEquation2018
+
+\begin{equation}
+\frac{\partial u}{\partial t} = D (\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2})
+\end{equation}
+
+#+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diffusion2d.png :results none :eval never-export
+  import numpy as np
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+  %matplotlib inline
+  sns.set()
+  plt.close('all')
+
+  def diffuse_2D(nx, dx, dy, nt, D, dt):
+      dx2 = dx**2
+      dy2 = dy**2
+      u = np.zeros((nx, nx))
+      mid = int(nx/2)
+
+      # Assuming a square shape!
+      # Initial Condition for diffusion
+      u[int(mid-(mid/8)):int(mid+(mid/8)),
+        int(mid-(mid/8)):int(mid+(mid/8))] = 1
+
+      for n in range(nt):
+          un = u.copy()  # Update previous values
+          u[1:-1, 1:-1] = un[1:-1, 1:-1] + D * \
+              (((un[2:, 1:-1] - 2 * un[1:-1, 1:-1] + un[:-2, 1:-1])/dx2) +
+               ((un[1:-1, 2:] - 2 * un[1:-1, 1:-1] + un[1:-1, :-2])/dy2))
+      return un
+
+  nx = 100  # Number of x measurements
+  dx, dy = 5, 5   # Change in X & Y
+  nt = 1  # Number of timesteps to make in calculation
+  D = 0.3  # Diffusion constant
+  dt = 0.001  # change in time
+  fig, axes = plt.subplots(2, 3, sharex=True, sharey=True)
+  dts = {nt: diffuse_2D(nx, dx, dy, nt, D, dt)
+         for nt in np.logspace(0, 5, 6, base=10, dtype=int)}
+
+  for idx, d in enumerate(np.logspace(0,5,6,base=10, dtype=int)):
+      axes[idx//3, idx % 3].imshow(dts[d], cmap='gray', vmin=0, vmax=1)
+      axes[idx//3, idx % 3].set_axis_off()
+      axes[idx//3, idx % 3].set_title('TS: {0}'.format(d))
+
+  plt.tight_layout()
+#+END_SRC
+
+#+CAPTION: Diffusion in 2D
+#+ATTR_LATEX: :width 14cm
+[[./images/diffusion2d.png]]
+
+
+#+BEGIN_SRC ipython :exports none :session diffusions :ipyfile ./images/diffusion2d3d.png :results none :eval never-export
+
+  fig = plt.figure(figsize=(20,10))
+  ax = fig.add_subplot(2,3,1, projection='3d')
+  xx, yy = np.mgrid[0:dts[1].shape[0], 0:dts[1].shape[1]]
+  import matplotlib
+  norm = matplotlib.colors.Normalize(vmin=0, vmax=1)
+
+  for idx, d in enumerate(np.logspace(0,5,6,base=10, dtype=int)):
+      ax = fig.add_subplot(2,3,idx+1, projection='3d')
+      ax.plot_surface(xx,yy,dts[d], linewidth=0, color='gray')
+      ax.set_xlim(0,100)
+      ax.set_ylim(0,100)
+      ax.set_zlim(0,1)
+      ax.set_title('TS: {0}'.format(d))
+
+  #fig.tight_layout()
+#+END_SRC
+
+#+CAPTION: 3D projection of 2D diffusion
+#+ATTR_LATEX: :width 14cm
+[[./images/diffusion2d3d.png]]
+
+
+\clearpage
+bibliography:library.bib
+bibliographystyle:plainnat
