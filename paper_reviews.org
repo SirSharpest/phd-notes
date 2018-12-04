@@ -1,0 +1,112 @@
+#+TITLE: Paper Reviews
+#+AUTHOR: Nathan Hughes
+#+OPTIONS: toc:nil H:4 ^:nil
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr}
+#+LaTeX_HEADER: \pagestyle{fancy}
+#+LaTeX_HEADER: \usepackage{lastpage}
+#+LaTeX_HEADER: \usepackage{float}
+#+LaTeX_HEADER: \restylefloat{figure}
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \chead{}
+#+LaTeX_HEADER: \rhead{\today}
+#+LaTeX_HEADER: \cfoot{}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTeX_HEADER:\usepackage{subfig}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+#+LaTeX_HEADER: \usepackage[round]{natbib}
+#+LATEX_HEADER_EXTRA:  \usepackage{framed}
+#+LATEX: \maketitle
+#+LATEX: \clearpage
+
+
+* (Morris Group Review Paper) Plants send small RNAs in extracellular vesicles to fungal pathogen to silence virulence genes
+
+** General info
+- citep:caiPlantsSendSmall2018
+- Small RNAs (sRNA) are short regulatory RNAs that silence genes with complimentary sequences
+- In animals they can be transported by extracellular vesicles, specific transmembrane proteins and gap junctions
+- In plants however, sRNAs move presumably through plasmodesmata
+  - and travel systematically through vasculature
+- Remarkably, sRNAs also move between hosts and interacting organisms and induce gene silencing, a phenomenon called cross-kingdom/organism RNAA interference (RNAi)
+
+** Research Question:
+- Though how do mobile sRNAs travel across the boundaries between organisms of different taxonomic kingdoms?
+- Gastro-intenstinal parasites secrete exsomes, a class of extracellular vesicles to transport microRNAs(miRNAs) into mammalian cells to suppress host immunity
+- By contrast the mechanism by which sRNAs are transported from hosts to interacting pathogens and pests is totally unknown!
+** Methods:
+
+*** Testing for diffusion explanations
+- To investigate how host sRNAs move into interacting fungal cells and identify plant endogenous transferred sRNAs, they used /Arabadopsis/ /Botrytis cinerea/ pathosystem that displays bi-directional sRNA trafficking and cross-kingdom RNAi
+  - Pathosystem is a subsystem of an ecosystem and is defined by the phenomenom of parasitism
+  - A plant pathosystem is one in which the host species is a plant!
+- Because the cell wall compositions of plant and fungi are different, they developed a sequential protoplast purification method to isolate pure fungal cells from infected tissues
+- Based off of their ground truth / controls they have shown that host cells transfering endogenous sRNAs into fungal cells are not smply through concentration-dependent diffusion
+  - They suggest that there is a more selective process
+
+*** Testing for extracellular vesicles
+- As extracellular vesicles are implicated in systemic sRNA transport in animals; they tested if plants use a similar system to send sRNAs to fungal cells
+- They profiled sRNAs isolated from the extracellular apoplastic fluids of infected leaves
+  - These profiles matched with those of fungal protoplast samples  (*three biological replicates*)
+  - of the 42 transfered sRNAs, 31 (73.8%) were present in vesicle libraries
+- They claim these results support a positive correlation between the sRNA profiles of both extracellular vesicles and the fungal cells
+
+** Results
+- These findings indicate that plant cells secrete extra-cellular vesicles to transfer sRNAs into fungal cells
+
+*** Do plants use exosome-like structures
+- Animal extracellular vesicles are classified into exosomes, whereas plant's remain undefined
+- (my understanding is that exosomes are /just/ cell-derived vesicles, so why isn't this proven by the method for showing that extracellular vesicles are used?)
+- Transgenic plants expressing GFP tagged proteins were found to have deposted this protein at the fungal infection sites (fig2)
+- They used one GFP marker which would bind to cell membranes when exiting and one that would bind to the fungal cells when entering
+- They use this as evidence for exosome-like structures being used!
+
+*** Are plant exosomes taken up by fungal cells
+- This was tested using more GFP marked proteins and were observed within fungal cells in around 2hrs
+
+*** What is the physiological role of exosome specific (tetraspanin) genes
+- Loss of function mutants were then used for both TET8 and TET9
+- Both these mutants displayed an enhanced susceptibility to /B.cinerea/ when compared with the WT
+- Double mutants knocking out both TET8 and TET9 in the same line were then used. These displayed an even higher level of susceptibility to /B.cinerea/
+  - This suggests that TET8 and TET9 have partial functional redundancy
+- Furthermore, transfered host sRNA levels in the fungal cells isolated from the /tet8tet9/ mutants were reduced. Supporting that TET8 - TET9 associated exosomes contribute to plant immunity against fungal infection by transfering host sRNAs into fungal cells
+
+*** Does transferred sRNAs affect fungal virulence
+- To determine this, they used an /Arabidopsis/ triple mutant /dcl2/3/4/ that impairs the biosynthesis of trans-acting siRNAs and the /rdr6/ mutant that is compromised in tasiRNA formation
+- Both the mutants used were shown to be more susceptible to /B.cinerea/
+- Suggesting that transferred sRNAs are affecting virulence
+- After infection fungal expression of virulence genes was found to be lower
+
+*** Silencing of fungal genes was triggered by host sRNAs
+- Fungal Argonaute proteins have ribonuclease activities that cleaves sRNA targets
+- The cleavage products of fungal targets guided by host sRNAs were detected in fungal cells isolated from the infected tissue
+- Indicating that plant sRNAs silence fungal target genes through mRNA cleavage
+
+*** Fungal Virulence Genes target vesicle-trafficking pathways
+- This was tested by using fungal mutants which removed their ability to target these pathways. Reduced virulence on /Arabidopsis/ was shown
+- Thus, vesicle trafficking pathways are important for fungal virulence
+
+
+*** Hypothesised points
+
+- The authors make the suggestion that transferred sRNAs suppress fungal pathogenicity by targeting fungal virulence genes
+  - /Targeting/ is an interesting word
+    - What is the feedback (other than survival) that this is working, even if given conscious thought the plant couldn't work this out?
+
+- Of the transferred /Arabidopsis/ sRNAs, 21 have predicted /B.cinerea/ target genes. With a bias towards vesicle-trafficking pathways
+
+** How this relates to our work?
+- One thought is this tug-of-war-esk relationship between pathogens and plant cells. In our planned experiments we are isolating the ability for plant responses - is it worth considering the effects of this? i.e. the plant defence signals won't find any fungal cells to interact with?
+
+
+
+\clearpage

@@ -30,7 +30,7 @@
 #+LATEX: \tableofcontents
 #+LATEX: \clearpage
 
-* TODO 1D Diffusion (Update to latest Equation)
+* TODO 1D Diffusion
 
 Initial Equation from Fick's first law citep:kaufmannFickLawFickLaw1998:
 
@@ -69,14 +69,13 @@ u_{i}^{n+1}=u_{i}^{n}+ D \frac{(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n})}{\Delta x^2}
           un = u.copy() # Update previous values
           if slow:
               for i in range(1, nx-1):
-                  u[i] = un[i] + D * dt / dx**2 * (un[i+1] -2 * un[i] + un[i-1])
+                  u[i] = un[i] + D  (un[i+1] -2 * un[i] + un[i-1])/dx2
           else:
-              #u[1:-1] = un[1:-1] + D * dt / dx**2 * (un[0:-2] -2 * un[1:-1] + un[2:])
               u[1:-1] = un[1:-1] + D  * (un[0:-2] -2 * un[1:-1] + un[2:])/dx2
       return un
 
   nx = 100 # Number of x measurements
-  dx = 5 #2 / (nx-1) # Change in X
+  dx = 1 #2 / (nx-1) # Change in X
   nt = 1 # Number of timesteps to make in calculation
   D = 0.3 # Diffusion constant
   dt = 0.001 # change in time
@@ -121,7 +120,7 @@ u_{i}^{n+1}=u_{i}^{n}+ D \frac{(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n})}{\Delta x^2}
       return un
 
   nx = 100 # Number of x measurements
-  dx = 2 / (nx-1) # Change in X
+  dx = 1
   nt = 1 # Number of timesteps to make in calculation
   D = 0.1 # Diffusion constant
   dt = 0.001 # change in time
@@ -150,8 +149,8 @@ u_{i}^{n+1}=u_{i}^{n}+ D \frac{(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n})}{\Delta x^2}
   from matplotlib import cm
   from scipy.interpolate import griddata
 
-  N = 200
-  data = {nt: diffuse_1D(nx,dx,int(nt),D*2,dt, IC='start') for nt in np.linspace(1,1000,N)}
+  N = 100
+  data = {nt: diffuse_1D(nx,dx,int(nt),D,dt, IC='start') for nt in np.linspace(1,100,N)}
   y = np.arange(0,len(data[1]))
 
   def make_3d_points_df(A, n):
@@ -188,10 +187,10 @@ u_{i}^{n+1}=u_{i}^{n}+ D \frac{(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n})}{\Delta x^2}
 
 #+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diff_parameters.png :results none :eval never-export
   nx = 100 # Number of x measurements
-  dx = 0.05 #2 / (nx-1) # Change in X
+  dx = 1 # Change in X
   nt = 0.1 # Number of timesteps to make in calculation
   D = 0.7 # Diffusion constant
-  dt = 0.001 # change in time
+  dt = 0.01 # change in time
 
   fig, axes = plt.subplots(2,2)
   dts = {nt: diffuse_1D(nx,dx,nt,D,dt) for nt in np.logspace(0,3,4,base=10, dtype=int)}
@@ -233,7 +232,7 @@ $dts[100] =$:
 #+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diffusion_bad.png :results none :eval never-export
   plt.close('all')
   nx = 100 # Number of x measurements
-  dx = 0.05 #2 / (nx-1) # Change in X
+  dx = 1 # Change in X
   nt = 0.1 # Number of timesteps to make in calculation
   D = .7 # Diffusion constant
   dt = 0.001 # change in time
@@ -289,29 +288,39 @@ u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{
   sns.set()
   plt.close('all')
 
-  def diffuse_2D(nx, dx, dy, nt, D, dt):
+
+  def diffuse_2D(nx, dx, dy, nt, D, dt, prevState=None, prevIter=None):
       dx2 = dx**2
       dy2 = dy**2
       u = np.zeros((nx, nx))
       mid = int(nx/2)
 
+      def isState():
+          if prevIter is None or prevState is None:
+              return False
+          else True
+
       # Assuming a square shape!
       # Initial Condition for diffusion
-      u[int(mid-(mid/4)):int(mid+(mid/4)),
-        int(mid-(mid/4)):int(mid+(mid/4))] = 1
+      if not isState():
+          u[int(mid-(mid/4)):int(mid+(mid/4)),
+            int(mid-(mid/4)):int(mid+(mid/4))] = 1
+      else:
+          u = prevState.copy()
 
-      for n in range(nt):
+      for n in range((prevIter if isState else 1), nt):
           un = u.copy()  # Update previous values
           u[1:-1, 1:-1] = un[1:-1, 1:-1] + D * \
               (((un[2:, 1:-1] - 2 * un[1:-1, 1:-1] + un[:-2, 1:-1])/dx2) +
                ((un[1:-1, 2:] - 2 * un[1:-1, 1:-1] + un[1:-1, :-2])/dy2))
       return un
 
+
   nx = 100  # Number of x measurements
-  dx, dy = 5, 5   # Change in X & Y
+  dx, dy = 1, 1   # Change in X & Y
   nt = 1  # Number of timesteps to make in calculation
-  D = 0.3  # Diffusion constant
-  dt = 0.001  # change in time
+  D = 0.01  # Diffusion constant
+  dt = 0.01  # change in time
   fig, axes = plt.subplots(2, 3, sharex=True, sharey=True)
   nts = np.around([nt for nt in np.linspace(1, 10000, 6)])
   dts = {nt: diffuse_2D(nx, dx, dy, int(nt), D, dt) for nt in nts}
@@ -383,7 +392,7 @@ u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{
       return un
 
   nx = 100  # Number of x measurements
-  dx, dy = .05, .05   # Change in X & Y
+  dx, dy = 1,1   # Change in X & Y
   nt = 0.1  # Number of timesteps to make in calculation
   D = 0.7  # Diffusion constant
   dt = 0.001  # change in time
@@ -426,6 +435,82 @@ u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{
 #+CAPTION: 3D projection of 2D diffusion
 #+ATTR_LATEX: :width 14cm
 [[./images/diffusion2d3d-odd.png]]
+
+
+
+
+* Testing Animations
+
+
+#+BEGIN_SRC ipython :exports code :session diffusions  :results none :eval never-export
+  import numpy as np
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+  %matplotlib inline
+  sns.set()
+  plt.close('all')
+
+  def diffuse_2D(nx, dx, dy, nt, D, dt):
+      dx2 = dx**2
+      dy2 = dy**2
+      u = np.zeros((nx, nx))
+      mid = int(nx/2)
+
+      # Assuming a square shape!
+      # Initial Condition for diffusion
+      u[int(mid-(mid/4)):int(mid+(mid/4)),
+        int(mid-(mid/4)):int(mid+(mid/4))] = 1
+
+      for n in range(nt):
+          un = u.copy()  # Update previous values
+          u[1:-1, 1:-1] = un[1:-1, 1:-1] + D * \
+              (((un[2:, 1:-1] - 2 * un[1:-1, 1:-1] + un[:-2, 1:-1])/dx2) +
+               ((un[1:-1, 2:] - 2 * un[1:-1, 1:-1] + un[1:-1, :-2])/dy2))
+      return un
+
+  def make_data(N):
+      nx = 100  # Number of x measurements
+      dx, dy = 1, 1   # Change in X & Y
+      nt = 1  # Number of timesteps to make in calculation
+      D = 0.01  # Diffusion constant
+      dt = 0.01  # change in time
+      nts = np.around([nt for nt in np.linspace(1, 10000, N)])
+      dts = {nt: diffuse_2D(nx, dx, dy, int(nt), D, dt) for nt in nts}
+      return dts
+
+
+  from matplotlib.animation import FuncAnimation as fa
+  from matplotlib import animation as animation
+
+  Writer = animation.writers['ffmpeg']
+  writer = Writer(fps=15)
+  fig, ax = plt.subplots(1, subplot_kw={'projection':'3d'})
+  N = 1000
+  dts = make_data(N)
+#+END_SRC
+
+#+BEGIN_SRC ipython :exports code :session diffusions  :results none :eval never-export
+
+  xx, yy = np.mgrid[0:dts[1].shape[0], 0:dts[1].shape[1]]
+
+  A = ax.plot_surface(xx,yy,dts[1])
+  ax.set_xlim(0,100)
+  ax.set_ylim(0,100)
+  ax.set_zlim(0,1)
+
+  def animate(i):
+      nts = np.around([nt for nt in np.linspace(1,10000,N)])
+      ax.clear()
+      A = ax.plot_surface(xx,yy,dts[nts[i]])
+      ax.set_xlim(0,100)
+      ax.set_ylim(0,100)
+      ax.set_zlim(0,1)
+
+  anim = fa(fig, animate, interval=10, frames=N)
+
+  plt.draw()
+  anim.save('./images/anim2.mp4', writer=writer)
+#+END_SRC
 
 
 

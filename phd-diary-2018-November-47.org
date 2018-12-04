@@ -1,0 +1,174 @@
+#+TITLE: PhD Diary Week Beginning 19th November
+#+AUTHOR: Nathan Hughes
+#+OPTIONS: toc:nil H:4 ^:nil
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr}
+#+LaTeX_HEADER: \pagestyle{fancy}
+#+LaTeX_HEADER: \usepackage{lastpage}
+#+LaTeX_HEADER: \usepackage{float}
+#+LaTeX_HEADER: \restylefloat{figure}
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \chead{}
+#+LaTeX_HEADER: \rhead{\today}
+#+LaTeX_HEADER: \cfoot{}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTeX_HEADER:\usepackage{subfig}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+#+LaTeX_HEADER: \usepackage[round]{natbib}
+#+LATEX_HEADER_EXTRA:  \usepackage{framed}
+#+LATEX: \maketitle
+#+LATEX: \clearpage
+#+LATEX: \tableofcontents
+#+LATEX: \clearpage
+
+* Lab work
+- Spent 2 days in lab with Jeroen
+  - Harvested leaf tissue
+  - Did PCR
+  - Ran gels on DNA to check for homozygous
+
+* Ideas
+** TODO Jeroen suggested using 2D diffusion model to work out potential diffusion of chitin
+  - This would allow us to know where to make our "no-mans-zone" for sampling before RNA-seq
+  - Possible reference here citep:chalykhWaterSorptionWater2014 for the diffusion constants of chitin
+*** TODO Find out diffusion constant of chitin
+
+
+* General Maths/Programming
+
+This week I have been working on some more maths in relation to programming. In particular better utilising the numpy library to support faster operations. An online resource: "From Python to Numpy" citep:nicolasp.rougierRougierFrompythontonumpyVersion2016 has been most enlightening.
+
+** DONE Generators
+   CLOSED: [2018-11-23 Fri 10:20]
+https://www.geeksforgeeks.org/use-yield-keyword-instead-return-keyword-python/
+
+
+
+** DONE Python Decorators
+   CLOSED: [2018-11-23 Fri 10:20]
+
+** Timing/Profiling functions
+
+#+BEGIN_SRC ipython :exports code :session :results none   :eval never-export
+  def timeit(method):
+      import time
+      def timed(*args, **kw):
+          ts = time.time()
+          result = method(*args, **kw)
+          te = time.time()
+          return (result, (te-ts))
+
+      return timed
+#+END_SRC
+
+
+
+\clearpage
+** Vectorising with Numpy
+
+*** OOP Approach
+#+BEGIN_SRC ipython :exports code :session  :ipyfile ./images/walkers.png :results none :eval never-export
+  import matplotlib.pyplot as plt
+  from random import randint
+  import seaborn as sns
+  sns.set()
+  %matplotlib inline
+
+
+  class RandomWalker:
+      def __init__(self):
+          self.position = 0
+
+      def walk(self, n):
+          self.position = 0
+          for i in range(n):
+              yield self.position
+              self.position += 2*randint(0, 1)-1
+
+
+  @timeit
+  def make_walkers(x,y):
+      return [[p for p in RandomWalker().walk(y)] for _ in range(x) ]
+
+  N = 10000
+  res, time = make_walkers(N,N)
+  for walker in res:
+      plt.plot(walker)
+  plt.suptitle('Time taken: {0:.2f}'.format(time))
+#+End_SRC
+
+#+CAPTION: Random Walkers
+#+ATTR_LATEX: :width 8cm
+[[./images/walkers.png]]
+
+\clearpage
+*** Vectorised
+
+#+BEGIN_SRC ipython :exports code :session  :ipyfile ./images/vectorised.png :results none :eval never-export
+  from itertools import accumulate
+  from random import choices
+  import matplotlib.pyplot as plt
+  %matplotlib inline
+
+
+
+  def random_walk_faster(n=1000):
+      steps = choices([-1, +1], k=n)
+      return [0]+list(accumulate(steps))
+
+  @timeit
+  def make_walkers(x, y):
+      return [[p for p in random_walk_faster(x)] for _ in range(y)]
+
+
+  res, time = make_walkers(N,N)
+  for walker in res:
+      plt.plot(walker)
+  plt.suptitle('Time taken: {0:.2f}'.format(time))
+#+END_SRC
+
+#+CAPTION: Random Walkers (vectorised)
+#+ATTR_LATEX: :width 8cm
+[[./images/vectorised.png]]
+
+\clearpage
+*** Vectorised with numpy
+
+#+BEGIN_SRC ipython :exports code :session  :ipyfile ./images/npvector.png :results none :eval never-export
+  import matplotlib.pyplot as plt
+  import numpy as np
+  %matplotlib inline
+
+
+  def random_walk_fastest(n=1000):
+      steps = np.random.choice([-1, 1], n)
+      return np.cumsum(steps)
+
+  @timeit
+  def make_walkers(x, y):
+      return [[p for p in random_walk_fastest(x)] for _ in range(y)]
+
+  res, time = make_walkers(N,N)
+
+  for walker in res:
+        plt.plot(walker)
+  plt.suptitle('Time taken: {0:.2f}'.format(time))
+#+END_SRC
+
+#+CAPTION: Random Walkers (numpy vectorised)
+#+ATTR_LATEX: :width 8cm
+[[./images/npvector.png]]
+
+
+\clearpage
+bibliography:library.bib
+bibliographystyle:plainnat
