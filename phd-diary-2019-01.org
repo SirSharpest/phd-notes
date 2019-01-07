@@ -1,0 +1,66 @@
+#+TITLE: PhD Diary for Week beginning Monday the 7th of January
+#+AUTHOR: Nathan Hughes
+#+OPTIONS: toc:nil H:4 ^:nil
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr}
+#+LaTeX_HEADER: \pagestyle{fancy}
+#+LaTeX_HEADER: \usepackage{lastpage}
+#+LaTeX_HEADER: \usepackage{float}
+#+LaTeX_HEADER: \restylefloat{figure}
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \chead{}
+#+LaTeX_HEADER: \rhead{\today}
+#+LaTeX_HEADER: \cfoot{}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTeX_HEADER:\usepackage{subfig}
+#+LaTex_HEADER: \usepackage[round]{natbib}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+#+LATEX_HEADER_EXTRA:  \usepackage{framed}
+#+LATEX: \maketitle
+#+LATEX: \clearpage
+#+LATEX: \tableofcontents
+#+LATEX: \clearpage
+
+* Agenda
+
+** TODO Organise Interim meeting with Richard and Christine
+
+** TODO Fill out the PDP form
+
+** DONE Build analytical solution to 1D diffusion
+   CLOSED: [2019-01-07 Mon 10:36]
+- /See last entry in [[file:phd-diary-2018-December-50.org][December]] for links to explanations/
+#+BEGIN_SRC ipython :exports code :session :results none :eval never-export
+def C(x, t, D): return (1/np.sqrt(4*np.pi*D*t)
+                        * np.exp(- ((np.square(x))/(4*D*t))))
+#+END_SRC
+
+
+** TODO Understand Analytical solution to 1D diffusion [0/6]
+ - [ ] Read up on ODEs
+ - [ ] Read up on PDEs
+ - [ ] Learn how to separate variables of PDE/ODE
+ - [ ] https://www.youtube.com/watch?v=HKvP2ESjJbA&list=PLwIFHT1FWIUJYuP5y6YEM4WWrY4kEmIuS
+ - [ ] https://www.youtube.com/watch?v=LYsIBqjQTdI&list=PLF6061160B55B0203
+
+** TODO Figure out binding constants
+
+The *binding constant* is a special case of the equilibrium constant $K$ and is the inverse of the dissociation constant. It is associated with the binding and unbinding reaction of receptor $R$ and ligand $L$  molecules, formalised as such:
+
+\begin{equation}
+R + L \rightleftharpoons RL
+\end{equation}
+
+
+
+bibliography:library.bib
+bibliographystyle:plainnat

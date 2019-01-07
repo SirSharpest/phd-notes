@@ -1,4 +1,4 @@
-#+TITLE: PhD Diary Week Beginning 3rd December
+#+TITLE: PhD Diary
 #+AUTHOR: Nathan Hughes
 #+OPTIONS: toc:nil H:4 ^:nil
 #+LaTeX_CLASS: article
@@ -24,24 +24,23 @@
 #+LaTeX_HEADER:\usepackage{subfig}
 #+LaTex_HEADER: \usepackage[round]{natbib}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
-
 #+LATEX_HEADER_EXTRA:  \usepackage{framed}
 #+LATEX: \maketitle
-#+LATEX: \clearpage
-#+LATEX: \tableofcontents
-#+LATEX: \clearpage
 
-* Papers to read [0%]
-** TODO Read Regine Kahmann's Papers [0%]
-*** TODO Ustilago maydis effectors and their impact on virulence citep:lanverUstilagoMaydisEffectors2017
-*** TODO How filamentous plant pathogen effectors are translocated to host cells citep:loprestiHowFilamentousPlant2017
-*** TODO A secreted Ustilago maydis effector promotes virulence by targeting anthocyanin biosynthesis in maize citep:tanakaSecretedUstilagoMaydis2014
-** TODO Intercellular and systemic trafficking of RNAs citep:liuIntercellularSystemicTrafficking2018
 
-* TODO Re-read Eva's Thesis
-- Make particular note of the diffusion constants
 
-* TODO
+* Exact Solution to diffusion equation
+Found a decent explanation here: citep:55632.
+
+
+#+CAPTION: Diffusion Equation explanation
+#+ATTR_LATEX: :width 12cm
+#+NAME: fig:Diffusion Equation explanation
+[[./images/diffeq.png]]
+
+
+* Links
+https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3
 
 bibliography:library.bib
 bibliographystyle:plainnat

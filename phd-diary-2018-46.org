@@ -262,7 +262,7 @@ $dts[100] =$:
 
 
 
-** TODO Fully Investigate all parameters and their function
+** Fully Investigate all parameters and their function
 
 \clearpage
 * Diffusion 2D
@@ -280,7 +280,7 @@ Which becomes:
 u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{\Delta x^2} + \frac{(u_{i,j+1}^{n}-2u_{i,j}^{n}+u_{i,j-1}^{n})}{\Delta y^2} )
 \end{equation}
 
-#+BEGIN_SRC ipython :exports code :session diffusions :ipyfile ./images/diffusion2d.png :results none :eval never-export
+#+BEGIN_SRC ipython :exports code :session  :ipyfile ./images/diffusion2d.png :results none :eval never-export
   import numpy as np
   import matplotlib.pyplot as plt
   import seaborn as sns
@@ -289,26 +289,18 @@ u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{
   plt.close('all')
 
 
-  def diffuse_2D(nx, dx, dy, nt, D, dt, prevState=None, prevIter=None):
+  def diffuse_2D(nx, ny, dx, dy, nt, D, dt, prevState=None, prevIter=None):
       dx2 = dx**2
       dy2 = dy**2
-      u = np.zeros((nx, nx))
-      mid = int(nx/2)
+      u = np.zeros((nx, ny))
+      mid_x = int(nx/2)
+      mid_y = int(ny/2)
 
-      def isState():
-          if prevIter is None or prevState is None:
-              return False
-          else True
+      u = prevState.copy()
+      start = prevIter
+      un=u.copy()
 
-      # Assuming a square shape!
-      # Initial Condition for diffusion
-      if not isState():
-          u[int(mid-(mid/4)):int(mid+(mid/4)),
-            int(mid-(mid/4)):int(mid+(mid/4))] = 1
-      else:
-          u = prevState.copy()
-
-      for n in range((prevIter if isState else 1), nt):
+      for n in range(start, nt):
           un = u.copy()  # Update previous values
           u[1:-1, 1:-1] = un[1:-1, 1:-1] + D * \
               (((un[2:, 1:-1] - 2 * un[1:-1, 1:-1] + un[:-2, 1:-1])/dx2) +
@@ -319,11 +311,13 @@ u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{
   nx = 100  # Number of x measurements
   dx, dy = 1, 1   # Change in X & Y
   nt = 1  # Number of timesteps to make in calculation
-  D = 0.01  # Diffusion constant
-  dt = 0.01  # change in time
+  D = 0.2 # Diffusion constant
+  dt = 1  # change in time
   fig, axes = plt.subplots(2, 3, sharex=True, sharey=True)
-  nts = np.around([nt for nt in np.linspace(1, 10000, 6)])
-  dts = {nt: diffuse_2D(nx, dx, dy, int(nt), D, dt) for nt in nts}
+  nts = np.around([nt for nt in np.linspace(1, 1000, 6)])
+  prevState = np.zeros((nx,nx))
+  prevState[80:,80:] = 1
+  dts = {nt: diffuse_2D(nx, nx, dx, dy, int(nt), D, dt, prevState=prevState, prevIter=1) for nt in nts}
 
   for idx, d in enumerate(nts):
       axes[idx//3, idx % 3].imshow(dts[d], cmap='gray', vmin=0, vmax=1)

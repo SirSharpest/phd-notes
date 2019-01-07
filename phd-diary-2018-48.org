@@ -72,7 +72,6 @@ Where:
 - $k$ is [[https://www.wikiwand.com/en/Boltzmann%2527s_constant][Boltzmann's constant]]
 - $T$ is the absolute temperature
 - $r$ is the radius of the spherical particle
-
 Values for these could be:
 
 - $\mu$ = $8.90 \times 10^{-4} Pa$ at 25\degree C
@@ -85,7 +84,7 @@ Thus
 
 \begin{align}
 D &= \frac{1.38e^{-23} \times 298.15 }{6 \pi \times 8.9e^{-4} \times 5.4e^{-10}} \\
-D &\approx 4.54181050564094e^{-10}  m^2/s
+D &\approx 5.511410501227208e^{-10}  m^2/s
 \end{align}
 
 #+BEGIN_SRC ipython :session :exports code :results none :eval never-export
@@ -128,7 +127,7 @@ D = (1.38e-23 * 298.15)/(6*pi * 8.9e-4 * 5.4e-10)
   # Number of timesteps to calculate until
   nt = 6
   # Max time state to reach
-  max_t = 60*60*24*7 # 24 hr
+  max_t = 60*60*24 # 2*24 hr
   # Diffusion constant in mm2/s
   diff = lambda x: ((1.38e-23 * 298.15)/(6*pi * 8.9e-4 * x))
   D = diff(5.4e-10)
@@ -136,7 +135,7 @@ D = (1.38e-23 * 298.15)/(6*pi * 8.9e-4 * 5.4e-10)
   # for visualisation we resize the mm to
   # pixel ratio and apply it to the diffusion constant
   # 42 px to mm
-  D = D*1e+6
+  D = (D*1e+6)
 
   dt = 1  # change in time = 1 second
 
@@ -152,6 +151,7 @@ D = (1.38e-23 * 298.15)/(6*pi * 8.9e-4 * 5.4e-10)
       if idx is 0:
           continue
       prevIter = int(nts[idx-1])
+      prevState[60:60+21, 70:70+21] = 1
       prevState = diffuse_2D(nx, ny, dx, dy, int(n), D, dt, prevState=prevState, prevIter=prevIter)
       states.append(prevState)
 #+END_SRC
@@ -161,8 +161,15 @@ D = (1.38e-23 * 298.15)/(6*pi * 8.9e-4 * 5.4e-10)
   import matplotlib.colors as colors
   import matplotlib.pyplot as plt
   import matplotlib
+  from copy import deepcopy
   %matplotlib inline
+  num_colors = 25
+  backup = deepcopy(states)
+  for idx, _ in enumerate(states):
+       states[idx][states[idx] < (1e-12)/1.48] = 0
 
+  bounds = np.geomspace(states[-1][states[-1]>0].min(),1, num=num_colors)
+  norm = colors.BoundaryNorm(boundaries=bounds, ncolors=256)
   fig, axes = plt.subplots(2, 3, sharex=True, sharey=True, dpi=300)
   leaf = plt.imread('./images/arabidopsis_tmp.png')
 
@@ -171,10 +178,12 @@ D = (1.38e-23 * 298.15)/(6*pi * 8.9e-4 * 5.4e-10)
       masked_data = states[idx].copy()
       #masked_data[masked_data > 1e-200] = 1
       axes[idx//3, idx % 3].imshow(leaf)
-      axes[idx//3, idx % 3].pcolormesh(masked_data, cmap='PuBu', alpha=0.51,  linewidth=0)
+      frame = axes[idx//3, idx % 3].pcolormesh(masked_data, cmap='RdBu_r',  norm=norm, alpha=1,  linewidth=0)
       axes[idx//3, idx % 3].set_axis_off()
-      axes[idx//3, idx % 3].set_title('Minutes: {0:.2f}'.format(int(d)/60))
+      axes[idx//3, idx % 3].set_title('Hours: {0:.2f}'.format((int(d)/60)/60))
 
+  fig.colorbar(frame, ax=axes,format='%.0e')
+  states = deepcopy(backup)
 #+END_SRC
 
 ** Diffusion of Chitin in 60 seconds (minimum threshold of > 1)
