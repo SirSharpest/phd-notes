@@ -60,7 +60,7 @@ The *binding constant* is a special case of the equilibrium constant $K$ and is 
 R + L \rightleftharpoons RL
 \end{equation}
 
-
+The reaction is characterised by
 
 bibliography:library.bib
 bibliographystyle:plainnat

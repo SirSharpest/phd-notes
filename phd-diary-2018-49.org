@@ -83,7 +83,6 @@ D = ((1.38e-23 * 298.15)/(6*pi * 8.9e-4 * sa_r))
 #+END_SRC
 
 ** When would SA overtake Chitin
-
 Assuming no PD slow down, and
 
 #+BEGIN_SRC ipython :exports none :session :results none :eval never-export
