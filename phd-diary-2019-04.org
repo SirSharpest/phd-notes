@@ -27,11 +27,67 @@
 #+LATEX_HEADER_EXTRA:  \usepackage{framed}
 #+LATEX_HEADER_EXTRA: \usepackage{mathtools, cases}
 
-* IDEA Spatial and temporal transcriptomic analysis of the /Arabidopsis thaliana-Botrytis cinerea/ interaction citet:mulemaSpatialTemporalTranscriptomic2012
+#+LATEX: \maketitle
+#+LATEX: \clearpage
+#+LATEX: \tableofcontents
+#+LATEX: \clearpage
+
+
+* Data analysis
+** Currently have
+- Concentration $C$ per cell $i$ at every time point $t$ for both calcium and salisylic acid and for multiple permeability's of plasmodesmata $q$
+*** Examples of data
+
+#+BEGIN_EXPORT latex
+\begin{figure}[!ht]
+  \subfloat[\label{subfig-1:pd1}]{%
+    \includegraphics[width=0.5\textwidth]{./images/sa_pd_10_86400-45078-extended.png}
+  }
+  \hfill
+  \subfloat[\label{subfig-2:pd2}]{%
+    \includegraphics[width=0.5\textwidth]{./images/sa_pd_09_86400-45078-extended.png}
+  } \\
+  \subfloat[\label{subfig-3:pd3}]{%
+    \includegraphics[width=0.5\textwidth]{./images/sa_pd_05_86400-45078-extended.png}
+  }
+  \hfill
+  \subfloat[\label{subfig-4:pd4}]{%
+    \includegraphics[width=0.5\textwidth]{./images/sa_pd_01_86400-45078-extended.png}
+  }
+  \caption[Salisylic Acid]{Salisylic Acid transport at various permiability's of plasmodesmata}
+  \label{fig:pd}
+\end{figure}
+#+END_EXPORT
+
+
+
+
+** Analysis idea
+*** Data analysis
+- Run something like a GLM on these data
+- Take sum of squares percent contributions and evaluate which has largest effect size between chemical size, plasmodesmata permeability in relation to both distance travelled (of a minimum concentration) and/or concentrations with respect to time and space
+*** Data comparing
+- Compare data to literature and see if expectations of distance travelled is similar to anything else suggested in literature
+** TODO Improvements [0/1]
+- [ ] Integrate binding constants / hill equation ideas to produce a decay rate
+- [ ] Predict, from literature, estimates of other cells production
+
+* TODO Spatial and temporal transcriptomic analysis of the /Arabidopsis thaliana-Botrytis cinerea/ interaction citet:mulemaSpatialTemporalTranscriptomic2012
 
 1. Would it be possible to get a hold of the transcriptomics data
    - There may also be an interest in citet:windramArabidopsisDefenseBotrytis2012 also
 2. What could I possibly do with the data if we got it?
+
+* QUESTION From a list of hormones/proteins can I look up gene sequence
+- [ ] BLAST?
+* Some sources show clearly between one layer of cells
+- citet:clarkTrackingTranscriptionFactor2016
+** More potential
+- citet:fordeRoleLongDistance2002
+- citet:kitagawaPlasmodesmataMediatedCelltoCellCommunication2017 - meristem examples
+*** From meristem paper
+- citet:gaillochetCellWhereArt2015,soyarsReadyAimShoot2016,heidstraPlantAnimalStem2014
+
 
 \clearpage
 bibliography:library.bib

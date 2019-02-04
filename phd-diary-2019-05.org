@@ -1,0 +1,47 @@
+#+TITLE: PhD Diary 4th February
+#+AUTHOR: Nathan Hughes
+#+OPTIONS: toc:nil H:4 ^:nil
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr}
+#+LaTeX_HEADER: \pagestyle{fancy}
+#+LaTeX_HEADER: \usepackage{lastpage}
+#+LaTeX_HEADER: \usepackage{float}
+#+LaTeX_HEADER: \restylefloat{figure}
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \chead{}
+#+LaTeX_HEADER: \rhead{\today}
+#+LaTeX_HEADER: \cfoot{}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTeX_HEADER:\usepackage{subfig}
+#+LaTex_HEADER: \usepackage[round, numbers]{natbib}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+#+LATEX_HEADER_EXTRA:  \usepackage{framed}
+#+LATEX_HEADER_EXTRA: \usepackage{mathtools, cases}
+
+#+LATEX: \maketitle
+#+LATEX: \clearpage
+#+LATEX: \tableofcontents
+#+LATEX: \clearpage
+
+* TODO Tasks [1/4]
+** TODO Independent Research Fellowship Conference
+** TODO Graph theory ideas of diffusion
+** TODO Reaction based diffusion
+- A few possibilities, but one would be that a multitude of chemicals are being moved and produced
+- As a result they compete in the same area to diffuse, and impede each other?
+- I.e. figure:ref:fig:ThreeStoogesSyndrome
+#+CAPTION: Three Stooges Syndrome
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:ThreeStoogesSyndrome
+[[./images/stooges.jpeg]]
+** DONE Migrate references to Mendeley for better cross-computer sync
+   CLOSED: [2019-02-04 Mon 10:07]

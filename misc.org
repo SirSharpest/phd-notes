@@ -1,0 +1,105 @@
+* DONE Journal Club
+  CLOSED: [2019-01-22 Tue 11:45]
+
+** Flowers respond to sounds cite:FlowersRespondPollinator
+
+*** Study aim:
+This study tests rapid plant responses to airborne sound in the context of plant-pollinator interactions
+
+*** Introduction
+
+**** It's well known that plants respond to a variety of external stimulus: light, volatile chemicals and mechanical stimulation
+**** Even sound has been investigated in regards to growth rates
+**** 87.5% of flowering plants rely on animal pollinators for reproduction
+***** It is known that plants attract these animals using colour, shape, odour as well as food rewards of nectar and pollen.
+***** Higher reward quality or quantity can result in longer pollinator visits (and chance of return visits)
+***** Though producing better rewards is costly, and nectar suffers from degradation by microbes (and robbery, such as from ants)
+**** Though, no biological function of any plant response to airborne sound has been identified... UNTIL NOW!
+
+
+*** Sounds
+**** Wing-beats of flying pollinators, including birds, insects and bats produce sound waves that travel rapidly through the air
+**** If plants could react to them rapidly they could temporarily increase their pollinator reward
+
+*** Predictions
+**** The authors predicted that nectar sugar concentration would increase in response to sound
+**** It would be possible that the floral organ could relay the airborne acoustic signal into a response, as the 'bowl' shape often present is ideal to capture sound
+
+*** Methods
+**** Using a type of primrose (/oenothera drummondii/), which is host to hawk-moths and bees,
+**** They measured petal vibration and nectar sugar concentration in response to sounds
+**** They cross compared this at different frequencies
+**** The frequencies were:
+1. pollinator recordings
+2. synthetic sounds in pollinator frequencies
+3. in much higher frequencies
+4. silence
+**** To determine whether the playback sounds result in physical vibration of the flower petals they used laser vibrometry
+**** Experimental setup
+***** Everything was randomised, 2 studies were done double blind and different flowers of the same plant were never tested in the same day, nor in the same treatment group
+***** Flowers were emptied of nectar before being exposed to the treatment
+***** Samples taken 3 minutes post-exposure to treatment
+ #+CAPTION: Bees Experiment Table
+ #+ATTR_LATEX: :width 14cm
+ #+NAME: fig:Bees Experiment Table
+ [[./images/bees_s1.png]]
+
+**** Bee recordings were made from 10cm away from flowers
+
+**** Monitoring in the field
+
+***** Moths were considered "near" the plans if they passed within 1cm, Bees 20cm?
+
+***** Time per pollinator at each plant was manually estimated from video recordings
+
+**** Statistics were essentially two-way ANOVA on log sugar concentrations across treatments
+***** Tukey HSD was used to calculate p-values
+
+*** Results
+
+**** Flowers produced nectar with *significantly* increased sugar concentration (fig:[[fig:Fig1]] A) after exposure to the playback of natural sound of bee wing-beats, as well to artificial sounds containing similar frequencies (Bee and Low treatments fig:[[fig:Fig1]] B)
+
+***** The sugar concentration levels were 20% higher in these flowers
+
+**** Flowers exposed to high frequency sounds or none at all aka the 'silence' treatment, offered no significant response (fig:[[fig:Fig1]] B)
+
+**** No difference was found in the treatments prior to application of treatment
+
+
+#+CAPTION: Fig1
+#+ATTR_LATEX: :width 12cm
+#+NAME: fig:Fig1
+[[./images/bees_f1.png]]
+
+#+CAPTION: Fig2
+#+ATTR_LATEX: :width 12cm
+#+NAME: fig:Fig1
+[[./images/bees_f2.png]]
+
+
+**** Pollinators were 9 times more common near plants if there had been one there within 6 minutes, than if there had been none.
+
+**** To validate the importance of the flower itself as an organ of sound reception, they ran another experiment, they covered flowers in glass jars and evaluated again against sound (so as to isolate flowers and the sensing organ). They report no significant difference of treatments when using glass jars.
+
+*** Discussion
+
+**** They found plants respond rapidly to sounds
+
+***** This increases chances of pollination
+
+***** Flowers are used as a sensing organs
+
+**** They find that the artificial sounds as well as natural ones of pollinators both illicit responses (though with slight different temporal patters)
+
+**** Bees have been shown to be able to distinguish sugar concentration levels of as little as 1-3%, so they should be able to detect these 20% changes
+
+**** Too high a sugar change could deter certain species, as it would become too viscous a nectar, but these levels are within "acceptable" ranges
+
+**** The increase may lead to a higher number of flowers visited, per plant, increasing the rate of "self-fertilisation"
+
+***** Although, concentration of resources may lead to depletion and could actually result in pollinators moving elsewhere.
+
+*** What could be better?
+**** The authors could have suggested how this discovery could be placed in a wider scope of the field
+***** i.e. how could this knowledge be used to increase yields
+***** Could this be used to study effects on pests and use this as a pseudo defence mechanism by pre-warning when it's likely to encounter pests?
