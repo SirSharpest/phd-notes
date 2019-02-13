@@ -32,9 +32,30 @@
 #+LATEX: \tableofcontents
 #+LATEX: \clearpage
 
-* TODO Tasks [1/4]
-** TODO Independent Research Fellowship Conference
-** TODO Graph theory ideas of diffusion
+* TODO Tasks [6/12]
+** DONE Independent Research Fellowship Conference
+   CLOSED: [2019-02-04 Tue 15:29]
+** DONE Prepare Talk for next lab-meeting on wheat paper
+   CLOSED: [2019-02-08 Fri 08:48]
+- This is *mostly* done. Just needs speaker-text added and a few supporting figures.
+** DONE Update current PD model to use 2D Data
+   CLOSED: [2019-02-06 Wed 11:04]
+- This was a *bad* idea, the same analysis can be done in 1D as far as analysing the functions go!
+** IDEA Update current PD model to allow for 'wall shutdown'
+- This *maybe* one of the positives for simulating in 2D, can signals navigate around closed/walled off cells? If so what happens?
+- Partly done, just needs code to actually 'switch'.
+** TODO Graph theory ideas of diffusion [3/3]
+*** DONE Clarify with Richard best approaches to take
+    CLOSED: [2019-02-12 Tue 08:25]
+*** ANSWERED Does it make sense to do it with 2D in current model?
+    CLOSED: [2019-02-12 Tue 08:25]
+*** DONE Network types [2/2]
+    CLOSED: [2019-02-12 Tue 08:25]
+- https://blog.statsbot.co/probabilistic-graphical-models-tutorial-and-solutions-e4f1d72af189
+**** ANSWERED Bayesian directed network?
+     CLOSED: [2019-02-12 Tue 08:25]
+**** ANSWERED Markov undirected network?
+     CLOSED: [2019-02-12 Tue 08:25]
 ** TODO Reaction based diffusion
 - A few possibilities, but one would be that a multitude of chemicals are being moved and produced
 - As a result they compete in the same area to diffuse, and impede each other?
@@ -45,3 +66,104 @@
 [[./images/stooges.jpeg]]
 ** DONE Migrate references to Mendeley for better cross-computer sync
    CLOSED: [2019-02-04 Mon 10:07]
+** TODO Read Lu's papers mentioned during talk
+citet:luPeekingPlantHoles2018,Lee2011,Lu2012
+
+** TODO Read/Find papers which have used cell imaging to show movement
+- e.g. citet:Nicolas2017
+
+** IDEA Should I do a Wellcome course?
+- https://coursesandconferences.wellcomegenomecampus.org/our-events/rna-transcriptomics-2019/
+
+** DONE Make list of maths
+   CLOSED: [2019-02-05 Tue 15:28]
+- File can be found here: [[file:~/PHD/Documents/Maths_Challenge.org][missing maths knowledge list]]
+
+** DONE Sensitivity Analysis [3/3]
+   CLOSED: [2019-02-12 Tue 08:23]
+*** ANSWERED Should I do SA on a network model as well as on discrete model
+    CLOSED: [2019-02-08 Fri 09:12]
+
+*** ANSWERED How do input variables affect $C_{i,j}^{t-1}$
+    CLOSED: [2019-02-08 Fri 09:12]
+
+**** Implemented code for the 2D data generated
+#+BEGIN_SRC ipython :exports code
+  from read_data import read_big_json as read_js
+  from scipy.spatial.distance import pdist
+  import pandas as pd
+  from SALib.analyze import morris
+  import numpy as np
+
+  data = pd.read_json('./data_in_pandas.json')
+  data['distance_from_src'] = data.apply(lambda x: x['distance_from_src'][0], axis=1)
+  # Define the eq
+  problem = {
+    'num_vars': 4,
+    'names': ['chem_size', 'pd_size', 'ts', 'distance_from_src'],
+    'bounds': [[data['chem_size'].min(), data['chem_size'].max()],
+                [data['pd_size'].min(),data['pd_size'].max()],
+                [data['ts'].min(),data['ts'].max()],
+                [data['distance_from_src'].min(),data['distance_from_src'].max()]]}
+
+
+  Y = np.array(data['concentration'])
+  # Perform analysis
+  S= morris.analyze(problem, data.iloc[:,1:].values, data.iloc[:,1].values, print_to_console=True)
+  # Returns a dictionary with keys 'S1', 'S1_conf', 'ST', and 'ST_conf'
+  # (first and total-order indices with bootstrap confidence intervals)
+#+END_SRC
+
+***** When ran gives:
+
+ | Parameter         | Mu_Star |     Mu | Mu_Star_Conf | Sigma |
+ |-------------------+---------+--------+--------------+-------|
+ | chem_size         |   0.000 |  0.000 |        0.000 | 0.000 |
+ | pd_size           |   0.000 | -0.000 |        0.000 | 0.000 |
+ | ts                |   0.000 | -0.000 |        0.000 | 0.000 |
+ | distance_from_src |   0.000 |  0.000 |        0.000 | 0.000 |
+ /N.B./ Grouping needs applied?
+
+*** ANSWERED How does it work on 1D Analytical solution
+    CLOSED: [2019-02-08 Fri 09:52]
+
+**** Implemented code for the 1D discrete solution
+
+#+BEGIN_SRC ipython :exports code
+from SALib.sample import saltelli
+from SALib.analyze import sobol
+from SALib.analyze import morris
+import numpy as np
+
+def C(x, t, D): return (1/np.sqrt(4*np.pi*D*t)
+                        * np.exp(- ((np.square(x))/(4*D*t))))
+
+def stokes_einstein(x): return ((1.38e-23 * 298.15)/(6*np.pi * 8.9e-4 * x))
+
+D = stokes_einstein(3.5e-10) * 1e+6
+problem = {
+    'num_vars': 3,
+    'names': ['x', 't', 'D'],
+    'bounds': [[-1, +1],
+               [0, 60*60],
+               [D/2, D*2]]
+}
+param_values = saltelli.sample(problem, 1000, calc_second_order=False)
+Y = np.array([C(*pv) for pv in param_values])
+Si = morris.analyze(problem, param_values, Y, print_to_console=True)
+#+END_SRC
+
+***** When ran gives
+
+| Parameter | Mu_Star |     Mu | Mu_Star_Conf | Sigma |
+|-----------+---------+--------+--------------+-------|
+| x         |   0.306 | -0.037 |        0.020 | 0.465 |
+| t         |   0.342 | -0.241 |        0.021 | 0.439 |
+| D         |   0.202 | -0.071 |        0.017 | 0.359 |
+
+* Misc
+- http://scikit-image.org/docs/dev/user_guide/numpy_images.html useful for making disk mask of np array
+  - Could be used to simulate treatments on the apoplast
+
+bibliography:../Documents/library.bib
+bibliographystyle:unsrtnat
