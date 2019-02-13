@@ -1,0 +1,56 @@
+#+TITLE: PhD Diary February 11th 2019
+#+AUTHOR: Nathan Hughes
+#+OPTIONS: toc:nil H:4 ^:nil
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
+#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
+#+LaTeX_HEADER: \usepackage{fancyhdr}
+#+LaTeX_HEADER: \pagestyle{fancy}
+#+LaTeX_HEADER: \usepackage{lastpage}
+#+LaTeX_HEADER: \usepackage{float}
+#+LaTeX_HEADER: \restylefloat{figure}
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
+#+LaTex_HEADER: \usepackage{titlesec}
+#+LaTex_HEADER: \setcounter{secnumdepth}{4}
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
+#+LaTeX_HEADER: \chead{}
+#+LaTeX_HEADER: \rhead{\today}
+#+LaTeX_HEADER: \cfoot{}
+#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
+#+LaTeX_HEADER: \usepackage[parfill]{parskip}
+#+LaTeX_HEADER:\usepackage{subfig}
+#+LaTex_HEADER: \usepackage[sort&compress, numbers]{natbib}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
+#+LATEX_HEADER_EXTRA:  \usepackage{framed}
+#+LATEX_HEADER_EXTRA: \usepackage{mathtools, cases}
+
+#+LATEX: \maketitle
+#+LATEX: \clearpage
+#+LATEX: \tableofcontents
+#+LATEX: \clearpage
+
+
+* TODO Tasks [2/6]
+** TODO Follow up on sensitivity analysis
+** TODO Network based diffusion
+- There's a python library for just this! cite:rossettiNDlibPythonLibrary2018
+** TODO Investigate reaction-based diffusion
+** DONE Give talk on wheat domestication paper
+   CLOSED: [2019-02-13 Wed 08:57]
+** DONE Do florescence screening of plants with Jeroen
+   CLOSED: [2019-02-12 Tue 08:26]
+** TODO Using the ABA paper cite:Kitagawa2018 compare diffusive properties of moss
+#+CAPTION: Moss Imaging Example to comapre data to, from cite:kitagawaQuantitativeImagingDirectional2013a
+#+ATTR_LATEX: :width 5cm
+#+NAME: fig:Moss Imaging Example to comapre data to
+[[./images/flu_intensity.png]]
+
+** TODO ODEs cite:nykampdqIntroductionOrdinaryDifferential
+
+
+
+bibliography:../Notes/library.bib
+bibliographystyle:plainnat
