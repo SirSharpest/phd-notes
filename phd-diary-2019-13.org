@@ -1,0 +1,154 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+
+* Tasks [3/6]
+
+** DONE Create a data set from Christine's images for n-order connections from origin cell
+   CLOSED: [2019-04-03 Wed 09:07]
+
+- Moving to longer term goals
+
+*** TODO Think of exact uses for this first
+** TODO Show limits of instability for $\Delta x|y$
+- It would be good to show that, for example, greater than 30 minutes and $\Delta x|y$ can be the length of an average cell
+- This would mean the network idea could work much faster and better
+
+** DONE Test $D_{eff}$ vector idea
+   CLOSED: [2019-04-01 Mon 10:29]
+
+*** This probably won't work
+
+*Because if we make it a matrix, then we make the assumption that all connections to and from a cell are of a similar q, otherwise we aren't recording what's leaving and what's coming in accurately !*
+
+Something like this:
+
+#+BEGIN_SRC ipython :session :results raw drawer :eval never-export
+  def diffuse_vectorise(un, g, b, dt, dx2, dy2, a):
+      """
+      Takes a state, rate of decay, production, delta time, delta space and
+      flux of molecule. Uses these data to compute next time state
+      """
+      return (un[1:-1, 1:-1] + a *
+              (((un[2:, 1:-1] - 2 * un[1:-1, 1:-1] + un[:-2, 1:-1]))/dx2 +
+               ((un[1:-1, 2:] - 2 * un[1:-1, 1:-1] + un[1:-1, :-2]) / dy2))) *\
+          g + b
+#+END_SRC
+
+Though, where $\alpha$ should be
+
+\begin{equation}
+\alpha =
+ \begin{pmatrix}
+      D_{0,0} & \cdots & D_{0,x}
+      \\
+      \vdots & & \vdots
+      \\
+      D_{y,0} & \cdots & D_{y,x}
+       \end{pmatrix}
+\end{equation}
+
+
+** TODO Look into applying for this course
+[[https://coursesandconferences.wellcomegenomecampus.org/our-events/systems-biology-2019/]]
+
+** DONE Fill out VPN form and ask Richard to sign off on it
+   CLOSED: [2019-04-05 Fri 10:03]
+
+** TODO Come up with questions to ask and answer with proposed models?
+*** QUESTION Is it possible, or is there any use for coming up with probabilistic networks
+- These could be inferred from Christine and J's imaging data.
+
+**** Example table
+
+| Origin  cell connections | avg brightness of 1st neighbours | avg brightness of 2nd neighbours |
+|--------------------------+----------------------------------+----------------------------------|
+|                        4 |                              0.5 |                              0.2 |
+|                        2 |                              0.7 |                              0.3 |
+|                        5 |                              0.3 |                              0.1 |
+
+
+#+CAPTION: Example of networks, initial cell being red, 1st order green and 2nd order yellow cells
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Example of networks, initial cell being red, 1st order green and 2nd order yellow cells
+[[./images/network_example.png]]
+
+
+
+
+* Signalling networks course
+
+** Notes
+
+- There are a lot of protein overlaps between pathways (Lu et al. Trends Biochem Sci 2007)
+  - Some share core components, some just proteins
+
+- E.g.
+  - Input (ligands)
+  - Pathway mediators (cross-talk proteins)
+  - Output (transcription factors)
+- Pathway definitions are not identical
+- Curation rules are not uniform
+- Cross-talks and overlaps (multi-pathway proteins) cannot be examined (easily)
+
+*** Types of signalling pathways
+- Canonical (e.g. mapk)
+- Functional (e.g. inflammation)
+- Inferred (e.g. from expression data)
+  - Take out what is not expressed and it simplifies everything
+- Cellular processes regulating (e.g. autophagy induction)
+- Organ-related (e.g. vulva development)
+- Disease-related
+- Drug-related
+
+*Highly overlapping, functionally NOT distinct pathways*
+*Comparison or cross-talk analysis between different types of signalling pathways is incorrect*
+
+*** Defining canonical signalling pathways
+**** Papers
+- 1998 Warkany Lecture: signaling pathways in development (john gerhart)
+- The evolution of signalling pathways in animal development
+
+** Case study citet:korcsmarosUniformlyCuratedSignaling2010
+- SignaLink database
+  - Korcsmaros et al., Bioifnormatics (2010), PloS ONEe (2011)
+- Often interactions are inferred cross species, and report interactions which are never verified
+- Key question to ask:
+  - Are they physically interacting or are they indirectly interacting
+
+** Lookup
+*** Interactions lookup
+- IHOP
+- Chilibot
+- PSICQUIC interface lookup
+
+** Signal transduction
+- Activity flows are directed interactions
+- Process descriptions, directed, sequential and mechanistic
+- Enzyme substrate interactions - they show directionality
+*** Papers
+- Concalves et al 2012 Mol. BioSyst
+- Le Novere, Nat Rev Genet 2015
+
+** Software
+*** Reactome
+- is for  interactions, manually curated and peer-reviewed - FOSS - pathways are hierarchically organised
+- Very nice for visualisation
+*** Signor
+- Data structure for entities and relationships
+- Grabs references for each interaction
+
+** Cytoscape and data analysis for networks
+*** Summary of intro
+- Networks are useful
+- Transitivity of networks is worth looking into
+
+** Omnipath and Bypath
+
+- https://github.com/deeenes/bioinfo-tools#python-ides
+
+
+
+bibliography:library.bib
+bibliographystyle:plainnat

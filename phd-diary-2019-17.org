@@ -1,0 +1,34 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks [0/3]
+
+** TODO RNA-seq pipleine
+
+*** TODO Finish up the trimmomatic parts
+
+#+CAPTION: Adaptor information
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Adaptor information
+[[./images/adaptors.png]]
+
+- GATCGGAAGAGCACACGTCTGAACTCCAGTCACATCACGATCTCGTATGCCGTCTTCTGCTT
+- AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCTG
+
+**** Alternative?
+- https://github.com/seqan/flexbar
+
+
+*** TODO Add in the DE elements
+
+
+** TODO Finish Probation talk
+
+** TODO Make training data for cell-imaging
+
+* TODO Rewrite project goals/aims
+- As per Steve's recommendation, write more of a "why are here today" - esk question
+
+  bibliography:library.bib
+  bibliographystyle:plainnat

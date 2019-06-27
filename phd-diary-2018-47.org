@@ -120,23 +120,22 @@ https://www.geeksforgeeks.org/use-yield-keyword-instead-return-keyword-python/
   %matplotlib inline
 
 
-
+  N = 100
   def random_walk_faster(n=1000):
       steps = choices([-1, +1], k=n)
       return [0]+list(accumulate(steps))
 
-  @timeit
   def make_walkers(x, y):
       return [[p for p in random_walk_faster(x)] for _ in range(y)]
 
 
-  res, time = make_walkers(N,N)
+  res = make_walkers(N,N)
   for walker in res:
       plt.plot(walker)
-  plt.suptitle('Time taken: {0:.2f}'.format(time))
 #+END_SRC
 
 #+CAPTION: Random Walkers (vectorised)
+#+ATTR_HTML: :width 350px
 #+ATTR_LATEX: :width 8cm
 [[./images/vectorised.png]]
 
@@ -149,11 +148,10 @@ https://www.geeksforgeeks.org/use-yield-keyword-instead-return-keyword-python/
   %matplotlib inline
 
 
-  def random_walk_fastest(n=1000):
+  def random_walk_fastest(n=20):
       steps = np.random.choice([-1, 1], n)
       return np.cumsum(steps)
 
-  @timeit
   def make_walkers(x, y):
       return [[p for p in random_walk_fastest(x)] for _ in range(y)]
 
@@ -161,7 +159,7 @@ https://www.geeksforgeeks.org/use-yield-keyword-instead-return-keyword-python/
 
   for walker in res:
         plt.plot(walker)
-  plt.suptitle('Time taken: {0:.2f}'.format(time))
+
 #+END_SRC
 
 #+CAPTION: Random Walkers (numpy vectorised)

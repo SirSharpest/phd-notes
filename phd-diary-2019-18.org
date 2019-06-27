@@ -1,0 +1,21 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* RNA-seq data has arrived
+- Functional analysis?
+
+** TODO RNA-seq python [0/5]
+
+- [ ] Import data
+  - Data are already in TSV - Pandas
+- [ ] Remove genes with no change
+  - Check for genes with across all samples have < N where N is probably >3<10
+- [ ] Normalise
+  - For this we could just do a simple normalise to longest and create balancing factor
+- [ ] Pair data with experimental / treatment info
+- [ ] Produce ordered list of genes
+- [ ] produce clustering dendrogram https://python-graph-gallery.com/404-dendrogram-with-heat-map/
+
+  bibliography:library.bib
+  bibliographystyle:plainnat

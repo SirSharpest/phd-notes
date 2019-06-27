@@ -1,0 +1,272 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks [7/12]
+** DONE Redo citet:Kitagawa2018 data figures
+   CLOSED: [2019-03-27 Wed 14:22]
+*** DONE Write optimising procedure for $q$
+    CLOSED: [2019-03-27 Wed 14:22]
+
+ #+BEGIN_SRC ipython :eval never
+ from node_diffusion import do_internode_diffusion
+ from diffusion_functions import D_eff
+ import numpy as np
+ import matplotlib.pyplot as plt
+ from scipy.optimize import leastsq
+
+ cells = 151  # need to take two extra measurements to get sample of 5 without slicing
+ cell_um = 100
+ points_per_cell = 10  # Needs to be divisible by 2
+ Xs = cells*points_per_cell
+ dx = cell_um//points_per_cell
+ dx2 = dx**2
+
+ b = 0.0
+ dt = 0.01
+ # convert to seconds
+ t = 1/dt
+ num_seconds = 60*60*14
+ ts = int(t * num_seconds)
+
+ moss_values = [0.08, 0.15, 0.3, 0.2, 0.1]
+
+ err = 1
+ q = 0.0015
+
+
+ def optimize_q(q):
+     u = np.zeros((Xs, 1))
+     u[(Xs//2)-(points_per_cell//2):(Xs//2)+(points_per_cell//2)] = 1
+     D = D_eff(83, q, cell_um)
+     nds, u = do_internode_diffusion(
+         u, dx2, D, dt, b, cell_um, points_per_cell, ts)
+     fig = plt.figure(0, figsize=(10, 10))
+     fig.clf()
+     fig, ax = plt.subplots(1, 1, figsize=(5, 5), num=0)
+
+     ax.plot(np.arange(-(cells*cell_um)//2, +(cells*cell_um)//2, step=cell_um)+50,
+             nds, marker='o', label='Model')
+
+     ax.set_xlim(-250, 250)
+     ax.set_ylim(-0.02, 1)
+
+     ax.set_xlabel(r'$\mu m$')
+     ax.plot(np.linspace(-200, 200, num=5), moss_values,
+             label='Kitawga et al.', marker='o')
+
+     err = np.square((nds[(len(nds)//2)-2:(len(nds)//2)+3] - moss_values)).sum()
+
+     fig.suptitle('Q={0} \t err^2 = {1}'.format(q, err))
+     fig.tight_layout()
+     fig.savefig('./images/{0}.png'.format(str(q).replace('.', '_')))
+
+     # Minimise sum of squared errors
+     return err
+
+ result = leastsq(optimize_q, [q])
+ print(result)
+ #+END_SRC
+
+*** DONE minimise difference of model to data
+    CLOSED: [2019-03-26 Tue 14:53]
+
+**** Mock treatment
+ #+BEGIN_SRC ipython :exports none :session  :ipyfile ./images/kitagawa.png :results none :eval never-export
+   from  intercellular_diffusion_lib.node_diffusion import do_internode_diffusion
+   import intercellular_diffusion_lib.diffusion_functions as diff_funcs
+   import numpy as np
+   import matplotlib.pyplot as plt
+   import seaborn as sns
+   sns.set()
+
+   cells = 11  # need to take two extra measurements to get sample of 5 without slicing
+   cell_um = 100
+   points_per_cell = 2  # Needs to be divisible by 2 #TODO: put a fix in place
+   Xs = cells*points_per_cell
+   u = np.zeros((Xs, 1))
+   u[(Xs//2)-(points_per_cell//2):(Xs//2)+(points_per_cell//2)] = 1
+   dx = cell_um//points_per_cell
+   dx2 = dx**2
+   b = 0.0
+   dt = 1
+   q = 0.00139
+   D = diff_funcs.D_eff(83, q, cell_um)
+   # convert to seconds
+   t = 1/dt
+   num_seconds = 60*60*14
+   ts = int(t * num_seconds)
+   moss_values = [0.08, 0.2, 0.33, 0.14, 0.05]
+
+   nds, u = do_internode_diffusion(
+       u, dx2, D, dt, b, cell_um, points_per_cell, ts)
+
+   fig = plt.figure(0, figsize=(5, 5))
+   fig, ax = plt.subplots(1, 1, figsize=(5, 5), num=0)
+
+   ax.set_xlim(-210, 210)
+
+
+   ax.set_xlabel('Cells')
+   ax.plot(np.linspace(-200, 200, num=5), [0,0,1,0,0],
+           label='Kitawga et al. 0hrs', marker='o')
+   ax.plot(np.linspace(-200, 200, num=5), moss_values,
+           label='Kitawga et al. 14hrs', marker='o')
+   ax.plot(np.arange(-(cells*cell_um)//2, +(cells*cell_um)//2, step=cell_um)+50,
+           nds, marker='o', label='Model 14hrs')
+
+   ax.legend()
+
+   x_labels_loc = np.linspace(-200, 200, num=5)
+   x_labels = ["{0}".format(x) for x in ['+2', '+1', '0', '-1', '-2']]
+
+   ax.set_xticks(x_labels_loc)
+   ax.set_xticklabels(x_labels)
+   pred = nds[(len(nds)//2)-2:(len(nds)//2)+3]
+
+   #absDiff = np.abs(pred, moss_values)
+   #avgDiff = absDiff.mean()
+
+
+   #fig.suptitle(r'$RSS^2$ = {0}'.format(np.around(0.0061, 4)))
+   fig.suptitle('$q=0.0014\mu m/s$')
+   fig.tight_layout()
+ #+END_SRC
+
+ #+CAPTION: Testing against Kitagawa data
+ #+ATTR_HTML: :width 400px
+ #+ATTR_LATEX: :width 8cm
+ [[./images/kitagawa.png]]
+
+**** ABA treatment
+
+ #+BEGIN_SRC ipython :exports none :session  :ipyfile ./images/kitagawa_aba.png :results none :eval never-export
+   from  intercellular_diffusion_lib.node_diffusion import do_internode_diffusion
+   import intercellular_diffusion_lib.diffusion_functions as diff_funcs
+   import numpy as np
+   import matplotlib.pyplot as plt
+   import seaborn as sns
+   sns.set()
+
+   cells = 11  # need to take two extra measurements to get sample of 5 without slicing
+   cell_um = 100
+   points_per_cell = 10  # Needs to be divisible by 2 #TODO: put a fix in place
+   Xs = cells*points_per_cell
+   u = np.zeros((Xs, 1))
+   u[(Xs//2)-(points_per_cell//2):(Xs//2)+(points_per_cell//2)] = 1
+   dx = cell_um//points_per_cell
+   dx2 = dx**2
+   b = 0.0
+   dt = 1
+   q = 6.2e-05
+   D = diff_funcs.D_eff(83, q, cell_um)
+   # convert to seconds
+   t = 1/dt
+   num_seconds = 60*60*14
+   ts = int(t * num_seconds)
+   moss_values =  [0, 0.12, 0.8, 0.09, 0]
+
+   nds, u = do_internode_diffusion(
+       u, dx2, D, dt, b, cell_um, points_per_cell, ts)
+
+   fig = plt.figure(0, figsize=(5, 5))
+   fig, ax = plt.subplots(1, 1, figsize=(5, 5), num=0)
+
+   ax.set_xlim(-210, 210)
+
+
+   ax.set_xlabel('Cells')
+   ax.plot(np.linspace(-200, 200, num=5), [0,0,1,0,0],
+           label='Kitawga et al. 0hrs', marker='o')
+   ax.plot(np.linspace(-200, 200, num=5), moss_values,
+           label='Kitawga et al. 14hrs', marker='o')
+   ax.plot(np.arange(-(cells*cell_um)//2, +(cells*cell_um)//2, step=cell_um)+50,
+           nds, marker='o', label='Model 14hrs')
+
+   ax.legend()
+
+   x_labels_loc = np.linspace(-200, 200, num=5)
+   x_labels = ["{0}".format(x) for x in ['+2', '+1', '0', '-1', '-2']]
+
+   ax.set_xticks(x_labels_loc)
+   ax.set_xticklabels(x_labels)
+   pred = nds[(len(nds)//2)-2:(len(nds)//2)+3]
+
+   #absDiff = np.abs(pred, moss_values)
+   #avgDiff = absDiff.mean()
+
+
+   #fig.suptitle(r'$RSS^2$ = {0}'.format(np.around(0.0061, 4)))
+   fig.suptitle('$q=0.000075\mu m/s$')
+   fig.tight_layout()
+ #+END_SRC
+
+ #+CAPTION: Testing against Kitagawa data with aba treatment
+ #+ATTR_HTML: :width 400px
+ #+ATTR_LATEX: :width 8cm
+ [[./images/kitagawa_aba.png]]
+
+** TODO Use Jeroen's data for similar measurements (estimate experimental variation rate for dendra2)
+** TODO Make sense of Christine's bombardment data
+
+
+** ANSWERED Does it make sense to use $D_{eff}$ even for intra-cellular diffusion
+   CLOSED: [2019-04-01 Mon 09:42]
+- Not really, its the same
+*** ANSWERED Is it worth testing effect of using $D$ vs $D_{eff}$?
+    CLOSED: [2019-04-01 Mon 09:42]
+- Shouldn't make a difference really, unless we are concerned with intra-cellular activity
+
+
+** TODO Move towards fully node based graph model with proof of results
+Still use a low $\Delta x$ but just use dist = cell to approx
+- Cell length / 10 works consistently
+
+#+CAPTION: Sketch of idea
+#+ATTR_HTML: :width 300px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Sketch of idea
+[[./images/node_idea.jpg]]
+
+** TODO Test $D_{eff}$ vector idea
+
+#+BEGIN_SRC ipython :session :results raw drawer :eval never-export
+  def diffuse_vectorise(un, g, b, dt, dx2, dy2, a):
+      """
+      Takes a state, rate of decay, production, delta time, delta space and
+      flux of molecule. Uses these data to compute next time state
+      """
+      return (un[1:-1, 1:-1] + a *
+              (((un[2:, 1:-1] - 2 * un[1:-1, 1:-1] + un[:-2, 1:-1]))/dx2 +
+               ((un[1:-1, 2:] - 2 * un[1:-1, 1:-1] + un[1:-1, :-2]) / dy2))) *\
+          g + b
+#+END_SRC
+
+** ANSWERED Is plasmodesmata closure in a cell homogeneous and does it effect both sides
+   CLOSED: [2019-04-01 Mon 09:51]
+- I'd argue it cannot be.
+  - For this to be the case then a domino effect would have to occur.
+    - Need a reference for this, something that shows PD behave differently different distances from MAMP/PAMP site
+
+** DONE Finish presentation
+   CLOSED: [2019-04-01 Mon 09:51]
+** TODO Finish chapter 1.5 of report
+** DONE Give practice presentation to Morris group
+   CLOSED: [2019-04-01 Mon 09:51]
+** DONE Follow up on images of bombardment assays with Christine
+   CLOSED: [2019-04-01 Mon 09:51]
+** DONE Use citet:deinumSimpleModelsComplex2013 A.69 with numerical solution
+   CLOSED: [2019-04-01 Mon 09:51]
+
+
+* Questions
+** How best to make use of $D_{eff}$
+Not sure how best to use, as it will give a linear curve for diffusion.
+- Could probably do a $D_{eff}$ with a $k$, for cell number, term
+
+\begin{equation}
+\alpha = \frac{Dql}{D+ql}
+\end{equation}
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

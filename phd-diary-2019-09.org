@@ -1,0 +1,148 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+
+
+* Just need to remember that this exists:
+http://hplgit.github.io/fdm-book/doc/pub/diffu/html/._diffu-solarized001.html
+
+
+* TODO Tasks [5/7]
+
+
+** DONE Fix cell border reflection
+   CLOSED: [2019-03-08 Fri 11:16]
+- This is one of the reasons that analytical solution would be ideal ... although saying that, it has the same *problem* of no reflection.
+- There are a fixed number of 2D/1D states which need to be considered. Considering Y and X interchangeable we would do something like:
+  1. Y = i+1, i-1, X = i+1, i-1
+  2. Y = i+1, X = i+1, i-1
+  3. Y = i-1, X = i+1, i-1
+  4. X = i+1, i-1
+
+
+*** DONE Solution:
+    CLOSED: [2019-03-07 Thu 08:55]
+
+/Solved - the reflection happens asymmetrically if the IC isn't centred/
+
+Will need this regardless, as when it comes to cells becoming "switched off" we will need to consider intermediate solutions
+
+
+Use an intermediate 1.5D function:
+- 2 points (1D diffusion)
+- 3 points (1.5D diffusion)
+- 4 points (2D diffusion)
+
+**** Quick clarifications
+
+***** 1D
+ \begin{equation}
+ c^{t+1}_i = c^t_i + D  \frac{c^t_{i-1} - 2c^t_i + c^t_{i+1} }{\Delta x^2} + b
+ \end{equation}
+
+***** 2D
+ \begin{equation}
+ c^{t+1}_{i,j} = c^t_{i,j} + D  (\frac{c^t_{i-1,j} - 2c^t_{i,j} + c^t_{i+1,j} }{\Delta x^2} + \frac{c^t_{i,j-1} - 2c^t_{i,j} + c^t_{i,j+1} }{\Delta y^2})+ b
+ \end{equation}
+
+
+Which if $\Delta x^2 \equiv \Delta y^2$ then
+
+ \begin{equation}
+ c^{t+1}_{i,j} = c^t_{i,j} + D \frac{(c^t_{i-1,j} - 2c^t_{i,j} + c^t_{i+1,j})+(c^t_{i,j-1} - 2c^t_{i,j} + c^t_{i,j+1})  }{\Delta x^2}+ b
+ \end{equation}
+
+and simplifies to
+
+\begin{equation}
+ c^{t+1}_{i,j} = c^t_{i,j} + D \frac{c^t_{i-1,j} - 4c^t_{i,j} + c^t_{i+1,j} + c^t_{i,j-1} + c^t_{i,j+1}  }{\Delta x^2}+ b
+\end{equation}
+
+***** IDEA 1.5D
+
+if we reduce the area of diffusion by $1/4$  then it stands to reason that the loss to $C^t{_i,j}$ is also reduced appropriately, giving:
+
+ \begin{equation}
+ c^{t+1}_{i,j} = c^t_{i,j} + D \frac{(c^t_{i-1,j} - 3c^t_{i,j} + c^t_{i+1,j}+c^t_{i,j-1} - c^t_{i,j+1}) }{\Delta x^2}+ b
+ \end{equation}
+
+
+
+** DONE Finally compare diffeq with numerical solution
+   CLOSED: [2019-03-07 Thu 11:28]
+
+** With D of SA
+#+CAPTION: Comarping analytical solution with numerical
+#+ATTR_HTML: :width 300px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Comarping analytical solution with numerical
+[[./images/analytical_numerical.png]]
+
+** With $D_{eff}$
+#+CAPTION: Comarping analytical solution with numerical
+#+ATTR_HTML: :width 300px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Comarping analytical solution with numerical
+[[./images/d_eff.png]]
+
+
+** DONE Meet with Jeroen
+   CLOSED: [2019-03-05 Tue 13:47]
+
+** DONE Fix $D$ to actually use $D_{eff}$$
+   CLOSED: [2019-03-08 Fri 09:49]
+- Details can be found in cite:deinumSimpleModelsComplex2013
+- Additional details found on pg 23 of cite:deinumSimpleModelsComplex2013
+
+*** NOTE: As $q$ is described as a flux, then increasing it increases $D_{eff}$
+
+*** Equation
+
+**** In number of cells
+\begin{equation}
+D_{eff} \equiv \lambda^2 \delta = \frac{\delta}{(\log{(\Delta \_)})^2}
+\end{equation}
+
+**** In $\mu m$
+
+\begin{equation}
+D^{\prime}_{eff} \equiv (\lambda^{\prime})^2 \delta = \frac{\delta l^2}{(\log{(\Delta \_)})^2}
+\end{equation}
+
+
+**** Adding in $\lim_{\delta \to 0}$ in number of cells
+
+\begin{equation}
+D_{S,eff} = \frac{Dq}{l(D+ql)}
+\end{equation}
+
+**** Adding in $\lim_{\delta \to 0}$ in $\mu m$
+
+\begin{equation}
+D^{\prime}_{S,eff} = \frac{Dql}{D+ql}
+\end{equation}
+
+**** Parameters
+#+CAPTION: Parameters of $D_{eff}$
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align l|l|X
+| Parameter   | Default                          | Comment                                                            |
+|-------------+----------------------------------+--------------------------------------------------------------------|
+| $\delta$    | $0.001 ; 1 \times 10^{-5}s^{-1}$ | Degradation constant                                               |
+| $l$         | $10 ; 100 \mu m$                 | Cell length                                                        |
+| $q$         | $1 ; 10 \mu m / s$               | Effective wall permeability for symplastic transport               |
+| $\lambda$   | Integer                          | Number of cells                                                    |
+| $D$         | $300 \mu m^2/s$                  | Diffusion speed of auxin (needs verification with stokes equation) |
+| $\Delta \_$ | ?                                | Not really required for 2nd set of equations                       |
+
+** TODO Use newly updated model to find effective flux of data presented by citet:kitagawaQuantitativeImagingDirectional2013a
+
+** TODO In citet:deinumSimpleModelsComplex2013 how did they evaluate model parameters
+- Pg. 23 starting point?
+
+** DONE Go to employer forum (Thursday 12:30)
+   CLOSED: [2019-03-08 Fri 09:49]
+
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

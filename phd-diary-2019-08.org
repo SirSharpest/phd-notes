@@ -1,0 +1,31 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+
+* TODO Tasks [2/5]
+** DONE Find a paper for journal club
+   CLOSED: [2019-03-01 Fri 12:24]
+- Probably going to use citet:sekulska-nalewajkoSpatialReferencingChlorophyll2019
+** DONE Equations in appendix of citet:deinumSimpleModelsComplex2013
+   CLOSED: [2019-03-01 Fri 12:24]
+** TODO Reading list [0/4]
+- [ ] https://www.themathpage.com/aCalc/chain.htm
+- [ ] http://mathworld.wolfram.com/First-OrderOrdinaryDifferentialEquation.html
+- [ ] https://www.cliffsnotes.com/study-guides/differential-equations/applying-differential-equations/applications-of-second-order-equations
+** TODO Differential calculus
+*** TODO Where the heck does $e$ come from
+- http://www.ugrad.math.ubc.ca/coursedoc/math100/notes/diffeqs/intro.html
+** TODO Integral calculus
+
+
+
+ bibliography:library.bib
+ bibliographystyle:plainnat
+
+* Node Diffusion work
+
+#+CAPTION: Matching Kitagawa data
+#+ATTR_LATEX: :width 14cm
+#+NAME: fig:Matching Kitagawa data
+[[./images/line_plot_diffusion.png]]

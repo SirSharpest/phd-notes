@@ -1,0 +1,22 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Interest:
+
+** RNA-Seq
+- https://www.youtube.com/watch?v=SZ6suqu-eLA&list=PL2mpR0RYFQsBiCWVJSvVAO3OJ2t7DzoHA&index=11
+- https://www.youtube.com/watch?v=xh_wpWj0AzM
+
+* Tasks
+** TODO Take $D_eff$ and confirm it matches the previous values for reduction
+- i.e. the waterfall curves
+
+ bibliography:library.bib
+ bibliographystyle:plainnat
+ignore
+* Deep learning fun
+
+https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/installation.md
+
+https://stackoverflow.com/questions/49915041/can-i-finetune-deeplab-to-a-custom-dataset-in-tensorflow

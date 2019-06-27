@@ -1,0 +1,1328 @@
+This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2018.10.31)  14 NOV 2018 16:15
+ system commands enabled.
+**diffusion2d3d-odd.tex
+(./diffusion2d3d-odd.tex
+LaTeX2e <2018-04-01> patch level 2
+Lua module: luaotfload-main 2017/01/29 2.80001 OpenType layout system.
+Lua module: lualibs 2017-02-01 2.5 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2017-02-01 2.5 ConTeXt Lua libraries -- extended co
+llection.(using write cache: /Users/hughesn/Library/texlive/2018/texmf-var/luate
+x-cache/generic)(using read cache: /usr/local/texlive/2018/texmf-var/luatex-cach
+e/generic /Users/hughesn/Library/texlive/2018/texmf-var/luatex-cache/generic)
+luaotfload | conf : Root cache directory is /Users/hughesn/Library/texlive/2018/
+texmf-var/luatex-cache/generic/names.
+luaotfload | init : Loading fontloader ‚Äúfontloader-2017-02-11.lua‚Äù from kpse
+-resolved path ‚Äú/usr/local/texlive/2018/texmf-dist/tex/luatex/luaotfload/fontl
+oader-2017-02-11.lua‚Äù.
+Lua-only attribute luaotfload@state = 1
+Lua-only attribute luaotfload@noligature = 2
+Lua-only attribute luaotfload@syllabe = 3
+luaotfload | init : Context OpenType loader version ‚Äú3.027‚Äù
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 4
+luaotfload | conf : Root cache directory is /Users/hughesn/Library/texlive/2018/
+texmf-var/luatex-cache/generic/names.
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
+font'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
+_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
+t_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
+'.
+Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
+.
+luaotfload | main : initialization completed in 0.097 seconds
+Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from /Users/hughesn/Library/texlive
+/2018/texmf-var/luatex-cache/generic/names/luaotfload-names.luc(load luc: /Users
+/hughesn/Library/texlive/2018/texmf-var/luatex-cache/generic/fonts/otl/lmroman10
+-regular.luc))
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/04/06 v1.3b Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+)
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 105.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: luatex.def on input line 99.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/luatex.def
+File: luatex.def 2018/01/08 v1.0l Graphics/color driver for luatex
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grffile.sty
+Package: grffile 2017/06/30 v1.18 Extended file name support for graphics (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX detected.
+))))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO)
+
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks17
+)
+Package grffile Info: Option `multidot' is set to `true'.
+Package grffile Info: Option `extendedchars' is set to `false'.
+Package grffile Info: Option `space' is set to `true'.
+Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 494.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip43
+\LTright=\skip44
+\LTpre=\skip45
+\LTpost=\skip46
+\LTchunksize=\count88
+\LTcapwidth=\dimen105
+\LT@head=\box26
+\LT@firsthead=\box27
+\LT@foot=\box28
+\LT@lastfoot=\box29
+\LT@cols=\count89
+\LT@rows=\count90
+\c@LT@tables=\count91
+\c@LT@chunks=\count92
+\LT@p@ftn=\toks18
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen106
+\WF@size=\dimen107
+\c@WF@wrappedlines=\count93
+\WF@box=\box30
+\WF@everypar=\toks19
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count94
+\rotFPtop=\skip47
+\rotFPbot=\skip48
+\rot@float@box=\box31
+\rot@mess@toks=\toks20
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box32
+\UL@hyphenbox=\box33
+\UL@skip=\skip49
+\UL@hook=\toks21
+\UL@height=\dimen108
+\UL@pe=\count95
+\UL@pixel=\dimen109
+\ULC@box=\box34
+Package: ulem 2012/05/18
+\ULdepth=\dimen110
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks22
+\ex@=\dimen111
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen112
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count96
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count97
+\leftroot@=\count98
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count99
+\DOTSCASE@=\count100
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box35
+\strutbox@=\box36
+\big@size=\dimen113
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count101
+\c@MaxMatrixCols=\count102
+\dotsspace@=\muskip10
+\c@parentequation=\count103
+\dspbrk@lvl=\count104
+\tag@help=\toks23
+\row@=\count105
+\column@=\count106
+\maxfields@=\count107
+\andhelp@=\toks24
+\eqnshift@=\dimen114
+\alignsep@=\dimen115
+\tagshift@=\dimen116
+\tagwidth@=\dimen117
+\totwidth@=\dimen118
+\lineht@=\dimen119
+\@envbody=\toks25
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/capt-of/capt-of.sty
+Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: luatex-loader 2016/05/16 v0.6 Lua module loader (HO)
+
+(/usr/local/texlive/2018/texmf-dist/scripts/oberdiek/oberdiek.luatex.lua)
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO)
+
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen120
+\Hy@linkcounter=\count108
+\Hy@pagecounter=\count109
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count110
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4509.
+Package hyperref Info: Link nesting OFF on input line 4514.
+Package hyperref Info: Hyper index ON on input line 4517.
+Package hyperref Info: Plain pages OFF on input line 4524.
+Package hyperref Info: Backreferencing OFF on input line 4529.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4762.
+\c@Hy@tempcnt=\count111
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5115.
+\XeTeXLinkMargin=\dimen121
+\Fld@menulength=\count112
+\Field@Width=\dimen122
+\Fld@charsize=\dimen123
+Package hyperref Info: Hyper figures OFF on input line 6369.
+Package hyperref Info: Link nesting OFF on input line 6374.
+Package hyperref Info: Hyper index ON on input line 6377.
+Package hyperref Info: backreferencing OFF on input line 6384.
+Package hyperref Info: Link coloring OFF on input line 6389.
+Package hyperref Info: Link coloring with OCG OFF on input line 6394.
+Package hyperref Info: PDF/A mode OFF on input line 6399.
+LaTeX Info: Redefining \ref on input line 6439.
+LaTeX Info: Redefining \pageref on input line 6443.
+\Hy@abspage=\count113
+\c@Item=\count114
+\c@Hfootnote=\count115
+)
+Package hyperref Info: Driver (autodetected): hluatex.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hluatex.def
+File: hluatex.def 2018/02/06 v6.86b Hyperref driver for luaTeX
+\Fld@listcount=\count116
+\c@bookmark@seq@number=\count117
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
+2.
+)
+\Hy@SectionHShift=\skip53
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2017/07/19 v2.5 Yet another Pygments shim for LaTeX
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2017/07/08 v1.3.1 fvextra - extensions and patches for fancyvrb
+
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count118
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count119
+\FV@InFile=\read1
+\FV@TabBox=\box37
+\c@FancyVerbLine=\count120
+\FV@StepNumber=\count121
+\FV@OutFile=\write3
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbat
+im
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count122
+\output=\toks27
+\linenoprevgraf=\count123
+\linenumbersep=\dimen124
+\linenumberwidth=\dimen125
+\c@linenumber=\count124
+\c@pagewiselinenumber=\count125
+\c@LN@truepage=\count126
+\c@internallinenumber=\count127
+\c@internallinenumbers=\count128
+\quotelinenumbersep=\dimen126
+\bframerule=\dimen127
+\bframesep=\dimen128
+\bframebox=\box38
+LaTeX Info: Redefining \\ on input line 3056.
+)
+\c@FV@TrueTabGroupLevel=\count129
+\c@FV@TrueTabCounter=\count130
+\FV@TabBox@Group=\box39
+\FV@TmpLength=\skip54
+\c@FV@HighlightLinesStart=\count131
+\c@FV@HighlightLinesStop=\count132
+\FV@LoopCount=\count133
+\FV@NCharsBox=\box40
+\FV@BreakIndent=\dimen129
+\FV@BreakIndentNChars=\count134
+\FV@BreakSymbolSepLeft=\dimen130
+\FV@BreakSymbolSepLeftNChars=\count135
+\FV@BreakSymbolSepRight=\dimen131
+\FV@BreakSymbolSepRightNChars=\count136
+\FV@BreakSymbolIndentLeft=\dimen132
+\FV@BreakSymbolIndentLeftNChars=\count137
+\FV@BreakSymbolIndentRight=\dimen133
+\FV@BreakSymbolIndentRightNChars=\count138
+\c@FancyVerbLineBreakLast=\count139
+\FV@LineBox=\box41
+\FV@LineIndentBox=\box42
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count140
+\calc@Bcount=\count141
+\calc@Adimen=\dimen134
+\calc@Bdimen=\dimen135
+\calc@Askip=\skip55
+\calc@Bskip=\skip56
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count142
+\calc@Cskip=\skip57
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 67.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+)
+(./diffusion2d3d-odd.w18))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write4
+\integerpart=\count143
+\decimalpart=\count144
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip58
+\fb@frw=\dimen136
+\fb@frh=\dimen137
+\FrameRule=\dimen138
+\FrameSep=\dimen139
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count145
+\float@exts=\toks28
+\float@box=\box43
+\@float@everytoks=\toks29
+\@floatcapt=\box44
+)
+\minted@appexistsfile=\read2
+\minted@bgbox=\box45
+\minted@code=\write5
+\c@minted@FancyVerbLineTemp=\count146
+\c@minted@pygmentizecounter=\count147
+\@float@every@listing=\toks30
+\c@listing=\count148
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: luatex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(./diffusion2d3d-odd.aux)
+\openout1 = diffusion2d3d-odd.aux
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 28.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count149
+\scratchdimen=\dimen140
+\scratchbox=\box46
+\nofMPsegments=\count150
+\nofMParguments=\count151
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count152
+\MPscratchDim=\dimen141
+\MPnumerator=\count153
+\makeMPintoPDFobject=\count154
+\everyMPtoPDFconversion=\toks32
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 43
+8.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG
+,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+
+))
+\AtBeginShipoutBox=\box47
+Package hyperref Info: Link coloring OFF on input line 28.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count155
+)
+LaTeX Info: Redefining \ref on input line 28.
+LaTeX Info: Redefining \pageref on input line 28.
+LaTeX Info: Redefining \nameref on input line 28.
+
+(./diffusion2d3d-odd.out) (./diffusion2d3d-odd.out)
+\@outlinefile=\write6
+
+\openout6 = diffusion2d3d-odd.out
+ (./diffusion2d3d-odd.toc)
+\tf@toc=\write7
+
+\openout7 = diffusion2d3d-odd.toc
+
+! String contains an invalid utf-8 sequence.
+l.32 
+   PNG
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.33 
+    
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.34  
+      
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.34   
+      
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.34    
+      
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR 
+         j  -   a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  
+         j  -   a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  
+          j  -   a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j 
+             -   a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  
+             -   a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  
+              -   a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -
+                   a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -
+                    a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  - 
+                    a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -  
+                    a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   
+                    a:Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.35 IHDR  j  -   a:
+                      Ë     sBIT|d   	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë    
+                           sBIT|d   	pHYs    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     
+                           sBIT|d   	pHYs    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     
+                            sBIT|d   	pHYs    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     sBIT
+                                 |d   	pHYs    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     sBIT
+                                  |d   	pHYs    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     sBIT
+                                   |d   	pHYs    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     sBIT
+                                    |d   	pHYs    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     sBIT|
+                                      d   	pHYs    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.35 IHDR  j  -   a:Ë     sBIT|d
+                                          	pHYs    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     sBIT|d   
+                                           	pHYs    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     sBIT|d   	pHYs 
+                                                    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 IHDR  j  -   a:Ë     sBIT|d   	pHYs  
+                                                    “››\\textasciitilde{}..
+.
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 ...  j  -   a:Ë     sBIT|d   	pHYs  
+                                                    “››\\textasciitilde{}...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 ... j  -   a:Ë     sBIT|d   	pHYs  
+                                                    “››\\textasciitilde{} ...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 ...j  -   a:Ë     sBIT|d   	pHYs   
+                                                   “››\\textasciitilde{}  ...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 ...j  -   a:Ë     sBIT|d   	pHYs    
+                                                  “››\\textasciitilde{}   ...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 ...  -   a:Ë     sBIT|d   	pHYs    
+                                                  “››\\textasciitilde{}   9...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 ... -   a:Ë     sBIT|d   	pHYs    
+                                                  “››\\textasciitilde{}   9t...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 ...-   a:Ë     sBIT|d   	pHYs    
+                                                  “››\\textasciitilde{}   9tE...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.35 ...-   a:Ë     sBIT|d   	pHYs    
+                                                  “››\\textasciitilde{}   9tE...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.35 ...|d   	pHYs    “››\\textasciitilde{}
+                                                     9tEXtSoftware matplotl...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.35 ...|d   	pHYs    “››\\textasciitilde{}   
+                                                  9tEXtSoftware matplotlib v...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.35 ...  “››\\textasciitilde{}   9tEXtSoftware 
+                                                  matplotlib version 3.0.1, ...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.36 m
+      }  IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.36 m  
+        }  IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+\pdf@escapestring ...string("\luaescapestring {#1}
+                                                  ", "byte")}
+l.36 m  }
+           IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+\Url@z ...fter \strip@prefix \meaning \Url@String 
+                                                  }\Url@ObeySp \Url@acthash ...
+l.36 m  }
+           IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 36.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 36.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 36.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Missing character: There is no ÔøΩ (U+FFFD) in font ec-lmtt10!
+
+! Text line contains an invalid character.
+l.36 m  }  
+           IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.36 m  }  IDATx
+                ÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.36 m  }  IDATxÏΩii
+                    dgY.|\{ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.36 m  }  IDATxÏΩiidgY.|
+                          \{ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.36 m  }  IDATxÏΩiidgY.|
+                             \{ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.36 m  }  IDATxÏΩiidgY.|\{
+                                ÔÓtÓtwtw»((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.36 m  }  IDATxÏΩiidgY.|\{ÔÓtÓtwtw
+                                    »((I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.36 m  }  IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((
+                                        I\^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.36 m  }  IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((I
+                                         \^{}"22Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.36 ... }  IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"2
+                                                  2Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.36 ... }  IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"2
+                                                  2Ec(Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.36 ...IDATxÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"22E
+                                                  c(Q„AQAQPD9
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.36 ...DATxÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"22Ec
+                                                  (Q„AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.36 ...xÏΩiidgY.|\{ÔÓtÓtwtw»((I\^{}"22Ec(Q
+                                                  „AQAQPD9
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.37 r"
+     »ÁÁó√√\\(?A@ \)Hd
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.37 r"»Á
+        Áó√√\\(?A@ \)Hd
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.37 r"»ÁÁó√√\\(
+             ?A@ \)Hd
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.37 r"»ÁÁó√√\\(?
+                  A@ \)Hd
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.37 r"»ÁÁó√√\\(?
+                  A@ \)Hd
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.37 r"»ÁÁó√√\\(?A@ 
+                       \)Hd
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.37 r"»ÁÁó√√\\(?A@ 
+                        \)Hd
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.37 r"»ÁÁó√√\\(?A@ 
+                        \)Hd
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.37 r"»ÁÁó√√\\(?A@ \)
+                             Hd
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 C
+     4!IÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyym›
+00...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 C4!I
+         ÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyym›
+00...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.38 C4!I
+         ÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyym›
+00...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 C4!IÈÓ=Ó=T=T’öœèg=Ô∞Ü
+                      Uj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyym›00...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.38 C4!IÈÓ=Ó=T=T’öœèg=Ô∞ÜUj
+                           ›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyym›00
+...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.38 C4!IÈÓ=Ó=T=T’öœèg=Ô∞ÜUj
+                           ›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyym›00
+...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 C4!IÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊
+                              ◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyym›00..
+.
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 C4!IÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ
+                                 ]÷ªﬁµv◊;;‹œœ˝‹èÁyym›00...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 C4!IÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv
+                                         ◊;;‹œœ˝‹èÁyym›00...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 C4!IÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œ
+                                            œ˝‹èÁyym›00...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 C4!IÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹è
+                                               Áyym›00...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.38 ...ÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›0000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...ÈÓ=Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›00000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...Ó=T=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...=T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›0000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...T’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›00000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...’öœèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›000000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...œèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›0000000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...œèg=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›00000000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...g=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›000000000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...g=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›0000000000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...=Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›00000000000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...Ô∞ÜUj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›000000000000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...Uj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›0000000000000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...Uj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›00000000000000000...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...Uj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›00000000000000000 ...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...Uj›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›00000000000000000 ...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! Text line contains an invalid character.
+l.38 ...j›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›00000000000000000 ...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.38 ...j›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyy
+                                                  m›00000000000000000 ...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 ...›˝ﬁ◊◊’’◊◊Æ]÷ªﬁµv◊;;‹œœ˝‹èÁyym
+                                                  ›00000000000000000 ∆¿...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! Text line contains an invalid character.
+l.38 ...Áyym›00000000000000000 
+                                                  ∆¿`5...
+A funny symbol that I can't read has just been input.
+Continue, and I'll forget that it ever happened.
+
+! String contains an invalid utf-8 sequence.
+l.38 ...Áyym›00000000000000000 
+                                                  ∆¿`5...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 ...m›00000000000000000 ∆¿
+                                                  `5...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 ...m›00000000000000000 ∆¿
+                                                  `5...
+A funny symbol that I can't read has just been (re)read.
+Just continue, I'll change it to 0xFFFD.
+
+! String contains an invalid utf-8 sequence.
+l.38 ...m›00000000000000000 ∆¿
+                                                  `5...
+(That makes 100 errors; please try again.)
+
+Here is how much of LuaTeX's memory you used:
+ 10511 strings out of 494413
+ 125200,319454 words of node,token memory allocated
+ 2449 words of node memory still in use:
+   12 hlist, 1 vlist, 2 rule, 1 disc, 3 local_par, 2 dir, 2 math, 26 glue, 4 ker
+n, 9 penalty, 52 noad, 52 math_char, 139 glyph, 21 attribute, 59 glue_spec, 21 a
+ttribute_list, 2 temp, 1 write, 1 pdf_start_link, 1 pdf_end_link, 2 pdf_dest, 1 
+pdf_action, 1 pdf_colorstack nodes
+   avail lists: 1:1,2:2,4:1,5:6,9:3
+ 14215 multiletter control sequences out of 65536+600000
+ 38 fonts using 2213199 bytes
+ 36i,3n,35p,1153b,261s stack positions out of 5000i,500n,10000p,200000b,100000s
+!  ==> Fatal error occurred, no output PDF file produced!

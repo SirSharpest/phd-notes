@@ -1,0 +1,12 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* TODO RNA-seq
+
+** TODO Find cross compare genes from treatments
+
+** TODO Find suitable seedling data for a baseline
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

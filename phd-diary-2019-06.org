@@ -1,54 +1,121 @@
 #+TITLE: PhD Diary February 11th 2019
 #+AUTHOR: Nathan Hughes
-#+OPTIONS: toc:nil H:4 ^:nil
-#+LaTeX_CLASS: article
-#+LaTeX_CLASS_OPTIONS: [a4paper]
-#+LaTeX_HEADER: \usepackage[margin=0.8in]{geometry}
-#+LaTeX_HEADER: \usepackage{amssymb,amsmath}
-#+LaTeX_HEADER: \usepackage{fancyhdr}
-#+LaTeX_HEADER: \pagestyle{fancy}
-#+LaTeX_HEADER: \usepackage{lastpage}
-#+LaTeX_HEADER: \usepackage{float}
-#+LaTeX_HEADER: \restylefloat{figure}
-#+LaTeX_HEADER: \usepackage{hyperref}
-#+LaTeX_HEADER: \hypersetup{urlcolor=blue}
-#+LaTex_HEADER: \usepackage{titlesec}
-#+LaTex_HEADER: \setcounter{secnumdepth}{4}
-#+LaTeX_HEADER: \usepackage{minted}
-#+LaTeX_HEADER: \setminted{frame=single,framesep=10pt}
-#+LaTeX_HEADER: \chead{}
-#+LaTeX_HEADER: \rhead{\today}
-#+LaTeX_HEADER: \cfoot{}
-#+LaTeX_HEADER: \rfoot{\thepage\ of \pageref{LastPage}}
-#+LaTeX_HEADER: \usepackage[parfill]{parskip}
-#+LaTeX_HEADER:\usepackage{subfig}
-#+LaTex_HEADER: \usepackage[sort&compress, numbers]{natbib}
-#+LaTeX_HEADER: \hypersetup{colorlinks=true,linkcolor=black, citecolor=black}
-#+LATEX_HEADER_EXTRA:  \usepackage{framed}
-#+LATEX_HEADER_EXTRA: \usepackage{mathtools, cases}
-
-#+LATEX: \maketitle
-#+LATEX: \clearpage
-#+LATEX: \tableofcontents
-#+LATEX: \clearpage
+#+INCLUDE: "./preamble.org" :minlevel 1
 
 
 * TODO Tasks [2/6]
 ** TODO Follow up on sensitivity analysis
 ** TODO Network based diffusion
 - There's a python library for just this! cite:rossettiNDlibPythonLibrary2018
+- Another nice introduction which can be re-purposed cite:IntroductionGraphTheory2018
 ** TODO Investigate reaction-based diffusion
 ** DONE Give talk on wheat domestication paper
    CLOSED: [2019-02-13 Wed 08:57]
 ** DONE Do florescence screening of plants with Jeroen
    CLOSED: [2019-02-12 Tue 08:26]
-** TODO Using the ABA paper cite:Kitagawa2018 compare diffusive properties of moss
+** TODO citet:Kitagawa2018 compare diffusive results
+
+#+ATTR_LATEX: :environment longtable :width \textwidth :align ll|lllll
+#+NAME: tab:estimate
+#+CAPTION: Estimating the fluorescence from figure
+| ABA um | $T$ H | Cell -2 | Cell -1 | Cell 0 | Cell +1 | Cell +2 |
+|--------+-------+---------+---------+--------+---------+---------|
+|      0 |     0 |       0 |       0 |      1 |       0 |       0 |
+|      0 |    14 |    0.08 |    0.15 |    0.3 |     0.2 |     0.1 |
+|      1 |     0 |       0 |       0 |      1 |       0 |       0 |
+|      1 |    14 |    0.08 |    0.19 |    0.3 |    0.23 |     0.1 |
+|      5 |     0 |       0 |       0 |      1 |       0 |       0 |
+|      5 |    14 |    0.08 |    0.23 |   0.45 |     0.3 |     0.1 |
+|     10 |     0 |       0 |       0 |      1 |       0 |       0 |
+|     10 |    14 |    0.08 |     0.2 |    0.6 |     0.3 |     0.1 |
+|     50 |     0 |       0 |       0 |      1 |       0 |       0 |
+|     50 |    14 |       0 |     0.1 |    0.8 |     0.1 |       0 |
+
+
+
+#+CAPTION: Moss Results
+#+ATTR_LATEX: :width 14cm
+#+NAME: fig:Moss Results
+[[./images/moss_paper_results.png]]
+
+
+#+BEGIN_SRC ipython :exports none :session  :ipyfile ./images/diffusion_14hr.png :results none
+  import matplotlib.pyplot as plt
+  import numpy as np
+  %matplotlib inline
+
+  def stokes_einstein(x): return ((1.38e-23 * 298.15)/(6*np.pi * 8.9e-4 * x))
+
+  def analytical(x, t, D): return (1/np.sqrt(4*np.pi*D*t)
+                          ,* np.exp(- ((np.square(x))/(4*D*t))))
+
+  D = (stokes_einstein(3.5e-10) * 1e+6)
+
+  #plt.plot([analytical(x/1e+6,60*60*14,D) for x in [-2, -1, 0, 1, 2]] )
+  plt.plot([analytical(x/1e+6,1,D) for x in [-2, -1, 0, 1, 2]] )
+  #plt.ylim(0,1)
+#+END_SRC
+
+#+CAPTION: Diffusion at 14hrs
+#+ATTR_LATEX: :width 8cm
+[[./images/diffusion_14hr.png]]
+
+
+
+** TODO citet:kitagawaQuantitativeImagingDirectional2013a, compare diffusive results
 #+CAPTION: Moss Imaging Example to comapre data to, from cite:kitagawaQuantitativeImagingDirectional2013a
-#+ATTR_LATEX: :width 5cm
+#+ATTR_LATEX: :width 4cm
 #+NAME: fig:Moss Imaging Example to comapre data to
 [[./images/flu_intensity.png]]
 
+\clearpage
+
+#+ATTR_LATEX: :environment longtable :width \textwidth :align l|l|l
+#+NAME: tab:estimate_intens
+#+CAPTION: Estimating the fluorescence from figure
+| $T$ | Cell -1 | Cell+1 |
+|-----+---------+--------|
+|   0 |      20 |     20 |
+|  15 |      25 |     40 |
+|  30 |      40 |     60 |
+|  45 |      45 |     76 |
+|  60 |      50 |     90 |
+
+/N.B./ The paper doesn't mean $T_0$ is actually that: "The time-lapse imaging was started within 30 min of
+photoconversion"
+*** This is curious, cite:kitagawaQuantitativeImagingDirectional2013a shows directional behaviour
+
+
 ** TODO ODEs cite:nykampdqIntroductionOrdinaryDifferential
+
+
+** TODO For simulations have someone else check units?
+
+** TODO Change solutions to be inter-cellular, not intra
+Realisation: I've been focusing on how things move within cells and really what I should focus on is the relationship of the diffusion!
+
+
+** TODO Seems like an interesting chapter on diffusion equations in bio/chem cite:planteMonteCarloSimulationParticle2013
+
+
+** Eva's equation for flow in K cells
+
+#+BEGIN_SRC ipython :session :results raw drawer
+  %matplotlib inline
+  import matplotlib.pyplot as plt
+  import numpy as np
+  from scipy.special import erf
+
+
+  delta = 1
+
+
+  def f(k,T):
+      return beta/2*np.sqrt(D*delta) * np.exp(-np.sqrt(delta/D*abs(k))) * (1+erf(np.sqrt(delta*T)-abs(k)/2*np.sqrt(D*T) )) \
+          + np.exp(-np.sqrt(delta/D*abs(k))) * (1-erf(np.sqrt(delta*T)-abs(k)/2*np.sqrt(D*T) ))
+
+
+#+END_SRC
 
 
 

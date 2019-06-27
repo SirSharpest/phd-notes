@@ -1,0 +1,45 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* TODO Tasks [0/5]
+** TODO Finish report!
+
+** Explore steady state effects
+- What effect does $q$ have on steady state of model and time to reach steady state?
+
+** TODO Write up notes from meeting with Richard
+
+*** Hypotheses
+
+- Using trancripts, are defence responses across cells the same?
+- Is there a clear cascade effect in play:
+  - Perception
+  - Response
+- Does SA binding trigger defence
+- Is there a threshold for activation of response
+  - Is it low or a high threshold?
+- Is defence signalled via PD
+- Is SA associated with response/triggering it
+- Can effectors move symplastically (imaging may show?)
+
+
+** TODO Write some steady state models
+
+*** With these SS models we can show that
+
+**** Decay
+- A high level of decay would mean that cells cannot accumulate enough of a hormone to trigger a change (assuming a threshold)
+- A low level of decay leads to a linear growth
+
+**** Production
+- Production and decay are entirely relative to each other, as we assume decay is a % of total concentrations
+- Changing production will keep the same trends, just different retaliative quantities
+- Production > decay decreases the distance between neighbouring cell profiles
+
+** TODO Show limits of accuracy and which points for diff model
+
+** IDEA Can we work out transience + production of SA by using the difference in photo-activation and GFP-tagged PDLP2
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

@@ -1,0 +1,15 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+
+* TODO Tasks [2/3]
+** TODO Write presentation
+** DONE Sensitivity analysis on D and D_{eff}
+   CLOSED: [2019-03-20 Wed 14:15]
+- https://en.wikipedia.org/wiki/Variance-based_sensitivity_analysis#cite_note-Sob1-3
+** DONE Go to cohort training
+   CLOSED: [2019-03-18 Mon 17:04]
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

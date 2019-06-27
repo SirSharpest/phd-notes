@@ -136,6 +136,7 @@ u_{i}^{n+1}=u_{i}^{n}+ D \frac{(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n})}{\Delta x^2}
 #+END_SRC
 
 #+CAPTION: Diffusion initial condition from left quarter
+#+ATTR_HTML: :width 500px
 #+ATTR_LATEX: :width 9cm
 [[./images/diffusion1_side.png]]
 
@@ -175,6 +176,7 @@ u_{i}^{n+1}=u_{i}^{n}+ D \frac{(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n})}{\Delta x^2}
 
 
 #+CAPTION: Diffusion over time
+#+ATTR_HTML: :width 500px
 #+ATTR_LATEX: :width 12cm
 [[./images/diffusion2.png]]
 
@@ -328,6 +330,7 @@ u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{
 #+END_SRC
 
 #+CAPTION: Diffusion in 2D
+#+ATTR_HTML: :width 600px
 #+ATTR_LATEX: :width 14cm
 [[./images/diffusion2d.png]]
 
@@ -352,6 +355,7 @@ u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{
 #+END_SRC
 
 #+CAPTION: 3D projection of 2D diffusion
+#+ATTR_HTML: :width 600px
 #+ATTR_LATEX: :width 14cm
 [[./images/diffusion2d3d.png]]
 
@@ -403,6 +407,7 @@ u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{
 #+END_SRC
 
 #+CAPTION: Diffusion in 2D
+#+ATTR_HTML: :width 500px
 #+ATTR_LATEX: :width 14cm
 [[./images/diffusion2d-odd.png]]
 
@@ -427,6 +432,7 @@ u_{i,j}^{n+1}=u_{i,j}^{n}+ D (\frac{(u_{i+1,j}^{n}-2u_{i,j}^{n}+u_{i-1,j}^{n})}{
 #+END_SRC
 
 #+CAPTION: 3D projection of 2D diffusion
+#+ATTR_HTML: :width 500px
 #+ATTR_LATEX: :width 14cm
 [[./images/diffusion2d3d-odd.png]]
 

@@ -1,0 +1,87 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+
+** TODO Formulate some /formal/ hypotheses
+*** In general for project
+
+*** Specifically the RNA-seq data
+
+- /There are no differences in water treatments at 05hr for../
+  - /Col0 and Cerk1/
+  - /Col0 and Lym2/
+  - /Cerk1 and Lym2/
+
+- /There are no differences in chitin treatments at 05hr for../
+  - /Col0 and Cerk1/
+  - /Col0 and Lym2/
+  - /Cerk1 and Lym2/
+
+- /There are no differences in water treatments at 6hr for../
+  - /Col0 and Cerk1/
+  - /Col0 and Lym2/
+  - /Cerk1 and Lym2/
+
+- /There are no differences in chitin treatments at 6hr for../
+  - /Col0 and Cerk1/
+  - /Col0 and Lym2/
+  - /Cerk1 and Lym2/
+
+
+**** Venn Diagram to aid understanding
+
+When reading the following Venn diagram read it as such: Overlapping sections are where under chitin treatment there are differences.
+ #+BEGIN_SRC ipython :session :ipyfile '((:name "vennTreatments" :filename "obipy-resources/vennTreatments.png" :caption "Venn diagram of the treatments in the initial RNA-seq experiment" :attr_html ":width 200px" :attr_latex ":width 10cm")) :exports results
+   from matplotlib_venn import venn3
+   import matplotlib.pyplot as plt
+   import seaborn as sns
+   sns.set()
+   plt.close('all')
+   plt.figure(figsize=(6,6))
+   v3 = venn3(subsets = {'100':50, '010':50, '110':50,
+                         '001':50, '101':50, '011':50, '111':10},
+              set_labels = ('', '', ''))
+
+   v3.get_label_by_id('100').set_text('Col0')
+   v3.get_label_by_id('010').set_text('Lym2')
+   v3.get_label_by_id('001').set_text('Cerk1')
+   v3.get_label_by_id('110').set_text('Genes that regulate\nPD WRT chitin')
+   v3.get_label_by_id('101').set_text('Genes needed to\nperceive chitin')
+   v3.get_label_by_id('011').set_text('?')
+   v3.get_label_by_id('111').set_text('?')
+
+   for text in v3.subset_labels:
+       text.set_fontsize(15)
+
+   plt.show()
+ #+END_SRC
+
+     #+RESULTS:
+     :RESULTS:
+     # Out [26]:
+     # text/plain
+     : <Figure size 864x864 with 1 Axes>
+
+     # image/png
+     #+attr_html: :width 200px
+     #+attr_latex: :width 10cm
+     #+caption: Venn diagram of the treatments in the initial RNA-seq experiment
+     #+name: vennTreatments
+     [[file:obipy-resources/vennTreatments.png]]
+     :END:
+
+
+
+** TODO Brush up on plant anatomy
+- Specifically, looking at sections mentioned in citet:yanSphingolipidBiosynthesisModulates2019
+
+** DONE Compare citet:stringlisRootTranscriptionalDynamics2018 multiqc to ours
+   CLOSED: [2019-06-17 Mon 10:39]
+
+** TODO There are different structures of PD, investigate
+- Are they tissue specific, or do we need to consider them in leaf tissue?
+
+  bibliography:library.bib
+  bibliographystyle:plainnat

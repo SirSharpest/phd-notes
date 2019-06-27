@@ -1,0 +1,137 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+
+* TODO Tasks [5/8]
+
+** DONE Test $D_{eff}$ and show that length is a significant variable
+   CLOSED: [2019-03-11 Mon 09:54]
+
+\begin{equation}
+D^{\prime}_{S,eff} = \frac{Dql}{D+ql}
+\end{equation}
+
+#+BEGIN_SRC ipython :session :results none :export code :eval never
+  from SALib.sample import saltelli
+  from SALib.analyze import sobol
+  import numpy as np
+
+  sa = stokes_einstein(3.5e-10) * 1e12
+  auxin = 300  # from Dienum
+
+  problem = {
+      'num_vars': 3,
+      'names': ['D', 'q', 'l'],
+      'bounds': [[auxin, sa],
+                 [1, 100],
+                 [50, 100]]
+  }
+
+  def D_eff(d, q, l):
+      return (D*q*l)/(d+q*l)
+
+
+  param_values = saltelli.sample(problem, 1000)
+
+  Y = np.array([D_eff(*pv) for pv in param_values])
+
+  Si = sobol.analyze(problem, Y)
+#+END_SRC
+
+*** Results
+ #+CAPTION: Sensitivity Analysis for $D_{eff}$
+ #+ATTR_LATEX: :environment tabularx :width 9cm :align l|llll
+ | Parameter |       S1 |  S1_conf |       ST |  ST_conf |
+ |-----------+----------+----------+----------+----------|
+ | D         | 0.035749 | 0.016874 | 0.043222 | 0.006289 |
+ | q         | 0.920810 | 0.125206 | 0.942366 | 0.065333 |
+ | l         | 0.025096 | 0.016028 | 0.030981 | 0.004830 |
+
+
+** DONE Statistically test analytical and numerical solutions to diffusion eq
+   CLOSED: [2019-03-12 Tue 15:10]
+#+CAPTION: Comparing Analytical to Numerical
+#+NAME: fig:Comparing Analytical to Numerical
+#+ATTR_HTML: :width 400px
+#+ATTR_LATEX: :width 10cm
+[[./images/compare_analytical_to_numerical.png]]
+
+** TODO Questions for Friday meeting
+- What is the short term plans (3 months)
+- What is the longer term plan (3-6 months)
+- What side projects could be of use?
+** DONE Implement Eq. A.70 with full actual parameters
+   CLOSED: [2019-03-15 Fri 12:02]
+
+#+BEGIN_SRC ipython :exports none :session  :ipyfile ./images/a70.png :results none
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.special import erf
+import seaborn as sns
+sns.set()
+
+fig = plt.figure(0, figsize=(5, 5))
+fig.clf()
+fig, ax = plt.subplots(1, sharex=True, num=0)
+
+
+def D_eff(D, q, cell_um):
+    return (D*q*cell_um)/(D+q*cell_um)
+
+
+delta = 0.1
+beta = 2*delta
+#D = D_eff(300, 10, 100)
+D = 1
+
+t = iter([100])
+
+
+def f(k, T):
+    return beta/(2*np.sqrt(D*delta)) * \
+        (np.exp(-np.sqrt(delta/D)*abs(k)) *
+         (1+erf(np.sqrt(delta*T) - (abs(k))/(2*np.sqrt(D*T)))) +
+         np.exp(-np.sqrt(delta/D) * abs(k)) *
+         (-1+erf(np.sqrt(delta*T) + (abs(k)/(2*np.sqrt(D*T))))))
+
+
+nums = 50
+for ti in t:
+    vals = [f(i, ti) for i in range(0, nums)]
+    ax.plot(np.arange(0, nums), vals, label='T: {0} D: 1'.format(ti))
+
+D = 10
+t = iter([100])
+for ti in t:
+    vals = [f(i, ti) for i in range(0, nums)]
+    ax.plot(np.arange(0, nums), vals, label='T: {0} D: 10'.format(ti))
+
+D = 100
+t = iter([100])
+for ti in t:
+    vals = [f(i, ti) for i in range(0, nums)]
+    ax.plot(np.arange(0, nums), vals, label='T: {0} D: 100'.format(ti))
+
+ax.legend()
+ax.set_ylabel('f(k,T)')
+ax.set_xlabel(r'$\mu m$')
+fig.canvas.draw()
+#+END_SRC
+
+#+CAPTION: Time resolved solution for purely diffusive symplastic transport (approximation)
+#+ATTR_LATEX: :width 8cm
+[[./images/a70.png]]
+
+** DONE Read up on ROS bursts
+   CLOSED: [2019-03-13 Wed 13:43]
+
+** TODO Read up on Calcium signalling
+
+** IDEA Entropy and information theory?
+
+** DONE Finish draft of Chapter 1 of probation report
+   CLOSED: [2019-03-15 Fri 12:02]
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

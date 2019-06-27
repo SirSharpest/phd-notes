@@ -1,0 +1,15 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks [0/4]
+** TODO Finish presentation for probation meeting
+** TODO Investigate how viable deep-learning is Jo and Mina's images
+** TODO Meet with Matthew and discuss ideas on cell-segmentation (Friday)
+*** TODO Put together notes on Thursday and organise thoughts
+** TODO
+
+
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

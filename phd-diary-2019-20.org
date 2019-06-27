@@ -1,0 +1,84 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* TODO Tasks [0/1]
+
+** TODO RNA-seq analysis [0/3]
+
+*** TODO Generate report with hypotheses for sharing with group
+
+*** TODO Do a more specific analysis [0/1]
+
+
+**** TODO Separate by time [0/1]
+
+***** TODO 0.5hr [0/3]
+
+****** TODO Within treatments [0/3]
+
+******* TODO Col-0 W vs C
+
+******* TODO Lym2 W vs C
+
+******* TODO Cerk1 W vs C
+
+****** TODO Cross-treatment to Lym2
+
+******* TODO Col-0 W vs Lym2 W
+
+******* TODO Col-0 C vs Lym2 C
+
+******* TODO Cerk-1 W vs Lym2 W
+
+******* TODO Cerk-1 C vs Lym2 C
+
+***** TODO 6hr [0/3]
+
+****** TODO Within treatments [0/3]
+
+******* TODO Col-0  W vs C
+
+******* TODO Lym2 W vs C
+
+******* TODO Cerk1 W vs C
+
+****** TODO Cross-treatment to Lym2
+
+******* TODO Col-0 W vs Lym2 W
+
+******* TODO Col-0 C vs Lym2 C
+
+******* TODO Cerk-1 W vs Lym2 W
+
+******* TODO Cerk-1 C vs Lym2 C
+
+
+
+**** TODO Compare by time [0/1]
+
+***** TODO Within treatments [0/3]
+
+****** TODO 0.5hr vs 6hr
+******* TODO Col-0 W vs W
+
+******* TODO Lym2 W vs W
+
+******* TODO Cerk1 W vs W
+
+******* TODO Col-0 C vs C
+
+******* TODO Lym2 C vs C
+
+******* TODO Cerk1 C vs C
+
+
+
+
+
+*** TODO Find a better control for multi-way compare
+- Possibly start with [[https://www.ncbi.nlm.nih.gov/sra/SRX5794928%5Baccn%5D][this]]
+
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

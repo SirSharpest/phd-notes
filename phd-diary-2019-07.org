@@ -1,0 +1,137 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Notes on Eva's thesis
+
+** Questions/Issues
+
+1. The $D_{eff}$ is given as [[eqn:deff]], however what does the "_" symbol mean and where has $\Delta$ come from?
+2. Results at x of 0 i.e. cell 0 start at 0, is this correct?
+3. Still unsure of why A.70 is needed when A.59 (Pages 234, 235) already assumes a $t$ term?
+
+#+NAME: eqn:deff
+\begin{equation}
+\alpha = \frac{-\sqrt{\delta}}{\log{\Delta_{\_}}}
+\end{equation}
+
+** Example running /w code
+- /N.B./ Because I was unsure of a term, D has been given as D and not $D_{eff}$
+
+*** Original Code
+ #+BEGIN_SRC ipython :exports code :session  :ipyfile ./images/eva_fig.png :results none
+   import matplotlib.pyplot as plt
+   import numpy as np
+   from scipy.special import erf
+   import seaborn as sns
+   sns.set()
+
+   delta = 0.1
+   beta = 2*delta
+   D=10
+
+   def f(k,T):
+       return beta/(2*np.sqrt(D*delta)) * ( np.exp(-np.sqrt(delta/D)*abs(k)) *\
+           (1+erf(np.sqrt(delta*T) - (abs(k))/(2*np.sqrt(D*T)) )) +\
+           np.exp(-np.sqrt(delta/D) * abs(k)) *\
+           (-1+erf(np.sqrt(delta*T) + (abs(k)/(2*np.sqrt(D*T)) ))))
+
+
+
+
+   vals = [f(i,60) for i in range(0,25)]
+   plt.plot(np.linspace(0,25, num=len(vals)), vals)
+ #+END_SRC
+
+ #+CAPTION: Using parameters found on page 241 and equation on 235 to reproduce 1D time resolved solution to symplastic diffusion
+ #+ATTR_LATEX: :width 8cm
+ [[./images/eva_fig.png]]
+
+*** Modifying the negative exponential to be positive
+
+#+BEGIN_SRC ipython :exports code :session  :ipyfile ./images/eva2_fig.png :results none
+  import matplotlib.pyplot as plt
+  import numpy as np
+  from scipy.special import erf
+  import seaborn as sns
+  sns.set()
+
+  delta = 0.001
+  beta = 2*delta
+  D=30
+
+  def f(k,T):
+      return beta/2*np.sqrt(D*delta) * np.exp(-np.sqrt(delta/D*abs(k))) * \
+          (1+erf(np.sqrt(delta*T)-abs(k)/2*np.sqrt(D*T) )) \
+          + np.exp(np.sqrt(delta/D*abs(k))) * (1-erf(np.sqrt(delta*T)-abs(k)/2*np.sqrt(D*T) ))
+
+  vals = [f(i,1) for i in range(0,25)]
+  plt.plot(np.linspace(0,25, num=len(vals)), vals)
+#+END_SRC
+
+#+CAPTION: Using parameters found on page 241 and equation on 235 to reproduce 1D time resolved solution to symplastic diffusion
+#+ATTR_LATEX: :width 8cm
+[[./images/eva2_fig.png]]
+
+
+
+* Diffusion network modelling
+- I had to move back to slower non-vectorised method.
+  - The benefit being that we can supply a matrix map of connected cells
+
+** TODO Need to think about how closing behaviour might work
+- Most simple idea:
+  - After concentration > X and time since X > T then closure?
+  - Alternatively change whole design to a production based system
+    - Though have to come up with a positive feedback loop that makes sense for this?
+  - Problem with this is that closure is time-resolved
+- We also run with the idea that we are not considering "reactivation"
+
+
+#+CAPTION: Example of matching to moss paper numbers (in ratio at least!)
+#+ATTR_LATEX: :width 15cm
+#+NAME: fig:Example of matching to moss paper numbers (in ratio at least!)
+[[./images/network_1.png]]
+
+
+** QUESTION Why does diffusion equation cause sum of all nodes to not be equal to IC sum?
+
+- I've tested this with "pre-made" solutions and the same effect is seen?
+
+*** Analytical solution will sum to 1 but only if given enough X points for D
+
+#+BEGIN_SRC ipython :exports none :session  :ipyfile ./images/sum_less_than_1.png :results none
+  import numpy as np
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+  sns.set()
+
+  def C(x, t, D): return (1/np.sqrt(4*np.pi*D*t)
+                          ,* np.exp(- ((np.square(x))/(4*D*t))))
+
+
+  def stokes_einstein(x): return ((1.38e-23 * 298.15)/(6*np.pi * 8.9e-4 * x))
+
+
+  D = stokes_einstein(3.5e-10) * 1e+12
+  nx=300
+  t0 = np.array([C(i, 0.1, D) for i in range(-nx,nx)])
+  t10 = np.array([C(i, 2, D) for i in range(-nx,nx)])
+
+  plt.plot(t0, label='t0:   sum={0}'.format(t0.sum()))
+  plt.plot(t10, label='t10: sum={0}'.format(t10.sum()))
+
+  plt.legend()
+
+#+END_SRC
+
+#+CAPTION: Analytical solution summation to less than 1
+#+ATTR_LATEX: :width 8cm
+[[./images/sum_less_than_1.png]]
+
+
+* Thesis reading
+- citet:evansMathematicalModellingCalcium2017 seems like an excellent read
+
+bibliography:library.bib
+bibliographystyle:plainnat
