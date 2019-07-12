@@ -7,7 +7,6 @@
 * Tasks
 
 ** TODO Redo the PCA-esk figures on improved RNA-seq data
-
 ** BUG Restart Xiaokun data with the new reference genome
 *** TODO Check what problems are and why it's not returning anything of interest?
 
@@ -30,15 +29,14 @@ e.g. for $A=[3,6]$ $A=[1,2]$
    CLOSED: [2019-06-24 Mon 11:55]
 
 ** TODO Complete hypotheses venn diagrams
-
-
 *** Genotypes
  #+BEGIN_SRC ipython :session :ipyfile '((:name "vennTreatments" :filename "obipy-resources/vennTreatments2.png" :caption "Venn diagram of the treatments in the initial RNA-seq experiment" :attr_html ":width 200px" :attr_latex ":width 10cm")) :exports results
    from matplotlib_venn import venn3
    import matplotlib.pyplot as plt
    import seaborn as sns
+   import numpy as np
    sns.set()
-   plt.close('all')
+
    plt.figure(figsize=(6,6))
    v3 = venn3(subsets = {'100':50, '010':50, '110':50,
                          '001':50, '101':50, '011':50, '111':10},
@@ -60,7 +58,7 @@ e.g. for $A=[3,6]$ $A=[1,2]$
 
  #+RESULTS:
  :RESULTS:
- # Out [133]:
+ # Out [14]:
  # text/plain
  : <Figure size 432x432 with 1 Axes>
 
@@ -72,27 +70,16 @@ e.g. for $A=[3,6]$ $A=[1,2]$
  [[file:obipy-resources/vennTreatments2.png]]
  :END:
 
-
 *** Hypotheses
 
 **** Chitin Treatments
 
- #+BEGIN_SRC ipython :session :ipyfile '((:name "vennTreatments" :filename "obipy-resources/vennTreatmentschitin.png" :caption "Venn diagram hypothesis of the chitin effect" :attr_html ":width 600px" :attr_latex ":width 10cm")) :exports results
-   from matplotlib_venn import venn3
-   import matplotlib.pyplot as plt
-   import seaborn as sns
-   from matplotlib.pyplot import cm
-   import matplotlib.patches as mpatches
-
-
-   sns.set()
-   plt.close('all')
-   fig, ax = plt.subplots(1, figsize=(12,12))
-
-   def make_treatment_venn(labels, axes):
+#+BEGIN_SRC ipython :session
+  def make_treatment_venn(labels, axes, sizes=[50,50,50,50,50,50,10]):
        color=list(iter(cm.Set1(np.linspace(0,1,7))))
-       subsets = {'100':50, '010':50, '110':50,
-                  '001':50, '101':50, '011':50, '111':10}
+       sizes = iter(sizes)
+       subsets = {'100':next(sizes), '010':next(sizes), '110':next(sizes),
+                  '001':next(sizes), '101':next(sizes), '011':next(sizes), '111':next(sizes)}
        v3 = venn3(subsets=subsets,
                   set_labels = ('', '', ''), ax=axes)
 
@@ -124,13 +111,26 @@ e.g. for $A=[3,6]$ $A=[1,2]$
        cer_patch = mpatches.Patch(color=color[1], label='lym2', alpha=0.4)
        lym_patch = mpatches.Patch(color=color[2], label='cerk1', alpha=0.4)
 
-
        axes.legend(handles=[col_patch, cer_patch, lym_patch], title="Genotypes",fontsize=20)
 
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+# Out [433]:
+:END:
 
 
+ #+BEGIN_SRC ipython :session :ipyfile '((:name "vennTreatments" :filename "obipy-resources/vennTreatmentschitin.png" :caption "Venn diagram hypothesis of the chitin effect" :attr_html ":width 500px" :attr_latex ":width 10cm")) :exports results
+   from matplotlib_venn import venn3
+   import matplotlib.pyplot as plt
+   import seaborn as sns
+   from matplotlib.pyplot import cm
+   import matplotlib.patches as mpatches
+
+
+   fig, ax = plt.subplots(1, figsize=(12,12))
    make_treatment_venn(['Plasmodesmata\nclosure genes', 'None', 'None', 'Chitin\nperception genes', 'None', 'None', 'None'], ax)
-
    ax.set_title('Differently expressed with chitin treatment', fontsize=20)
 
    plt.show()
@@ -138,12 +138,12 @@ e.g. for $A=[3,6]$ $A=[1,2]$
 
  #+RESULTS:
  :RESULTS:
- # Out [283]:
+ # Out [434]:
  # text/plain
  : <Figure size 864x864 with 1 Axes>
 
  # image/png
- #+attr_html: :width 600px
+ #+attr_html: :width 500px
  #+attr_latex: :width 10cm
  #+caption: Venn diagram hypothesis of the chitin effect
  #+name: vennTreatments
@@ -151,5 +151,9 @@ e.g. for $A=[3,6]$ $A=[1,2]$
  :END:
 
 
+
+
  bibliography:library.bib
  bibliographystyle:plainnat
+* TODO Lit review
+- Can we answer any of the questions currently hypothesised in the literature of PD

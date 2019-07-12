@@ -1,0 +1,17 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+
+** TODO Update website to fix the low # of genes
+
+** TODO Do a GO term analysis on the data sets
+
+** TODO Create "data based" Venn diagrams
+
+** DONE Reply to Sam
+   CLOSED: [2019-07-01 Mon 08:27]
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

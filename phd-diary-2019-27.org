@@ -1,0 +1,35 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Paper idea:
+
+** Network diffusion models predict inter-cellular defence signalling in plants
+- Take Christine's data cite:Faulkner2013
+- Take cite:kitagawaQuantitativeImagingDirectional2013,Kitagawa2017,Kitagawa2018 data
+- Find a few others
+- Design the models for their treatments and effects...
+
+* TODO Tasks [4/7]
+
+** DONE Meet with Sam for summer-school stuff
+   CLOSED: [2019-07-12 Fri 12:34]
+
+** DONE Run summer school
+   CLOSED: [2019-07-12 Fri 12:34]
+
+** TODO Xaiokun data
+
+** QUESTION Come up with nice way to do GO analysis
+
+** DONE Reply to J
+   CLOSED: [2019-07-12 Fri 12:34]
+
+** DONE Reorganise meeting with R as away on Friday
+   CLOSED: [2019-07-12 Fri 12:34]
+
+** TODO come up with a pipeline for image data creation
+
+* Misc
+ bibliography:library.bib
+ bibliographystyle:plainnat
