@@ -1,0 +1,15 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+
+* Tasks
+
+
+** DONE Get a pix2pix CNN working
+   CLOSED: [2019-07-23 Tue 22:51]
+** IDEA Create ground truth images for learning set
+
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

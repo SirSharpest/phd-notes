@@ -1,0 +1,15 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+
+* Tasks
+
+** TODO Follow up on photobleaching citet:rutschowRegulationSoluteFlux2011
+
+** TODO Who does photobleaching in Faulkner group?
+
+** TODO represent RNA-seq data as a series of 1D unit vectors
+
+bibliography:library.bib
+bibliographystyle:plainnat

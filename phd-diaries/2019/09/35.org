@@ -1,0 +1,158 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+** General
+
+*** TODO Make a new presentation for update meeting
+
+** Modelling
+
+*** TODO Decide on diffusion model for network diffusion
+
+**** TODO Research diffusion models i.e. SIR
+
+** Hypotheses
+*** With the current data what are some hypotheses that we can answer?
+
+ - [ ] There are no transcriptomic differences between col-0, lym2-1, cerk1
+ - [ ] CERK1 is required for transcriptional response to chitin
+ - [ ] LYM2 is required for transcriptional response to chitin
+
+**** With more/different data we could ask?
+ - [ ] Transcriptional changes in response to chitin cause a plasmodesmatal change
+   - Could be answered with fluorescent microscopy?
+ - [ ] Chitin treatments alter the amount of callose produced
+   - Could be answered with callose staining on each genotype
+ - [ ] CERK1/LYM2 mediates cell-to-cell mobile mRNA and/or other small molecules
+   - Spatial-temporal data could suggest if mRNA is moving at similar rates in mutant genotypes.
+ - [ ] Basal intercellular flux is altered by CERK1/LYM2
+   - Comparing water treatments would show this
+ - [ ] Un-exposed areas of leaf tissue have faster rates of defence transcriptional response compared to initial area.
+   - i.e. Further away areas of leaf tissue prepare responses quicker as mobile molecules induce signalling
+   - if defence related RNA is seen to appear in areas post-infiltration and at a quicker rate than the infected region, then it would suggest an organised defence
+ - [ ] Defence signalling occurs faster than effector molecule diffusion
+   - Apoplastic diffusion models of chitin would show maximum potential, if defence related RNA levels increase faster than expected diffusion then this is an indication
+ - [ ] Defence responses is evenly distributed in surrounding areas
+   - Taking a sample from an opposite direction than other spatial samples could answer this
+ - [ ] Effects of chitin in transcriptome of genotypes can be matched with phenotyping AT plants exposed to some kind of fungi.
+
+*** lym2 / cerk
+- Faulkner et al. showed that lym2-1 has a chitin specific affinity,
+- /Chitin-induced PD flux reduction occurs in cerk1-2 mutants, indicating that as LYM2 is not required for CERK1- mediated responses, neither is CERK1 required for LYM2-mediated responses./
+
+
+
+*** Simplified
+- Chitin does not affect callose levels
+- CERK1 / LYM2 do not alter molecule flux between cells
+- Transcript changes are not related to plasmodesmatal flux
+  - Transcriptional differences in cerk1-2 and lym2-1 mutants have no effect on plasmodesmatal flux
+- Defence related transcription depends on localised, independent, sensing of elicitors.
+
+
+** RNA-Seq
+
+*** CANCELLED In maintenance mode until asked
+    CLOSED: [2019-09-05 Thu 09:04]
+- The data is in a resting form and will be only probed
+  - Unless we receive some specific insight that would argue for this.
+
+*** TODO Use water col as baseline?
+
+** Reviews
+
+*** DONE Sign off on https://github.com/openjournals/joss-reviews/issues/1643
+
+*** DONE Comment on https://github.com/openjournals/joss-reviews/issues/1675
+
+
+
+* Col-0, lym2-1 cerk1-2 literature
+
+** Chitin treatment
+
+*** Molecular flux citet:Faulkner2013
+
+**** Reduction
+- Col-0
+- cerk1-2
+**** No change
+- lym2-1
+
+*** ROS Burst citet:Faulkner2013
+
+**** Increase
+- Col-0
+- cerk-1
+**** No change citet:shinyaFunctionalCharacterizationCEBiP2012,Faulkner2013
+- lym2-1
+
+** Pathogen response
+
+*** B. cinera
+
+**** Increase in Susceptibility citet:Faulkner2013
+- lym2-1
+
+**** Normal response citet:Faulkner2013
+- Col-0
+
+
+*** C. higginsianum
+**** Normal response citet:Faulkner2013
+- Col-0
+- lym2-1
+
+
+** Binding of Chitin
+
+*** Over expression shows increase in binding of chitin
+- lym2
+
+*** Over expression did not increase ROS generation
+- lym2
+
+
+
+
+* Signalling cascades
+
+** Infection
+1. Botrytis penetrates host leaf
+2. ROS burst happens
+3. Cell wall degrading proteins are released by pathogen (CWDE)
+4. Pathogen releases various virulence related molecules
+
+** Plant response
+1. MAMP detection by PRRs
+   1. Botrytis chitin is recognised by plasma membrane receptors
+   2. CERK1
+   3. LYM2
+2. DAMPS are detected by wall associated kinase 1 (WAK1)
+   1. /Not of interest for us at current... but a whole bunch of DAMP stuff happens/
+3. After initial perception, a bunch of RLKs transduce the signal to downstream targets and inter-connect signalling pathways
+   1. These are reported to interact with multiple PRRs for different elicitors
+   2. SOBIR1 and BAK1 are additional RLPs that without, plants are susceptible to botrytis
+4. BIK1 gene encodes a receptor-like cytoplasmic kinase (RLCK) involved in mediating pathogen triggered immunity (PTI)
+   1. Mutants of BIK1 show increased susceptibility to Botrytis also
+5. Chitin perception requires BIK1 and CERK1 has been shown to interact with BIK1
+6. Initial perception complexes are often transduced through sequentially activated mitogen activated protein kinase cascades that convey signals from receptors to specific effectors to regulate gene expression.
+7. AT MAPK kinase kinase (MAPKKK) receives the signals from PRRS then activates an MAPKK
+8. These activate MPK3/4/6
+   1. MPK6 was shown to be required for resistance against Botrytis
+   2. MPK3/6 are required for camalexin (defence metabolite)
+   3. MPK3/6 also regulated MYB51, MYB12 expression (defence related metabolites)
+   4. MKS1, a substrate of MPK4 negatively regulates plant defence, overexpression of MKS1 increases plant susceptibility
+   5. MKP2 positively controls oxidative stress tolerance and negatively regulates MPK3/6
+      1. Though this is shown to be different in response to fungal elictors
+      2. MKP2 negatively regulates cell death responses, leading to Botrytis resistance
+      3. Even though the fungal elicitor alleviates the interaction between MKP2 / MPK3, it enhances the binding between MKP2 and MPK6
+      4. The differences  in MPK3 and MPK6 could be balancing MAPK phosphorylation in defence
+9. Following infection, MAPKs undergo phosphorylation which induces transcriptional changes, for example in WRKY33
+
+
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

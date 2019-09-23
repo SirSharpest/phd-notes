@@ -1,0 +1,124 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+
+** DONE Hypotheses on usefulness of RNA-seq data
+   CLOSED: [2019-09-13 Fri 09:34]
+
+** DONE Prepare data for Christine/Jeroen
+   CLOSED: [2019-09-13 Fri 09:33]
+
+** DONE PIPs health and safety form
+   CLOSED: [2019-09-13 Fri 09:34]
+
+** DONE Deep learning image analysis course - submit motivation letter
+   CLOSED: [2019-09-13 Fri 09:34]
+
+** TODO Make a detailed pipeline for RNA-seq analysis to give others' a overarching view of what has been done
+
+** TODO Do GO analysis with a threshold on the log2foldchange and not the FDR
+
+** TODO Search for genes which are in the same direction, but radically different between treatments
+
+** DONE Derive networks from annotations in preparation for future studies
+   CLOSED: [2019-09-13 Fri 12:20]
+
+#+CAPTION: Ideal outcome!
+#+ATTR_LATEX: :width 12cm
+#+NAME: fig:Testing on annotation1
+[[./images/img_networks2.png]]
+
+
+#+CAPTION: In practise
+#+ATTR_LATEX: :width 12cm
+#+NAME: fig:Testing on annotation0
+[[./images/img_networks1.png]]
+
+#+CAPTION: Trying on other annotations
+#+ATTR_LATEX: :width 12cm
+#+NAME: fig:Testing on annotation2
+[[./images/testing1.png]]
+
+
+#+CAPTION: Trying on other annotations
+#+ATTR_LATEX: :width 12cm
+#+NAME: fig:Testing on annotation3
+[[./images/testing2.png]]
+
+\clearpage
+* Ideas
+
+** Microscopy data
+
+*** Andy's data
+- Contains information about # of plasmodesmata sites
+
+- Can give rough numbers for /total/ available flux perimeter / area
+
+*** Annalisa's data
+- Calcium wave speeds
+
+#+CAPTION: Email reminder of details and files of interestt
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Email reminder of details and files of interestt
+[[./images/anna.png]]
+
+*** Jo and Mina's data
+
+- Information on effector mobility
+- Is in /Nicotiana benthamiana/, so a little bit of a jump to AT
+
+*** Christine's data
+- Bombardment data on Col-0 and lym from citet:Faulkner2013
+  - Strangely, cerk images seem to be missing?
+  - Though, the literature shows that these probably aren't interesting as CERK-ko isn't receptive to chitin treatments anyway
+
+
+** Questions to ask on these data
+
+/n.b./ most bombardment assays seem to be in the scale of 24hrs post hit
+
+*** IDEA Does cell topology have an effect on calcium waves?
+- Calcium waves appear to be evenly distributed at all angles
+- Defence activation in terms of flux reduction has been hinted at not being symmetrical citet:Kitagawa2018,malooksaifulOrientalArmywormMythimna2019, both in moss and maize systems
+- It would be super interesting to see if there is any evidence of this in calcium propagation, if it does not hold true to this, then we may argue that ca2+ signals need another system to cause them to have impact?
+
+*** IDEA Area / amount of PD affects the flux between cells which share this barrier
+- This would have to be through proxy modelling of imposing estimations of this distribution, gleamed from AB staining assays, applied to other data we have.
+- Checking for these types of consistencies in the lym mutant vs col-0 would be interesting if these are able to help give evidence to explain flux differences in response to treatments
+
+*** IDEA Is there a relation between estimated PD layout and effector mobility
+- We could use PD area data to estimate the average % of a cell's perimeter is considered to have potential for "mobility"
+- Using these estimates we can see if effector molecules flow is directional i.e. in the area of least resistance
+  - If not, then possibly a more strategic system is in play
+
+
+*** IDEA Do different elicitors alter PD flux in the same way
+- citet:Faulkner2013 uses flg22 as well as chitin for col-0, it may be interesting to explore how different receptors effect coordination
+- We can simulate flg22 parameters on the chitin treated networks and vice-versa in order to test for similar outcomes.
+
+** Action plan:
+
+1. Label Col-0 and lym2 images
+2. Test, build and implement ML extraction
+3. Build networks from manually labelled data
+   1. And with deep learning if results seem positive!
+4. Extract PD area/perimeter
+5. Build two styles of network models
+   1. That contains no information on the amount of connectivity, beyond degree of connections
+   2. A model which imposes flux limitations of potential PD likelihood
+
+
+*** Model types
+1. For the proposed plan, a simple diffusion exchange model may be suitable
+2. Here an undirected graph would start with nodes initiated with 0% concentration
+3. Diffusion would occur by simultatious % based exchanges with all connected nodes
+   1. e.g. each connection (A<->B) would facilitate a 10% quantity exchange, a node with 2 connections would exchange lose 20% of its concentration, whilst gaining 10% from connection 1 and 10% from connection 2.
+4. This would be an incredibly simple model
+
+Other models could be used from citet:sayamaIntroductionModelingAnalysis2015
+
+bibliography:library.bib
+bibliographystyle:plainnat

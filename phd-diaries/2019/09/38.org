@@ -1,0 +1,8 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

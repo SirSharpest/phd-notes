@@ -1,0 +1,26 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+
+** TODO GOEA on dataset
+
+** TODO Focus down on lym and really find difference in it
+
+** TODO Reply to Stringlis & Richard
+
+
+ bibliography:library.bib
+ bibliographystyle:plainnat
+
+** TODO https://github.com/tanghaibao/goatools/issues/133
+
+
+#+begin_quote
+A human being should be able to change a diaper, plan an invasion, butcher a hog, conn a ship, design a building, write a sonnet, balance accounts, build a wall, set a bone, comfort the dying, take orders, give orders, cooperate, act alone, solve equations, analyze a new problem, pitch manure, program a computer, cook a tasty meal, fight efficiently, die gallantly. Specialization is for insects.
+#+end_quote
+
+#+begin_quote
+Marx in one of his books that this kind of specialisation and thereby reduction of skills is dehumanising and while it might be efficient, its simultaneously soul crushing, and passion destroying.
+#+end_quote

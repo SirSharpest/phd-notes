@@ -1,0 +1,14 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+
+** TODO Make a detailed pipeline for RNA-seq analysis to give others' a overarching view of what has been done
+
+** TODO Do GO analysis with a threshold on the log2foldchange and not the FDR
+
+** TODO Search for genes which are in the same direction, but radically different between treatments
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

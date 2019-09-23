@@ -1,0 +1,112 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+** With the current data what are some hypotheses that we can answer?
+
+- There are no transcriptomic differences between col-0, lym2-1, cerk1
+- CERK1 is required for transcriptional response to chitin
+- LYM2 is required for transcriptional response to chitin
+
+*** With more/different data we could ask?
+- Transcriptional changes in response to chitin cause a plasmodesmatal change
+  - Could be answered with fluorescent microscopy?
+- Chitin treatments alter the amount of callose produced
+  - Could be answered with callose staining on each genotype
+- CERK1/LYM2 mediates cell-to-cell mobile mRNA and/or other small molecules
+  - Spatial-temporal data could suggest if mRNA is moving at similar rates in mutant genotypes.
+- Basal intercellular flux is altered by CERK1/LYM2
+  - Comparing water treatments would show this
+- Un-exposed areas of leaf tissue have faster rates of defence transcriptional response compared to initial area.
+  - i.e. Further away areas of leaf tissue prepare responses quicker as mobile molecules induce signalling
+  - if defence related RNA is seen to appear in areas post-infiltration and at a quicker rate than the infected region, then it would suggest an organised defence
+- Defence signalling occurs faster than effector molecule diffusion
+  - Apoplastic diffusion models of chitin would show maximum potential, if defence related RNA levels increase faster than expected diffusion then this is an indication
+- Defence responses is evenly distributed in surrounding areas
+  - Taking a sample from an opposite direction than other spatial samples could answer this
+- Effects of chitin in transcriptome of genotypes can be matched with phenotyping AT plants exposed to some kind of fungi.
+
+** IDEA Using citet:Faulkner2013 as example:
+can we recreate similar data with the same plants that we use to RNA-seq and replicate? Just as a sanity check
+
+** TODO Use citet:thiemeEndogenousArabidopsisMessenger2015 to solidify mobility molecules understanding
+- Non-cell-autonomy of small RNA molecules raises the question: *To what extent are protein-coding mRNAs exchanged between tissues in plants*
+  - Non-cell-autonomy
+    - A genetic trait in multicellular organisms in which only genotypically mutant cells exhibit the mutant phenotype. Conversely, a nonautonomous trait is one in which genotypically mutant cells cause other cells (regardless of their genotype) to exhibit a mutant phenotype.
+
+
+** QUESTION Does mobile mRNA have escort proteins?
+- [[https://www.quora.com/After-transcription-of-DNA-how-does-mRNA-know-the-location-of-the-ribosome-in-the-cell-Does-another-enzyme-take-it-there-and-if-so-how-can-that-enzyme-locate-the-ribosome][Would make you think so from here!]]
+
+** Can we incorporate phloem nodes in our model?
+
+*** They could act as single nodes which connect distal tissues
+i.e. clusters of nodes joined by a phloem node which has an radically different diffusion coefficient
+
+
+** QUESTION What kind of network would be suitable for our problems?
+
+- Epidemic models?
+  - SEIS?
+
+
+* Useful links
+** Eigen things!
+- http://setosa.io/ev/eigenvectors-and-eigenvalues/
+** Interesting book
+ - https://math.libretexts.org/Bookshelves/Applied_Mathematics/Book%3A_Introduction_to_the_Modeling_and_Analysis_of_Complex_Systems_(Sayama)
+
+* Information needed for a /real/ model
+** DONE Molecule size
+   CLOSED: [2019-08-28 Wed 08:43]
+Can be found through pymol or other modelling software (if structure is relatively known)
+
+** DONE Molecule diffusion speed
+   CLOSED: [2019-08-28 Wed 08:45]
+This can be roughly estimated using the radius of the molecule and the Stokes-Einstein diffusion equation
+
+** TODO Plasmodesmata size
+*** TODO Find *most* recent estimate
+- citet:blakeHydrodynamicsPlasmodesmata1978 has a lot of possibly outdated info
+** TODO Plasmodesmata number
+
+
+
+
+* DONE Checking some individual genes in our data set
+  CLOSED: [2019-08-30 Fri 13:39]
+These are just at the 30m time point
+
+#+CAPTION: PBS3
+#+ATTR_HTML: :width 350px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:PBS3
+[[./images/PBS3.png]]
+
+#+CAPTION: EPS1
+#+ATTR_HTML: :width 350px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:EPS1
+[[./images/EPS1.png]]
+
+
+#+CAPTION: lym2
+#+ATTR_HTML: :width 350px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:lym2
+[[./images/lym2.png]]
+
+#+CAPTION: cerk1
+#+ATTR_HTML: :width 350px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:cerk1
+[[./images/cerk1.png]]
+
+* Useful links
+
+** Estimation of radius of pbd
+https://pymolwiki.org/index.php/Radius_of_gyration
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

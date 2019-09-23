@@ -1,0 +1,74 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+
+** DONE Come up with weekly plan
+   CLOSED: [2019-08-22 Thu 08:24]
+
+
+** DONE Reply to Jeroen's email
+   CLOSED: [2019-08-19 Mon 11:07]
+
+** TODO Make notes J's hypotheses
+
+#+CAPTION: Jeroen's hypotheses
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:Jeroen's hypotheses
+[[./images/jeroen_hyp.jpg]]
+
+*** TODO Design statistical tests for Jeroen's hypotheses
+
+ 1. LYM2 alters basic gene homeostasis in a PD_closure independent manner
+    - Experiment: Col-0 vs. /lym2-1/ DEGs in untreated samples, reinforced if unaffected by chitin treatment/time
+    - Outcome:
+ 2. PD-closure triggers its own transcriptional program
+    - Experiment:
+    - Outcome:
+ 3. PD-closure modulates the transcriptional reprogramming initiated by CERK1-mediated chitin signalling
+    - Experiment: In Col-0 and /lym2-1/, comparing the DEGs in untreated vs, chitin treated samples
+    - Outcome:
+ 4. PD-closure modulates the transcriptional reprogramming initiated by other MAMP/DAMP signalling after /Botrytis/ attack
+    - Experiment:
+    - Outcome:
+
+** TODO Attach specific data/figures to the given hypotheses
+
+** DONE Talk to Richard about PIPS being sorted
+   CLOSED: [2019-08-22 Thu 08:24]
+
+** TODO Come up with plan for image analysis
+
+
+
+** TODO Look further at the difference in Col-0 vs /lym2-1/
+
+*** Findings from previous week
+
+- For GOs common between col & lym, lym has /mostly/ an increase in number of genes
+
+#+CAPTION: go_col_lym.png
+#+ATTR_HTML: :width 200px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:go_col_lym.png
+q[[./images/go_col_lym.png]]
+
+
+#+CAPTION: go_col_lym_sig.png
+#+ATTR_HTML: :width 200px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:go_col_lym.png
+[[./images/go_col_lym_sig.png]]
+
+
+
+*** TODO Work on GO term analysis to do this
+
+- Papers of interest: citet:stahlTranscriptomicAnalysisCave2015,wagnerGOPCAUnsupervisedMethod2015,thiemeEndogenousArabidopsisMessenger2015
+
+
+** TODO Statistical power analysis paper of interest citet:maccallumPowerAnalysisDetermination1996
+
+ bibliography:library.bib
+ bibliographystyle:plainnat

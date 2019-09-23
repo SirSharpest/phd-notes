@@ -1,0 +1,60 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "./preamble.org" :minlevel 1
+
+* Tasks
+
+** DONE Fix AT -> GO ID code errors
+   CLOSED: [2019-08-02 Fri 10:05]
+
+** TODO Configure Org-download
+** TODO Find shared interactions of CERK genes in others
+** TODO Look further at the difference in Col-0 vs /lym2-1/
+
+*** Findings
+
+- For GOs common between col & lym, lym has /mostly/ an increase in number of genes
+
+#+CAPTION: go_col_lym.png
+#+ATTR_HTML: :width 200px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:go_col_lym.png
+[[./images/go_col_lym.png]]
+
+
+#+CAPTION: go_col_lym_sig.png
+#+ATTR_HTML: :width 200px
+#+ATTR_LATEX: :width 10cm
+#+NAME: fig:go_col_lym.png
+[[./images/go_col_lym_sig.png]]
+
+
+
+
+
+** TODO Finish the /cerk/ unique genes analysis
+
+#+ATTR_LATEX: :environment tabularx :width 12cm :align l|l
+#+NAME: tab:uniquegenes
+#+CAPTION: Cerk and lym unique genes for 30min, and p<0.05
+
+| *CERK*    | *LYM & CERK* |
+|-----------+--------------|
+| AT5G59320 | AT5G24530    |
+| AT3G60690 |              |
+| AT2G36430 |              |
+
+
+
+** TODO Design statistical tests for Jeroen's hypotheses
+
+/N.b/ Check the sheet J provided, as it contains most of the answers already!
+
+1. LYM2 alters basic gene homeostasis in a PD_closure independent manner
+2. PD-closure triggers its own transcriptional program
+3. PD-closure modulates the transcriptional reprogramming initiated by CERK1-mediated chitin signalling
+4. PD-closure modulates the transcriptional reprogramming initiated by other MAMP/DAMP signalling after /Botrytis/ attack
+
+
+  bibliography:library.bib
+  bibliographystyle:plainnat
