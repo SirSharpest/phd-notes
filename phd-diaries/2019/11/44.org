@@ -1,0 +1,36 @@
+#+TITLE: PhD Diary
+#+AUTHOR: Nathan Hughes
+#+INCLUDE: "../../preamble.org" :minlevel 1
+
+* Tasks
+
+** DONE Email Richard Smith about MorphographX
+   CLOSED: [2019-11-06 Wed 13:49]
+
+** TODO Come up with hypotheses to test through the outline sent to Richard
+
+** DONE Email Jeroen and arrange meeting time
+   CLOSED: [2019-11-04 Mon 10:06]
+
+** DONE Read Faulkner JC paper cite:brunkardPlantCellcellTransport2019
+   CLOSED: [2019-11-05 Tue 09:19]
+
+** DONE Email about helping with CSB this year
+   CLOSED: [2019-11-04 Mon 11:25]
+
+** TODO Write an image analysis program to extract grayvals from just boundaries
+- Will save the needless colouring of regions!
+
+** TODO Check if data in citet:giolaiSpatiallyResolvedTranscriptomics2019a,mulemaSpatialTemporalTranscriptomic2012 would be useful for modelling [0/2]
+
+*** QUESTION citet:mulemaSpatialTemporalTranscriptomic2012
+*** QUESTION citet:giolaiSpatiallyResolvedTranscriptomics2019a
+- Have contacted to view data, at least from an interest view of how the data is similar across sectioning
+  - Michael very friendly and is located in EI
+
+** TODO Think about vascular relationship between moss & AT
+- Would maybe give more weight to the results from citet:kitagawaQuantitativeImagingDirectional2013,Kitagawa2018
+
+
+bibliography:../../../library.bib
+bibliographystyle:plainnat
